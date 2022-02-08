@@ -1,5 +1,5 @@
 +++
-prepath = "booksjl-franklin"
+prepath = "booksjl-franklin-template"
 
 content_tag = ""
 +++
