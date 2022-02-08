@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Rik Huijzer" />
+  <meta name="author" content="and contributors" />
+  {{isdef title}} <title>{{fill title}}</title>  {{end}}
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" href="/css/base.css"/>
+  <script src="/mousetrap.min.js"></script>
+  <style>
+  @font-face {
+    font-family: JuliaMono-Regular;
+    src: url("/JuliaMono-Regular.woff2");
+  }
+  </style>
+
+  {{if hascode}}
+    <link rel="stylesheet" href="/libs/highlight/github.min.css">
+    <script src="/libs/highlight/highlight.min.js"></script>
+    <script src="/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  {{end}}
+
+  {{if hasmath}}
+    <link rel="stylesheet" href="/libs/katex/katex.min.css">
+  {{end}}
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  {{insert aside.html}}
+
+  <div class="books-content">
