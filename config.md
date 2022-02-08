@@ -1,17 +1,18 @@
+# start of config vars
+
 +++
 prepath = "booksjl-franklin-template"
 
 content_tag = ""
 +++
 
-# Menus + ordering of submenus
-
-@def book_title = "Books.jl Template"
-@def book_subtitle = "Create books with Franklin.jl"
-
+# menu + ordering of submenus
 +++
+book_title = "Books.jl Template"
+book_subtitle = "Create books with Franklin.jl"
+
 menu = [
-    "intro",    
+    "intro",
     "Menu bar" => [
         "menu_location",
         "menu_configuration"

@@ -1,9 +1,10 @@
 
 
-function hfun_menubar()
+@delay function hfun_menubar()
     io = IOBuffer()
 
     menu = pagevar("config.md", :menu)
+    isnothing(menu) && return ""
 
     for m in menu
 
@@ -25,7 +26,7 @@ function hfun_menubar()
 
                 # start of list
                 write(
-                    io, 
+                    io,
                     """<ul class="menu-level-2">
                     """
                 )
@@ -71,7 +72,7 @@ function hfun_navigation()
     ind = findlast('.', filename)
     name = filename[1:prevind(filename, ind)]
     prev, next = nav_prevnext(name)
-    
+
     io = IOBuffer()
 
     if prev !== nothing || next !== nothing
@@ -107,7 +108,7 @@ function hfun_navigation()
             """
         )
     end
-    
+
     if prev !== nothing || next !== nothing
         write(
             io,
@@ -130,7 +131,6 @@ function nav_prevnext(filename)
     prev = nothing
     next = nothing
     mfile = nothing
-    menu === nothing && return prev, next # don't know why it reads nothing sometimes
     for m in menu
         if m isa Pair
             for s in m.second
