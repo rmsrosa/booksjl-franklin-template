@@ -1,4 +1,4 @@
-@def title = "Welcome ⋅ Books.jl"
+@def title = "Welcome"
 
 @def nav = false
 # Welcome
