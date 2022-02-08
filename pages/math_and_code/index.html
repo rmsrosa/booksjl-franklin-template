@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Rik Huijzer" />
   <meta name="author" content="and contributors" />
-   <title>Navigation Configuration</title>  
+   <title>Math and Code</title>  
   <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/favicon.png"/>
   <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
   <script src="/booksjl-franklin-template/mousetrap.min.js"></script>
@@ -17,7 +17,20 @@
   </style>
 
   
+    <link rel="stylesheet" href="/booksjl-franklin-template/libs/highlight/github.min.css">
+    <script src="/booksjl-franklin-template/libs/highlight/highlight.min.js"></script>
+    <script src="/booksjl-franklin-template/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
+  
+    <link rel="stylesheet" href="/booksjl-franklin-template/libs/katex/katex.min.css">
   
 </head>
 
@@ -75,10 +88,18 @@
 
 
   <div class="books-content">
-<h1 id="title"><a href="#title" class="header-anchor">Navigation Configuration</a></h1>
+<h1 id="title"><a href="#title" class="header-anchor">Math and Code</a></h1>
+<p>As usual with sites built with <a href="https://franklinjl.org">Franklin.jl</a>, you may easily insert math and execute code when desired.</p>
+<h2 id="math"><a href="#math" class="header-anchor">Math</a></h2>
+\[
+\exp(i\pi) + 1 = 0
+\]
+<h2 id="code"><a href="#code" class="header-anchor">Code</a></h2>
+<pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre><pre><code class="plaintext code-output">hello world!
+</code></pre>
 <div class="bottom-nav">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_location"><b>1</b> Navigation Location </a> <kbd>←</kbd>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_configuration"><b>1</b> Navigation Configuration </a> <kbd>←</kbd>
     </p>
 </div>
 
@@ -94,6 +115,10 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/booksjl-franklin-template/libs/katex/katex.min.js"></script>
+        <script src="/booksjl-franklin-template/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
   </body>
 </html>
