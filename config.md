@@ -11,6 +11,7 @@ content_tag = ""
 
 +++
 menu = [
+    "intro",    
     "Menu bar" => [
         "menu_location",
         "menu_configuration"
@@ -18,6 +19,8 @@ menu = [
     "Navigation" => [
         "nav_location",
         "nav_configuration"
-    ]
+    ],
+    "math_and_code",
+    "Appendix" => [],
 ]
 +++

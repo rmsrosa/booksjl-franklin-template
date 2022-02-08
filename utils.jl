@@ -130,18 +130,17 @@ function nav_prevnext(filename)
     prev = nothing
     next = nothing
     mfile = nothing
+    menu === nothing && return prev, next # don't know why it reads nothing sometimes
     for m in menu
         if m isa Pair
-            if length(m.second) > 0
-                for s in m.second
-                    if mfile == filename
-                        next = s
-                        return prev, next
-                    elseif s == filename
-                        mfile = filename
-                    else
-                        prev = s
-                    end
+            for s in m.second
+                if mfile == filename
+                    next = s
+                    return prev, next
+                elseif s == filename
+                    mfile = filename
+                else
+                    prev = s
                 end
             end
         else
