@@ -91,7 +91,7 @@ end
         write(
             io,
             """
-            <a class="menu-level-1" href="$prev_link"><b>1</b> $prev_title </a> <kbd>←</kbd>
+            <a class="menu-level-1" href="$prev_link"><b>1</b> $prev_title <kbd>←</kbd></a>
             """
         )
     end
@@ -103,7 +103,7 @@ end
             io,
             """
             <span id="nav-next" style="float: right;">
-                <kbd>→</kbd> <a class="menu-level-1" href="$next_link"><b>1</b> $next_title</a>
+                <a class="menu-level-1" href="$next_link"><kbd>→</kbd> <b>1</b> $next_title</a>
             </span>
             """
         )
