@@ -65,7 +65,7 @@
     return String(take!(io))
 end
 
-function hfun_navigation()
+@delay function hfun_navigation()
     locvar(:nav) == false && return ""
 
     filename = basename(locvar(:fd_rpath))
@@ -131,6 +131,7 @@ function nav_prevnext(filename)
     prev = nothing
     next = nothing
     mfile = nothing
+    isnothing(menu) && return prev, next
     for m in menu
         if m isa Pair
             for s in m.second
