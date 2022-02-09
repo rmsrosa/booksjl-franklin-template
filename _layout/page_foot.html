@@ -1,8 +1,10 @@
-{{ navigation }}
+{{ if nav_on_bottom }}
+    {{ navigation }}
+{{ end }}
 
 <div class="license">
   <br/>
   <br/>
-  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
-    Rik Huijzer, and contributors
+    <a href={{ license_link }}>{{ book_license }}</a>
+    {{ book_licensees }}
 </div>
