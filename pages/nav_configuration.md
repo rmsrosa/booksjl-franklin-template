@@ -1,3 +1,3 @@
 @def title = "Navigation Configuration"
 
-# {{ title }}
+# {{ get_title }}

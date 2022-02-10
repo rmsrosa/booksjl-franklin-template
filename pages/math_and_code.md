@@ -1,6 +1,6 @@
 @def title = "Math and Code"
 
-# {{ title }}
+# {{ get_title }}
 
 As usual with sites built with [Franklin.jl](https://franklinjl.org), you may easily insert math and execute code when desired.
 

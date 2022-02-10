@@ -1,3 +1,3 @@
 @def title = "Menu Location"
 
-# {{ title }}
+# {{ get_title }}

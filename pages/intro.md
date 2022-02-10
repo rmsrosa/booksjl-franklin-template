@@ -1,6 +1,6 @@
 @def title = "Introduction"
 
-# Introduction
+# {{ get_title }}
 
 With this template, you have a menu bar on the left and navigation links on the top and bottom of each page, if desired.
 

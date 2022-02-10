@@ -1,3 +1,3 @@
 @def title = "Menu Configuration"
 
-# {{ title }}
+# {{ get_title }}

@@ -1,3 +1,3 @@
 @def title = "Navigation Location"
 
-# {{ title }}
+# {{ get_title }}

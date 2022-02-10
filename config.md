@@ -15,8 +15,10 @@ license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 
 # menu + ordering of submenus
+numbering = true
 menu = [
-    "intro",
+    "intro*",
+    "PART I*" => [],
     "Menu bar" => [
         "menu_location",
         "menu_configuration"
@@ -25,8 +27,9 @@ menu = [
         "nav_location",
         "nav_configuration"
     ],
+    "PART II*" => [],
     "math_and_code",
-    "Appendix" => [],
+    "Appendix*" => [],
 ]
 +++
 
@@ -34,5 +37,4 @@ menu = [
 +++
 nav_on_top = true
 nav_on_bottom = true
-nav_numbering = true
 +++

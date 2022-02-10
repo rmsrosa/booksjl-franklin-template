@@ -1,79 +1,65 @@
 
-
 @delay function hfun_menubar()
-    io = IOBuffer()
-
     menu = pagevar("config.md", :menu)
     isnothing(menu) && return ""
+    numbering = pagevar("config.md", :numbering) === true
+    toc = build_toc(menu, numbering)
+    getfield.(last.(toc), :title)
+    io = IOBuffer()
 
-    for m in menu
-
-        if m isa Pair
-            name = m.first
-            subs = m.second
-
-            # Submenu title
-            write(
-                io,
-                """
-                <div class="menu-level-1">
-                    $name
+    for entry in last.(toc)
+        link = entry.filename === nothing ? "" : "/pages/$(entry.filename)"
+        write(
+            io,
+            """
+                <div class="menu-level-$(entry.level)">
+                <li><a href=$link>$(entry.title)</a></li>
                 </div>
-                """
+            """
             )
-
-            if length(subs) > 0
-
-                # start of list
-                write(
-                    io,
-                    """<ul class="menu-level-2">
-                    """
-                )
-
-                # subs items
-                for s in subs
-                    loc = "$s"
-                    title = pagevar("pages/$loc.md", :title)
-                    write(io, """
-                        <li class="pure-menu-item">
-                            <a href="/pages/$loc/" class="pure-menu-link">
-                                $title
-                            </a>
-                        </li>
-                        """)
-                end
-
-                # end of list
-                write(io, "</ul>")
-            end
-        else
-            title = pagevar("pages/$m.md", :title)
-            # Submenu title
-            write(
-                io,
-                """
-                <div class="menu-level-1">
-                    <a href="/pages/$m/" class="pure-menu-link">
-                    $title
-                    </a>
-                </div>
-                """
-            )
-        end
     end
     return String(take!(io))
 end
 
-@delay function hfun_navigation()
-    locvar(:nav) == false && return ""
-
+@delay function hfun_get_title()
+    menu = pagevar("config.md", :menu)
     filename = basename(locvar(:fd_rpath))
-    ind = findlast('.', filename)
-    name = filename[1:prevind(filename, ind)]
-    prev, next = nav_prevnext(name)
+    isnothing(menu) && return pagevar(filename, :title)
 
+    ind = findlast('.', filename)
+    filename_noext = filename[1:prevind(filename, ind)]
+
+    numbering = pagevar("config.md", :numbering) === true
+    toc = build_toc(menu, numbering)
+
+    return only(last.(toc[map(x -> x.filename, last.(toc)) .== filename_noext])).title
+end
+
+@delay function hfun_navigation()
     io = IOBuffer()
+
+    menu = pagevar("config.md", :menu)
+    isnothing(menu) && return String(take!(io))
+    
+    filename = basename(locvar(:fd_rpath))
+
+    ind = findlast('.', filename)
+    filename_noext = filename[1:prevind(filename, ind)]
+
+    numbering = pagevar("config.md", :numbering) === true
+    toc = build_toc(menu, numbering)
+
+    prevnext = build_prevnext(toc)
+    @info "toc"
+    @info toc
+    @info "prevnext"
+    @info prevnext
+    @info "filename_noext: <$filename_noext>"
+    entry = prevnext[first.(prevnext) .== filename_noext]
+    length(entry) == 1 || return String(take!(io))
+    prev, next = last(only(entry))
+    @info "prev: $prev"
+    @info "next: $next"
 
     if prev !== nothing || next !== nothing
         write(
@@ -87,23 +73,23 @@ end
 
     if prev !== nothing
         prev_link = "/pages/$prev"
-        prev_title = pagevar("pages/$prev.md", :title)
+        prev_title = only(last.(toc[getfield.(last.(toc), :filename) .== prev])).title
         write(
             io,
             """
-            <a class="menu-level-1" href="$prev_link"><b>1</b> $prev_title <kbd>←</kbd></a>
+            <a class="menu-level-1" href="$prev_link">$prev_title <kbd>←</kbd></a>
             """
         )
     end
 
     if next !== nothing
         next_link = "/pages/$next"
-        next_title = pagevar("pages/$next.md", :title)
+        next_title = only(last.(toc[getfield.(last.(toc), :filename) .== next])).title
         write(
             io,
             """
             <span id="nav-next" style="float: right;">
-                <a class="menu-level-1" href="$next_link"><kbd>→</kbd> <b>1</b> $next_title</a>
+                <a class="menu-level-1" href="$next_link"><kbd>→</kbd> $next_title</a>
             </span>
             """
         )
@@ -122,38 +108,85 @@ end
     return String(take!(io))
 end
 
-function hfun_nav(page)
-    return page[1]
-end
-
-function nav_prevnext(filename)
-    menu = pagevar("config.md", :menu)
-    prev = nothing
-    next = nothing
-    mfile = nothing
-    isnothing(menu) && return prev, next
+function build_toc(menu, numbering = true, level = 1, pre = "")
+    toc = []
+    isnothing(menu) && return toc
+    i = 0
     for m in menu
         if m isa Pair
-            for s in m.second
-                if mfile == filename
-                    next = s
-                    return prev, next
-                elseif s == filename
-                    mfile = filename
-                else
-                    prev = s
-                end
+            if endswith(m.first, '*') || numbering === false
+                push!(
+                    toc,
+                    m.first => (
+                        filename = nothing,
+                        title = "$(rstrip(m.first, '*'))",
+                        level = level
+                    )
+                )
+                append!(
+                    toc,
+                    build_toc(m.second, false, level + 1)
+                )
+            else
+                i += 1
+                push!(
+                    toc,
+                    m.first => (
+                        filename = nothing,
+                        title = "$pre$i. $(m.first)",
+                        level = level
+                    )
+                )
+                append!(
+                    toc,
+                    build_toc(m.second, numbering, level + 1, "$pre$i.")
+                )
             end
         else
-            if mfile == filename
-                next = m
-                return prev, next
-            elseif m == filename
-                mfile = filename
+            if endswith(m, '*') || numbering === false
+                title = pagevar("pages/$(rstrip(m, '*')).md", :title)
+                push!(
+                    toc,
+                    m => (
+                        filename = rstrip(m, '*'),
+                        title = title,
+                        level = level
+                    )
+                )
             else
-                prev = m
+                i += 1
+                title = pagevar("pages/$m.md", :title)
+                push!(
+                    toc,
+                    m => (
+                        filename = m,
+                        title = "$pre$i. $title",
+                        level = level
+                    )
+                )
             end
         end
     end
-    return prev, next
+    return toc
+end
+
+function build_toc()
+    menu = pagevar("config.md", :menu)
+    isnothing(menu) && return nothing
+    numbering = pagevar("config.md", :numbering) === true
+    toc = build_toc(menu, numbering)
+    return toc
+end
+
+function build_prevnext(toc)
+    prevnext = []
+    isnothing(toc) && return prevnext
+    prev = nothing
+    ftoc = filter(x -> x.filename !== nothing, last.(toc))
+    for i in 1:length(ftoc)-1
+        push!(prevnext, ftoc[i].filename => (prev = prev, next = ftoc[i+1].filename))
+        prev = ftoc[i].filename
+    end
+    push!(prevnext, ftoc[end].filename => (prev = prev, next = nothing))
+    return prevnext
 end
