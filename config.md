@@ -19,23 +19,23 @@ title_on_header = false
 
 # toc variables
 show_toc = true
-numbering = true
+page_numbering = true
 toc_on_index = false
 
 # menu + ordering of submenus
 menu = [
-    "intro*",
+    "pages/intro*",
     "PART I*" => [],
     "Menu bar" => [
-        "menu_location",
-        "menu_configuration"
+        "pages/menu_location",
+        "pages/menu_configuration"
     ],
     "Navigation" => [
-        "nav_location",
-        "nav_configuration"
+        "pages/nav_location",
+        "pages/nav_configuration"
     ],
     "PART II*" => [],
-    "math_and_code",
+    "pages/math_and_code",
     "Appendix*" => [],
 ]
 +++
