@@ -16,6 +16,7 @@ book_licensees = ""
 
 # header
 title_on_header = false
+github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
 
 # toc variables
 show_toc = true

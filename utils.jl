@@ -114,6 +114,19 @@ end
     return String(take!(io))
 end
 
+function hfun_githubrepo_link()
+    grlink = pagevar("config.md", :github_repo)
+    (grlink === nothing || grlink == "") && return ""
+
+    io = IOBuffer()
+
+    write(
+        io,
+        """
+        """
+    )
+end
+
 function build_toc(menu, page_numbering = true, level = 1, pre = "")
     toc = []
     isnothing(menu) && return toc
