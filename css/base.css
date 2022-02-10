@@ -13,7 +13,7 @@
 }
 
 .menu-level-2 {
-  margin-left: 1.2rem;
+  margin-left: 0.8rem;
 }
 
 .bottom-nav {
@@ -24,10 +24,6 @@
 
 .bottom-nav a {
   color: var(--gray) !important;
-}
-
-.bottom-nav .menu-level-2 {
-  margin-left: 0em;
 }
 
 .books-menu-content {
@@ -136,7 +132,7 @@ table {
 }
 
 html {
-  font-color: var(--black);
+  color: var(--black);
   font-size: var(--normal-size);
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
