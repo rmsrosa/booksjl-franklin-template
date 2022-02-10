@@ -7,6 +7,12 @@
     getfield.(last.(toc), :title)
     io = IOBuffer()
 
+    write(
+        io,
+        """
+        <div class="books-menu-content">
+        """
+    )
     for entry in last.(toc)
         link = entry.filename === nothing ? "" : "/pages/$(entry.filename)"
         write(
@@ -18,6 +24,13 @@
             """
             )
     end
+    write(
+        io,
+        """
+        <div>
+        """
+    )
+
     return String(take!(io))
 end
 

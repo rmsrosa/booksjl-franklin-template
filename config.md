@@ -14,8 +14,15 @@ book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 
-# menu + ordering of submenus
+# header
+title_on_header = false
+
+# toc variables
+show_toc = true
 numbering = true
+toc_on_index = false
+
+# menu + ordering of submenus
 menu = [
     "intro*",
     "PART I*" => [],

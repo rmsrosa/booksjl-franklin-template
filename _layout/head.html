@@ -36,12 +36,23 @@
 
 <body>
 
+  {{ if title_on_header }}
+
+  {{ end }}
+
   <div class="books-container">
 
-  {{insert aside.html}}
+    {{ if show_toc }}
+      {{insert aside.html}}
+    {{ end }}
 
   <div class="books-content">
 
-  {{ if nav_on_top }}
-    {{ navigation }}
-  {{ end }}
+    {{ if title_on_header}}
+      <span class ="books-title"> <a href="/">{{ book_title }}</a> - <em> {{ book_subtitle }}</em></span> 
+
+    {{ end }}
+
+    {{ if nav_on_top }}
+      {{ navigation }}
+    {{ end }}
