@@ -7,7 +7,7 @@ content_tag = ""
 
 # book variables
 +++
-book_title = "Books.jl Template"
+book_title = "Franklin's Book Template"
 book_subtitle = "Create books with Franklin.jl"
 book_author = "Author Name"
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
