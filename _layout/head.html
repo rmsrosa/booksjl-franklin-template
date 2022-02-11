@@ -36,10 +36,6 @@
 
 <body>
 
-  {{ if title_on_header }}
-
-  {{ end }}
-
   <div class="books-container">
 
     {{ if show_toc }}
@@ -47,11 +43,6 @@
     {{ end }}
 
   <div class="books-content">
-
-    {{ if title_on_header}}
-      <span class ="books-title"> <a href="/">{{ book_title }}</a> - <em> {{ book_subtitle }}</em></span> 
-
-    {{ end }}
 
     {{ if nav_on_top }}
       {{ navigation }}

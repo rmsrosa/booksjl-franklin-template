@@ -14,16 +14,16 @@ book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 
-# header (leave github_repo = "" if link not desired)
-title_on_header = false
-github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
-
 # toc variables
 show_toc = true
 page_numbering = true
 toc_on_index = false
 
-# menu + ordering of submenus
+# menu variables
+always_collapse = false
+show_github = true
+github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
+# menu items
 menu = [
     "pages/intro*",
     "PART I*" => [],
