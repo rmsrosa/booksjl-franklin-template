@@ -23,6 +23,7 @@ toc_on_index = false
 always_collapse = false
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
+
 # menu items
 menu = [
     "pages/intro*",
