@@ -118,39 +118,6 @@ input:checked ~ .books-menu-content {
   margin-bottom: 50px;
 }
 
-
-.books-collapsed-container {
-  display: flex;
-}
-
-.books-collapsed-menu {
-  margin-top: 0rem;
-  flex: 0 0 var(--menu-width);
-}
-
-.books-collapsed-menu label {
-  cursor: pointer;
-  font-size: 32px;
-  margin-right: 16px;    
-  display: none !important;
-}
-
-.books-collapsed-menu li {
-  margin: 1px 0;
-}
-  
-.books-collapsed-menu a {
-  color: var(--gray) !important;
-}
-
-.books-collapsed-menu-content {
-  list-style: none;
-  overflow: hidden;
-  font-size: var(--small-size);
-
-  max-height: 100%;
-}
-
 table {
   font-size: var(--small-size);
   margin-left: auto;

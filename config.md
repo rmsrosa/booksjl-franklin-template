@@ -20,7 +20,6 @@ page_numbering = true
 toc_on_index = false
 
 # menu variables
-always_collapse = false
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
 
