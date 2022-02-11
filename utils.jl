@@ -114,17 +114,20 @@ end
     return String(take!(io))
 end
 
-function hfun_githubrepo_link()
-    grlink = pagevar("config.md", :github_repo)
-    (grlink === nothing || grlink == "") && return ""
+function hfun_github_repo_link()
+    github_repo = pagevar("config.md", :github_repo)
+    (github_repo === nothing || github_repo == "") && return ""
 
     io = IOBuffer()
 
     write(
         io,
         """
+        <a href="$github_repo"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 0px" align="left"></a>
         """,
     )
+
+    return String(take!(io))
 end
 
 function build_toc(menu, page_numbering = true, level = 1, pre = "")
