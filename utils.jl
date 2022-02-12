@@ -71,7 +71,7 @@ end
         write(
             io,
             """
-            <div class="bottom-nav">
+            <div class="navbar">
                 <p id="nav-prev" style="text-align: left;">
             """,
         )

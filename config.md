@@ -15,11 +15,10 @@ license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 
 # toc variables
-show_toc = true
 page_numbering = true
-toc_on_index = false
 
 # menu variables
+show_aside = true
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
 
