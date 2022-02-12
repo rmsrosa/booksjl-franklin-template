@@ -136,12 +136,12 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
     i = 0
     for m in menu
         if m isa Pair
-            if endswith(m.first, '*') || page_numbering === false
+            if startswith(m.first, '*') || page_numbering === false
                 push!(
                     toc,
                     m.first => (
                         filename = nothing,
-                        title = "$(rstrip(m.first, '*'))",
+                        title = "$(lstrip(m.first, '*'))",
                         level = level,
                     ),
                 )
@@ -156,9 +156,9 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
                 append!(toc, build_toc(m.second, page_numbering, level + 1, "$pre$i."))
             end
         else
-            if endswith(m, '*') || page_numbering === false
-                title = pagevar("$(rstrip(m, '*')).md", :title)
-                push!(toc, m => (filename = rstrip(m, '*'), title = title, level = level))
+            if startswith(m, '*') || page_numbering === false
+                title = pagevar("$(lstrip(m, '*')).md", :title)
+                push!(toc, m => (filename = lstrip(m, '*'), title = title, level = level))
             else
                 i += 1
                 title = pagevar("$m.md", :title)
