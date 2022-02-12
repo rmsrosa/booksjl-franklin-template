@@ -36,8 +36,6 @@ end
 
 @delay function hfun_get_title()
     menu = pagevar("config.md", :menu)
-    @info "Menu"
-    @info menu
     filename = locvar(:fd_rpath)
     isnothing(menu) && return pagevar(filename, :title)
 
