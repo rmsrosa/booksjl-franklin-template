@@ -24,7 +24,7 @@ github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
 
 # menu items
 menu = [
-    "*pages/intro",
+    "*pages/intro.md",
     "*PART I" => [],
     "Menu bar" => [
         "pages/menu_location",

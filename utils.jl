@@ -36,11 +36,13 @@ end
 
 @delay function hfun_get_title()
     menu = pagevar("config.md", :menu)
+    @info "Menu"
+    @info menu
     filename = locvar(:fd_rpath)
     isnothing(menu) && return pagevar(filename, :title)
 
-    ind = findlast('.', filename)
-    filename_noext = filename[1:prevind(filename, ind)]
+    filename_noext = occursin('.', filename) ?
+        filename[1:prevind(filename, findlast('.', filename))] : filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -56,8 +58,8 @@ end
 
     filename = locvar(:fd_rpath)
 
-    ind = findlast('.', filename)
-    filename_noext = filename[1:prevind(filename, ind)]
+    filename_noext = occursin('.', filename) ?
+        filename[1:prevind(filename, findlast('.', filename))] : filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -157,12 +159,24 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             end
         else
             if startswith(m, '*') || page_numbering === false
-                title = pagevar("$(lstrip(m, '*')).md", :title)
-                push!(toc, m => (filename = lstrip(m, '*'), title = title, level = level))
+                filename = lstrip(m, '*')
+                filename_noext = occursin('.', filename) ?
+                    filename[1:prevind(filename, findlast('.', filename))] : filename
+                title = pagevar("$(lstrip(m, '*'))", :title)
+                push!(toc, m => (filename = filename_noext, title = title, level = level))
             else
                 i += 1
-                title = pagevar("$m.md", :title)
-                push!(toc, m => (filename = m, title = "$pre$i. $title", level = level))
+                title = pagevar("$m", :title)
+                filename_noext = occursin('.', m) ?
+                    m[1:prevind(m, findlast('.', m))] : m
+                push!(
+                    toc,
+                    m => (
+                        filename = filename_noext,
+                        title = "$pre$i. $title",
+                        level = level
+                    )
+                )
             end
         end
     end
