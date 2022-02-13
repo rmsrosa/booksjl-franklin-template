@@ -7,3 +7,11 @@
 #' Here is a julia chunk:
 
 x = 2
+
+#' ## Plot
+
+using Plots
+
+x = 0.0:0.01:2pi
+y = sin.(2x) + sin.(5x)
+plot(x, y)
