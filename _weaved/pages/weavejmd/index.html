@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Navigation Location</title>  
+   <title>Weaved Julia Markdown</title>  
   <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/favicon.png"/>
   <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
   
@@ -19,6 +19,17 @@
   }
   </style>
 
+  
+    <link rel="stylesheet" href="/booksjl-franklin-template/libs/highlight/github.min.css">
+    <script src="/booksjl-franklin-template/libs/highlight/highlight.min.js"></script>
+    <script src="/booksjl-franklin-template/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   
 
   
@@ -101,21 +112,26 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_configuration">1.2. Menu Configuration <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/math_and_code">3.1. Math and Code in Franklin <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_configuration"><kbd>→</kbd> 2.2. Navigation Configuration</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/_weaved/pages/weavejl"><kbd>→</kbd> 3.3. Weaved Julia Script</a>
 </span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.1. Navigation Location</a></h1>
+<h1 id="weaved_julia_markdown"><a href="#weaved_julia_markdown" class="header-anchor">Weaved Julia Markdown</a></h1>
+<p>This page was generated from a <strong>julia markdown script</strong>, automatically converted to markdown with <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>. The conversion happens when the menu is constructed.</p>
+<h2 id="julia_chunk"><a href="#julia_chunk" class="header-anchor">Julia chunk</a></h2>
+<p>Here is a julia chunk:</p>
+<pre><code class="language-julia">x &#61; 1</code></pre>
+<pre><code class="language-julia">1</code></pre>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_configuration">1.2. Menu Configuration <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/math_and_code">3.1. Math and Code in Franklin <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_configuration"><kbd>→</kbd> 2.2. Navigation Configuration</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/_weaved/pages/weavejl"><kbd>→</kbd> 3.3. Weaved Julia Script</a>
 </span>
     </p>
 </div>

@@ -20,6 +20,18 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>_weaved/pages/weavejmd/index.html</loc>
+    <lastmod>2022-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>_weaved/pages/weavejl/index.html</loc>
+    <lastmod>2022-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/menu_configuration/index.html</loc>
     <lastmod>2022-02-13</lastmod>
     <changefreq>monthly</changefreq>
