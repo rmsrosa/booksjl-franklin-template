@@ -225,8 +225,10 @@ function weave_it(filename)
 
     if mtime(filename) > mtime("$weaved_filename.md")
         weave(filename; out_path, doctype = "github")
-        # mkpath("$weaved_filename")
-        # mv("$out_path/figures/", "$weaved_filename/figures/", force = true)
+        if isdir("$weaved_filename/figures")
+            mkpath("$weaved_filename")
+            mv("$out_path/figures/", "$weaved_filename/figures/", force = true)
+        end
     end
 
     return weaved_filename
