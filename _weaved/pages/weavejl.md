@@ -21,3 +21,16 @@ x = 2
 ```
 
 
+
+
+## Plot
+
+```julia
+using Plots
+
+x = 0.0:0.01:2pi
+y = sin.(2x) + sin.(5x)
+plot(x, y)
+```
+
+![](figures/weavejl_1_1.png)

@@ -15,3 +15,20 @@ x = 1
 ```
 
 
+
+
+
+## Plot
+
+```julia
+using Plots
+```
+
+
+```julia
+x = 0.0:0.01:2pi
+y = sin.(2x) + sin.(5x)
+plot(x, y)
+```
+
+![](figures/weavejmd_3_1.png)
