@@ -41,8 +41,9 @@ end
     filename = locvar(:fd_rpath)
     isnothing(menu) && return pagevar(filename, :title)
 
-    filename_noext = occursin('.', filename) ?
-        filename[1:prevind(filename, findlast('.', filename))] : filename
+    filename_noext =
+        occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
+        filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -58,8 +59,9 @@ end
 
     filename = locvar(:fd_rpath)
 
-    filename_noext = occursin('.', filename) ?
-        filename[1:prevind(filename, findlast('.', filename))] : filename
+    filename_noext =
+        occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
+        filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -163,31 +165,31 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
                 if endswith(filename, r".jmd|.jl")
                     filename = weave_it(filename)
                 end
-                filename_noext = occursin('.', filename) ?
+                filename_noext =
+                    occursin('.', filename) ?
                     filename[1:prevind(filename, findlast('.', filename))] : filename
                 title = pagevar("$(lstrip(filename, '*'))", :title)
                 push!(toc, m => (filename = filename_noext, title = title, level = level))
             else
                 i += 1
-                @info "filename: $m"
                 filename = m
                 if endswith(m, r".jmd|.jl")
-                    @info "got here with $m"
                     filename = weave_it(m)
                     title = "Yeah!"
                 else
                     title = pagevar("$(lstrip(m, '*'))", :title)
                 end
                 title = pagevar("$filename", :title)
-                filename_noext = occursin('.', filename) ?
-                    m[1:prevind(m, findlast('.', filename))] : filename
+                filename_noext =
+                    occursin('.', filename) ? m[1:prevind(m, findlast('.', filename))] :
+                    filename
                 push!(
                     toc,
                     m => (
                         filename = filename_noext,
                         title = "$pre$i. $title",
-                        level = level
-                    )
+                        level = level,
+                    ),
                 )
             end
         end
@@ -220,8 +222,12 @@ function weave_it(filename)
     isfile(filename) || return ""
     out_path = "_weaved/$(dirname(filename))"
     weaved_filename = "_weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
+
     if mtime(filename) > mtime("$weaved_filename.md")
         weave(filename; out_path, doctype = "github")
+        mkpath("$weaved_filename")
+        mv("$out_path/figures/", "$weaved_filename/figures/", force = true)
     end
+
     return weaved_filename
 end
