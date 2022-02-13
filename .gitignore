@@ -1,5 +1,4 @@
 __site/
-__weaved/
 node_modules/
 package-lock.json
 Manifest.toml

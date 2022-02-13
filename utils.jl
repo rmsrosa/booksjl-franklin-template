@@ -218,8 +218,8 @@ end
 
 function weave_it(filename)
     isfile(filename) || return ""
-    out_path = "__weaved/$(dirname(filename))"
-    weaved_filename = "__weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
+    out_path = "_weaved/$(dirname(filename))"
+    weaved_filename = "_weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
     if mtime(filename) > mtime("$weaved_filename.md")
         weave(filename; out_path, doctype = "github")
     end
