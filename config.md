@@ -35,7 +35,11 @@ menu = [
         "pages/nav_configuration"
     ],
     "*PART II" => [],
-    "pages/math_and_code",
+    "Math and Code" => [
+        "pages/math_and_code",
+        "pages/weavejmd.jmd",
+        "pages/weavejl.jl"
+    ],
     "*Appendix" => [],
 ]
 +++

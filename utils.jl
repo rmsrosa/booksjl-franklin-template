@@ -1,4 +1,6 @@
 
+using Weave
+
 @delay function hfun_menubar()
     menu = pagevar("config.md", :menu)
     isnothing(menu) && return ""
@@ -158,15 +160,27 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
         else
             if startswith(m, '*') || page_numbering === false
                 filename = lstrip(m, '*')
+                if endswith(filename, r".jmd|.jl")
+                    filename = weave_it(filename)
+                end
                 filename_noext = occursin('.', filename) ?
                     filename[1:prevind(filename, findlast('.', filename))] : filename
-                title = pagevar("$(lstrip(m, '*'))", :title)
+                title = pagevar("$(lstrip(filename, '*'))", :title)
                 push!(toc, m => (filename = filename_noext, title = title, level = level))
             else
                 i += 1
-                title = pagevar("$m", :title)
-                filename_noext = occursin('.', m) ?
-                    m[1:prevind(m, findlast('.', m))] : m
+                @info "filename: $m"
+                filename = m
+                if endswith(m, r".jmd|.jl")
+                    @info "got here with $m"
+                    filename = weave_it(m)
+                    title = "Yeah!"
+                else
+                    title = pagevar("$(lstrip(m, '*'))", :title)
+                end
+                title = pagevar("$filename", :title)
+                filename_noext = occursin('.', filename) ?
+                    m[1:prevind(m, findlast('.', filename))] : filename
                 push!(
                     toc,
                     m => (
@@ -200,4 +214,14 @@ function build_prevnext(toc)
     end
     push!(prevnext, ftoc[end].filename => (prev = prev, next = nothing))
     return prevnext
+end
+
+function weave_it(filename)
+    isfile(filename) || return ""
+    out_path = "__weaved/$(dirname(filename))"
+    weaved_filename = "__weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
+    if mtime(filename) > mtime("$weaved_filename.md")
+        weave(filename; out_path, doctype = "github")
+    end
+    return weaved_filename
 end
