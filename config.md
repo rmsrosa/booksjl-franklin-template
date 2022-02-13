@@ -7,8 +7,8 @@ content_tag = ""
 
 # book variables
 +++
-book_title = "Franklin's Book Template"
-book_subtitle = "Create books with Franklin.jl"
+book_title = "Book Template for Franklin.jl"
+book_subtitle = "Create books with Franklin"
 book_author = "Author Name"
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
