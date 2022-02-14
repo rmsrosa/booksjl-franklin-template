@@ -15,10 +15,6 @@ jobs:
       uses: julia-actions/setup-julia@v1
       with:
         version: 1.7
-    # GR recommended (plots backend, in case it is used)
-    - run: |
-            sudo apt-get update -y
-            sudo apt-get install -y qt5-default
     # Website build
     - run: julia -e '
             using Pkg; Pkg.activate("."); Pkg.instantiate();
