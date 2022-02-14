@@ -17,17 +17,3 @@ println("hello world!")
 ```
 
 ## No Plot
-
-```!
-import Pkg
-Pkg.activate("pages")
-using Plots
-```
-
-```julia:ex_show
-x = 0.0:0.01:2pi
-y = sin.(2x) + sin.(5x)
-plot(x, y)
-savefig(joinpath(@OUTPUT, "sin.svg")) # hide
-```
-\fig{sin}
