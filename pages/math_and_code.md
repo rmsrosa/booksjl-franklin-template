@@ -21,9 +21,6 @@ println("hello world!")
 ```!
 import Pkg
 Pkg.activate("pages")
-```
-
-```!
 using Plots
 ```
 
