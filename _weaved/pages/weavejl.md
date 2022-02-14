@@ -26,7 +26,7 @@ x = 2
 ## Plot
 
 ```julia
-using Plots
+using Winston
 
 x = 0.0:0.01:2pi
 y = sin.(2x) + sin.(5x)

@@ -21,7 +21,7 @@ x = 1
 ## Plot
 
 ```julia
-using Plots
+using Winston
 ```
 
 

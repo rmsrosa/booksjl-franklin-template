@@ -42,12 +42,11 @@ end
     isnothing(menu) && return pagevar(filename, :title)
 
     filename_noext =
-        occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
+        occursin('.', basename(filename)) ? filename[1:prevind(filename, findlast('.', filename))] :
         filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
-
     return only(last.(toc[map(x -> x.filename, last.(toc)).==filename_noext])).title
 end
 

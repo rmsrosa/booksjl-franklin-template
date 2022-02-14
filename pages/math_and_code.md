@@ -19,7 +19,7 @@ println("hello world!")
 ## Plot
 
 ```!
-using Plots
+using Winston
 ```
 
 ```julia:ex_show
