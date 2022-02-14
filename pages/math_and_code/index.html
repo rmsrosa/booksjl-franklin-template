@@ -90,10 +90,7 @@
     <li><a href=/booksjl-franklin-template/pages/math_and_code>3.1. Math and Code in Franklin</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href=/booksjl-franklin-template/_weaved/pages/weavejmd>3.2. Weaved Julia Markdown</a></li>
-    </div>
-    <div class="menu-level-2">
-    <li><a href=/booksjl-franklin-template/_weaved/pages/weavejl>3.3. Weaved Julia Script</a></li>
+    <li><a href=/booksjl-franklin-template/pages/script>3.2. Literate-rendered Julia Script</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href=>Appendix</a></li>
@@ -116,7 +113,7 @@
     <p id="nav-prev" style="text-align: left;">
 <a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_configuration">2.2. Navigation Configuration <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/_weaved/pages/weavejmd"><kbd>→</kbd> 3.2. Weaved Julia Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/script"><kbd>→</kbd> 3.2. Literate-rendered Julia Script</a>
 </span>
     </p>
 </div>
@@ -131,8 +128,12 @@
 <h2 id="code"><a href="#code" class="header-anchor">Code</a></h2>
 <pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre><pre><code class="plaintext code-output">hello world!
 </code></pre>
-<h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
-<pre><code class="language-julia">using Winston</code></pre><pre><code class="plaintext code-output">Failed to precompile Winston [bd07be1c-e76f-5ff0-9c0b-f51ef45303c6] to /home/runner/.julia/compiled/v1.7/Winston/jl_Cxrs8Z.
+<h2 id="no_plot"><a href="#no_plot" class="header-anchor">No Plot</a></h2>
+<pre><code class="language-julia">using Pkg
+Pkg.activate&#40;&quot;.&quot;&#41;
+using Plots</code></pre><pre><code class="plaintext code-output">ArgumentError: Package Plots not found in current path:
+- Run `import Pkg; Pkg.add("Plots")` to install the Plots package.
+
 </code></pre>
 <pre><code class="language-julia">x &#61; 0.0:0.01:2pi
 y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
@@ -143,7 +144,7 @@ plot&#40;x, y&#41;</code></pre>
     <p id="nav-prev" style="text-align: left;">
 <a class="menu-level-1" href="/booksjl-franklin-template/pages/nav_configuration">2.2. Navigation Configuration <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/_weaved/pages/weavejmd"><kbd>→</kbd> 3.2. Weaved Julia Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/script"><kbd>→</kbd> 3.2. Literate-rendered Julia Script</a>
 </span>
     </p>
 </div>
