@@ -44,13 +44,13 @@
   <label for="menu">☰</label>
 
   <div class="books-title">
-    <a href="/booksjl-franklin-template/">Franklin's Book Template</a>
+    <a href="/booksjl-franklin-template/">Book Template for Franklin.jl</a>
   </div>
 
   <br />
 
   <div class="books-subtitle">
-    Create books with Franklin.jl
+    Create books with Franklin
   </div>
 
   <div class="books-menu-content">
@@ -123,6 +123,14 @@
 <p>Here is a julia chunk:</p>
 <pre><code class="language-julia">x &#61; 2</code></pre>
 <pre><code class="language-julia">2</code></pre>
+<h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
+<pre><code class="language-julia">using Winston
+
+x &#61; 0.0:0.01:2pi
+y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
+plot&#40;x, y&#41;</code></pre>
+<pre><code class="language-julia">Error: Failed to precompile Winston &#91;bd07be1c-e76f-5ff0-9c0b-f51ef45303c6&#93; 
+to /home/runner/.julia/compiled/v1.7/Winston/jl_BceaEY.</code></pre>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">

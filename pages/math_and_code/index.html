@@ -46,13 +46,13 @@
   <label for="menu">☰</label>
 
   <div class="books-title">
-    <a href="/booksjl-franklin-template/">Franklin's Book Template</a>
+    <a href="/booksjl-franklin-template/">Book Template for Franklin.jl</a>
   </div>
 
   <br />
 
   <div class="books-subtitle">
-    Create books with Franklin.jl
+    Create books with Franklin
   </div>
 
   <div class="books-menu-content">
@@ -131,6 +131,13 @@
 <h2 id="code"><a href="#code" class="header-anchor">Code</a></h2>
 <pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre><pre><code class="plaintext code-output">hello world!
 </code></pre>
+<h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
+<pre><code class="language-julia">using Winston</code></pre><pre><code class="plaintext code-output">Failed to precompile Winston [bd07be1c-e76f-5ff0-9c0b-f51ef45303c6] to /home/runner/.julia/compiled/v1.7/Winston/jl_Cxrs8Z.
+</code></pre>
+<pre><code class="language-julia">x &#61; 0.0:0.01:2pi
+y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
+plot&#40;x, y&#41;</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/math_and_code/code/sin' not found. //</span></p>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
