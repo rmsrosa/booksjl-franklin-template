@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - master
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,7 +15,12 @@ jobs:
       uses: julia-actions/setup-julia@v1
       with:
         version: 1.7
-    - run: julia -e '
+    # GR recommended (plots backend, in case it is used)
+    - run: |
+            sudo apt-get update -y
+            sudo apt-get install -y qt5-default
+    # Website build
+    - run: xvfb-run julia -e '
             using Pkg; Pkg.activate("."); Pkg.instantiate();
             using NodeJS; run(`$(npm_cmd()) install highlight.js`);
             using Franklin;

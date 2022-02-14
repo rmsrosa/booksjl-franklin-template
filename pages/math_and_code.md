@@ -19,8 +19,8 @@ println("hello world!")
 ## No Plot
 
 ```!
-using Pkg
-Pkg.activate(".")
+import Pkg
+Pkg.activate("pages")
 using Plots
 ```
 

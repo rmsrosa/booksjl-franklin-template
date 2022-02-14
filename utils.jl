@@ -1,6 +1,4 @@
 
-using Weave
-
 @delay function hfun_menubar()
     menu = pagevar("config.md", :menu)
     isnothing(menu) && return ""
@@ -223,7 +221,7 @@ function weave_it(filename)
     weaved_filename = "_weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
 
     if mtime(filename) > mtime("$weaved_filename.md")
-        weave(filename; out_path, doctype = "github")
+        # weave(filename; out_path, doctype = "github")
         if isdir("$out_path/figures/")
             mkpath("$weaved_filename/figures")
             mv("$out_path/figures/", "$weaved_filename/figures/", force = true)
