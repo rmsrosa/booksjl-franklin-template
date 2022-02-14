@@ -16,11 +16,14 @@ $$
 println("hello world!")
 ```
 
-## No Plot
+## Plot
 
 ```!
 import Pkg
 Pkg.activate("pages")
+```
+
+```!
 using Plots
 ```
 
