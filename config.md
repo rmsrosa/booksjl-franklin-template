@@ -13,18 +13,31 @@ book_author = "Author Name"
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
++++
 
 # toc variables
++++
 page_numbering = true
++++
 
 # menu variables
++++
 show_aside = true
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
++++
+
+# navigation links
++++
+nav_on_top = true
+nav_on_bottom = true
++++
 
 # menu items
++++
+
 menu = [
-    "*pages/intro.md",
+    "*pages/intro",
     "*PART I" => [],
     "Menu bar" => [
         "pages/menu_location",
@@ -37,15 +50,9 @@ menu = [
     "*PART II" => [],
     "Math and Code" => [
         "pages/math_and_code",
-        "pages/weavejmd.jmd",
-        "pages/weavejl.jl"
+        "pages/script"
     ],
     "*Appendix" => [],
 ]
-+++
 
-# navigation links
-+++
-nav_on_top = true
-nav_on_bottom = true
 +++

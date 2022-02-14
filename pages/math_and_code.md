@@ -16,10 +16,12 @@ $$
 println("hello world!")
 ```
 
-## Plot
+## No Plot
 
 ```!
-using Winston
+using Pkg
+Pkg.activate(".")
+using Plots
 ```
 
 ```julia:ex_show

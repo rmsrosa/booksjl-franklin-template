@@ -232,3 +232,9 @@ function weave_it(filename)
 
     return weaved_filename
 end
+
+function hfun_buildmenu()
+    menu = pagevar("config.md", :menu_items)
+    isnothing(menu) && return ""
+    return menu
+end
