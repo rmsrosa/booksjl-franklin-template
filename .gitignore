@@ -4,3 +4,7 @@ package-lock.json
 Manifest.toml
 .DS_Store
 .vscode
+weaved/
+literated/
+_assets/weaved/
+_assets/literated/

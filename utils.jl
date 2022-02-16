@@ -1,3 +1,5 @@
+using Weave
+using Literate
 
 @delay function hfun_menubar()
     menu = pagevar("config.md", :menu)
@@ -45,7 +47,8 @@ end
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
-    return only(last.(toc[map(x -> x.filename, last.(toc)).==filename_noext])).title
+    entries = toc[map(x -> x.filename, last.(toc)).==filename_noext]
+    return length(entries) == 1 ? only(last.(entries)).title : "Title not found"
 end
 
 @delay function hfun_navigation()
@@ -159,8 +162,10 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
         else
             if startswith(m, '*') || page_numbering === false
                 filename = lstrip(m, '*')
-                if endswith(filename, r".jmd|.jl")
+                if startswith(filename, "_weave")
                     filename = weave_it(filename)
+                elseif startswith(filename, "_literate")
+                    filename = literate_it(filename)
                 end
                 filename_noext =
                     occursin('.', filename) ?
@@ -170,11 +175,10 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             else
                 i += 1
                 filename = m
-                if endswith(m, r".jmd|.jl")
-                    filename = weave_it(m)
-                    title = "Yeah!"
-                else
-                    title = pagevar("$(lstrip(m, '*'))", :title)
+                if startswith(m, "_weave")
+                    filename = weave_it(filename)
+                elseif startswith(m, "_literate")
+                    filename = literate_it(filename)                
                 end
                 title = pagevar("$filename", :title)
                 filename_noext =
@@ -217,18 +221,77 @@ end
 
 function weave_it(filename)
     isfile(filename) || return ""
-    out_path = "_weaved/$(dirname(filename))"
-    weaved_filename = "_weaved/$(filename[1:prevind(filename, findlast('.', filename))])"
-
-    if mtime(filename) > mtime("$weaved_filename.md")
-        # weave(filename; out_path, doctype = "github")
-        if isdir("$out_path/figures/")
-            mkpath("$weaved_filename/figures")
-            mv("$out_path/figures/", "$weaved_filename/figures/", force = true)
+    out_path = replace(dirname(filename), "_weave/" => "weaved/", count = 1)
+    fig_path = "images"
+    doctype = "github"
+    weaved_filename = replace("$out_path/$(basename(filename))", r"(?:.jl|.jmd)$" => ".md")
+    if mtime(filename) > mtime("$weaved_filename")
+        weave(filename; out_path, fig_path, doctype)
+        tmppath, tmpio = mktemp()
+        open("$weaved_filename", "r") do io
+            for line in eachline(io, keep = true)
+                if (m = match(r"^#\s+(.*)$", line)) !== nothing
+                    line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n\n"
+                elseif (m = match(r"^!\[\]\((.*)\)$", line)) !== nothing
+                    line = "\\fig{$(m.captures[1])}\n"
+                elseif (m = match(r"^!\[(.*)\]\((.*)\)$", line)) !== nothing
+                    line = "\\figalt{$(m.captures[1])}{$(m.captures[2])}\n"
+                end
+                write(tmpio, line)
+            end
+        end
+        close(tmpio)
+        mv(tmppath, "$weaved_filename", force=true)
+        if isdir("$out_path/$fig_path/")
+            destination = "_assets/$(weaved_filename[1:end-3])/code/$fig_path"
+            mkpath(destination)
+            mv("$out_path/$fig_path", destination, force = true)
         end
     end
 
-    return weaved_filename
+    return weaved_filename[1:end-3] # remove extension ".md"
+end
+
+function literate_it(filename)
+
+    isfile(filename) || return ""
+    out_path = replace(dirname(filename), "_literate/" => "literated/", count = 1)
+    fig_path = "images"
+    flavor = Literate.FranklinFlavor()
+    literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
+    if mtime(filename) > mtime("$literated_filename")
+        Literate.markdown(
+            filename,
+            out_path,
+            execute=true,
+            credit=false,
+            flavor = flavor
+        )
+
+        tmppath, tmpio = mktemp()
+        open("$literated_filename", "r") do io
+            for line in eachline(io, keep = true)
+                if (m = match(r"^#\s+(.*)$", line)) !== nothing
+                    line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n\n"
+                elseif (m = match(r"^!\[\]\(.*\)$", line)) !== nothing
+                    line = "\\fig{$(m.captures[1])}\n"
+                elseif (m = match(r"^!\[(.*)\]\((.*)\)$", line)) !== nothing
+                    line = "\\figalt{$(m.captures[1])}{$(m.captures[2])}\n"
+                end
+                write(tmpio, line)
+            end
+        end
+        close(tmpio)
+        mv(tmppath, "$literated_filename", force=true)
+
+        if isdir("$out_path/$fig_path/")
+            destination = "_assets/$(literated_filename[1:end-3])/code/$fig_path"
+            mkpath(destination)
+            mv("$out_path/$fig_path", destination, force = true)
+        end
+    end
+
+    return literated_filename[1:end-3] # remove extension ".md"
 end
 
 function hfun_buildmenu()

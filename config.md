@@ -39,18 +39,15 @@ nav_on_bottom = true
 menu = [
     "*pages/intro",
     "*PART I" => [],
-    "Menu bar" => [
-        "pages/menu_location",
-        "pages/menu_configuration"
-    ],
-    "Navigation" => [
-        "pages/nav_location",
-        "pages/nav_configuration"
-    ],
+    "pages/configuration",
+    "pages/menu_bar",
+    "pages/navigation",
     "*PART II" => [],
     "Math and Code" => [
         "pages/math_and_code",
-        "pages/script"
+        "_literate/pages/literatejl.jl",
+        "_weave/pages/weavejl.jl",
+        "_weave/pages/weavejmd.jmd",
     ],
     "*Appendix" => [],
 ]

@@ -1,4 +1,4 @@
-@def title = "Math and Code in Franklin"
+@def title = "Franklin's Markdown"
 
 # {{ get_title }}
 
