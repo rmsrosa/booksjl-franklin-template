@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
+    <loc>pages/weaved/weavejmd/index.html</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/math_and_code/index.html</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -27,6 +33,18 @@
 </url>
 <url>
     <loc>pages/menu_bar/index.html</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/literated/literatejl/index.html</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/weaved/weavejl/index.html</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
