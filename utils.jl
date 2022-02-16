@@ -16,12 +16,15 @@ using Literate
         """,
     )
     for entry in last.(toc)
-        link = entry.filename === nothing ? "" : "/$(entry.filename)"
+        item =
+            entry.filename === nothing ?
+                entry.title :
+                "<a href=\"/$(entry.filename)\">$(entry.title)</a>"
         write(
             io,
             """
                 <div class="menu-level-$(entry.level)">
-                <li><a href=$link>$(entry.title)</a></li>
+                <li>$item</li>
                 </div>
             """,
         )
