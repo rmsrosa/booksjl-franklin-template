@@ -221,7 +221,7 @@ end
 
 function weave_it(filename)
     isfile(filename) || return ""
-    out_path = replace(dirname(filename), "_weave/" => "weaved/", count = 1)
+    out_path = replace(dirname(filename), "_weave/" => "", count = 1) * "/weaved"
     fig_path = "images"
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"(?:.jl|.jmd)$" => ".md")
@@ -255,7 +255,7 @@ end
 function literate_it(filename)
 
     isfile(filename) || return ""
-    out_path = replace(dirname(filename), "_literate/" => "literated/", count = 1)
+    out_path = replace(dirname(filename), "_literate/" => "", count = 1) * "/literated"
     fig_path = "images"
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
