@@ -130,7 +130,7 @@ function hfun_github_repo_link()
     write(
         io,
         """
-        <a href="$github_repo"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 0px" align="left"></a>
+        <a href="$github_repo"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
         """,
     )
 
@@ -143,25 +143,19 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
     i = 0
     for m in menu
         if m isa Pair
-            if startswith(m.first, '*') || page_numbering === false
-                push!(
-                    toc,
-                    m.first => (
-                        filename = nothing,
-                        title = "$(lstrip(m.first, '*'))",
-                        level = level,
-                    ),
-                )
-                append!(toc, build_toc(m.second, false, level + 1))
-            else
-                i += 1
-                push!(
-                    toc,
-                    m.first =>
-                        (filename = nothing, title = "$pre$i. $(m.first)", level = level),
-                )
-                append!(toc, build_toc(m.second, page_numbering, level + 1, "$pre$i."))
-            end
+            title = lstrip(m.first, '*')
+            page_numbering *= !startswith(m.first, '*')
+            new_pre = page_numbering === false ? "" : "$pre$(i += 1)."
+            title = page_numbering === false ? lstrip(m.first, '*') : "$new_pre $(lstrip(m.first, '*'))"
+            push!(
+                toc,
+                m.first => (
+                    filename = nothing,
+                    title = title,
+                    level = level
+                ),
+            )
+            append!(toc, build_toc(m.second, page_numbering, level + 1, new_pre))
         else
             if startswith(m, '*') || page_numbering === false
                 filename = lstrip(m, '*')
@@ -169,11 +163,13 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
                     filename = weave_it(filename)
                 elseif startswith(filename, "_literate")
                     filename = literate_it(filename)
+                elseif !startswith(filename, "pages")
+                    filename = nothing
                 end
                 filename_noext =
-                    occursin('.', filename) ?
+                    filename !== nothing && occursin('.', filename) ?
                     filename[1:prevind(filename, findlast('.', filename))] : filename
-                title = pagevar("$(lstrip(filename, '*'))", :title)
+                title = filename === nothing ? lstrip(m, '*') : pagevar("$(lstrip(filename, '*'))", :title)
                 push!(toc, m => (filename = filename_noext, title = title, level = level))
             else
                 i += 1
