@@ -10,7 +10,15 @@ $$
 \exp(i\pi) + 1 = 0
 $$
 
-## Code
+## Code chunks
+
+Here is a julia chunk:
+
+```!
+x = 1
+```
+
+and another:
 
 ```!
 println("hello world!")

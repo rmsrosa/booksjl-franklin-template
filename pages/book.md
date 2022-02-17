@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Several configuration variables can be set in the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file. Concerning global book-related variables, we have the self-explanatory variables:
+Several configuration variables can be set in the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file. Concerning global book-related variables, we have the following variables:
 
 * `book_title::String`: title of the book;
 * `book_subtitle::String`: subtitle of the book;
@@ -12,4 +12,4 @@ Several configuration variables can be set in the [config.md](https://raw.github
 * `license_link::String`: url link to the license;
 * `book_licensees::String`: name of the copyright owner(s) or such.
 
-Both `book_title` and `book_license` already link to urls (`index.html` and `license_link`, respectively). The other String variables are free to include html code to further links, such as that used for the author of this example/template.
+Both `book_title` and `book_license` already link to specific urls (`index.html` and the given `license_link`, respectively). The other String variables are free to include html code to other links (e.g. as used for the author of this example/template) or just left as pure text strings.

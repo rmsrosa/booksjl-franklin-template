@@ -9,18 +9,41 @@ This page was generated from a **julia script**, automatically converted to mark
 
 
 
-## Julia chunk
+## Math
+
+
+
+$$
+\exp(i\pi) + 1 = 0
+$$
+
+
+
+## Code chunks
 
 
 
 Here is a julia chunk:
 
 ```julia
-x = 2
+x = 1
 ```
 
 ```
-2
+1
+```
+
+
+
+
+and another:
+
+```julia
+println("hello world!")
+```
+
+```
+hello world!
 ```
 
 
@@ -37,4 +60,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/weavejl_1_1.png}
+\fig{images/weavejl_2_1.png}

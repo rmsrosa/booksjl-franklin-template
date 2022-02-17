@@ -211,10 +211,12 @@ function weave_it(filename)
     if mtime(filename) > mtime("$weaved_filename")
         weave(filename; out_path, fig_path, doctype)
         tmppath, tmpio = mktemp()
+        no_match_so_far = true
         open("$weaved_filename", "r") do io
             for line in eachline(io, keep = true)
-                if (m = match(r"^#\s+(.*)$", line)) !== nothing
+                if (m = match(r"^#\s+(.*)$", line)) !== nothing && no_match_so_far == true
                     line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n\n"
+                    no_match_so_far = false
                 elseif (m = match(r"^!\[\]\((.*)\)$", line)) !== nothing
                     line = "\\fig{$(m.captures[1])}\n"
                 elseif (m = match(r"^!\[(.*)\]\((.*)\)$", line)) !== nothing

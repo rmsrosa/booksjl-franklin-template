@@ -8,6 +8,6 @@
 
 1. The file can be in either Franklin's Markdown, Weave's/Juno's Markdown, Literate's Markdown, or a plain julia script format with markdown-like comments.
 
-1. The title on each Franklin's markdown page is set by the line `@def title = "Title of the Section"`, followed by the line `# {{ get_title }}`, which builds the title with the proper numbering, if needed. Check the [raw file for this page](https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md).
+1. The title on each Franklin's markdown page, under `pages/`, is set by the line `@def title = "Title of the Section"`, followed by the line `# {{ get_title }}`, which builds the title with the proper numbering, if needed. Check the [raw file for this page](https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md).
 
-1. The title on the pages within `_weave/` or `_literate` should be defined as usual for markdown files, with `# Title of the Section`. These will be processed to the format above, to be properly rendered by Franklin.
+1. The title on the pages within `_weave/` or `_literate/` should be defined as usual for markdown files, with `# Title of the Section`. These will be processed to the format above, to be properly rendered by Franklin.

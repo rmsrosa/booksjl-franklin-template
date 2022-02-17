@@ -16,15 +16,15 @@ and, the most important variable,
 
 1. When a string does not start with either of the prefixes above, it does not point to any content file, and simply contains the title of the entry.
 
-1. When an entry is a **Pair**, the second value of the **Pair** is a **Vector of Strings** with the list of subsections, each of them following the pattern above.
+1. When an entry is a `Pair`, the second value of the `Pair` is a `Vector of Strings` with the list of subsections, each of them following the pattern above.
 
 1. Inspired by $\LaTeX$, if a string starts with a `*`, it is not to be numbered. Contrarily to $\LaTeX$, however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with `*` or not.
 
-1. When the entry points to a file, then, depending on the folder, the file is executed and rendered by either [Franklin.jl](https://github.com/tlienart/Franklin.jl), [Weave.jl](https://github.com/JunoLab/Weave.jl), or [Literate.jl](https://github.com/fredrikekre/Literate.jl), respectively. Depending on the case, the file can be either Franklin's Markdown, Weave's/Juno's Markdown, Literate's Markdown, or a plain julia script with markdown-like comments.
+1. When the entry points to a file, then, depending on the folder, the file is executed and rendered by either [Franklin.jl](https://github.com/tlienart/Franklin.jl), [Weave.jl](https://github.com/JunoLab/Weave.jl), or [Literate.jl](https://github.com/fredrikekre/Literate.jl). Depending on the case, the file can be either Franklin's Markdown, Weave's/Juno's Markdown, Literate's Markdown, or a plain julia script with markdown-like comments.
 
-**Example**
+**Example Menu**
 
-This is illustrated with the example used in this book/documentation:
+This is illustrated with the example used in this book/documentation, which yields the table of contents on the menu bar on the left:
 
 ```julia
 menu = [

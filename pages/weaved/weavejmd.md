@@ -5,7 +5,13 @@
 
 This page was generated from a **julia markdown script**, automatically converted to markdown with [Weave.jl](https://github.com/JunoLab/Weave.jl). The conversion happens when the menu is constructed.
 
-## Julia chunk
+## Math
+
+$$
+\exp(i\pi) + 1 = 0
+$$
+
+## Code chunks
 
 Here is a julia chunk:
 
@@ -15,6 +21,20 @@ x = 1
 
 ```
 1
+```
+
+
+
+
+
+and another:
+
+```julia
+println("hello world!")
+```
+
+```
+hello world!
 ```
 
 
@@ -34,4 +54,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/weavejmd_3_1.png}
+\fig{images/weavejmd_4_1.png}
