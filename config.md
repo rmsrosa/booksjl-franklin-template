@@ -9,7 +9,7 @@ content_tag = ""
 +++
 book_title = "Book Template for Franklin.jl"
 book_subtitle = "Create books with Franklin"
-book_author = "Ricardo M. S. Rosa"
+book_author = "<a href=\"https://rmsrosa.github.io\">Ricardo M. S. Rosa</a>"
 show_license = true
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
