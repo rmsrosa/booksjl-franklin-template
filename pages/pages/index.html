@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Math and Code</title>  
+   <title>Pages</title>  
   <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/favicon.png"/>
   <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
   
@@ -110,32 +110,33 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/pages">1.5. Pages <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation">1.4. Navigation <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/franklinmd"><kbd>→</kbd> 2.1. Franklin's Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/math_and_code"><kbd>→</kbd> 2. Math and Code</a>
 </span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2. Math and Code</a></h1>
-<p>In this Section, we build the same content in different ways:</p>
-<ul>
-<li><p><a href="/booksjl-franklin-template/pages/franklinmd">Franklin&#39;s Markdown</a></p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.5. Pages</a></h1>
+<ol>
+<li><p>The pages for the book must be in either of the folders <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, to be properly processed. They don&#39;t need to be in the root of each of these subfolders; they can be further nested as desired.</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/weaved/weavejl">Julia script pre-processed by Weave.jl</a></p>
+<li><p>Depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>, respectively.</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/weaved/weavejmd">Julia Markdown pre-processed by Weave.jl</a></p>
+<li><p>The file can be in either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script format with markdown-like comments.</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/literated/literatejl">Julia script pre-processed by Literate.jl</a></p>
+<li><p>The title on each Franklin&#39;s markdown page is set by the line <code>@def title &#61; &quot;Title of the Section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering, if needed. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md">raw file for this page</a>.</p>
 </li>
-</ul>
+<li><p>The title on the pages within <code>_weave/</code> or <code>_literate</code> should be defined as usual for markdown files, with <code># Title of the Section</code>. These will be processed to the format above, to be properly rendered by Franklin.</p>
+</li>
+</ol>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/pages">1.5. Pages <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation">1.4. Navigation <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/franklinmd"><kbd>→</kbd> 2.1. Franklin's Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/math_and_code"><kbd>→</kbd> 2. Math and Code</a>
 </span>
     </p>
 </div>

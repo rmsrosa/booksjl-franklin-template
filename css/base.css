@@ -2,7 +2,8 @@
   --black: hsl(0, 0%, 15%);
   --gray: hsl(0, 0%, 40%);
   --accent: #3D93F6;
-  --normal-size: 19px;
+  --normal-size: 18px;
+  --medium-size: 16px;
   --small-size: 14px;
   --tiny-size: 11px;
   --block-background: hsl(0, 0%, 96%);
@@ -31,6 +32,7 @@
   max-height: 0;
   overflow: hidden;
   font-size: var(--small-size);
+  margin-top: 1.0rem;
 }
 
 .books-list-module {
@@ -42,14 +44,25 @@
 
 .books-title {
   display: inline-block;
+  font-size: 1.4rem;
+  color: var(--gray);
   margin-bottom: 0px;
 }
 
 .books-subtitle {
-  color: var(--gray);
   display: inline-block;
+  font-size: 1.0rem;
   font-style: italic;
-  margin-bottom: 1.4rem;
+  color: var(--gray);
+  margin-bottom: 0px;
+}
+
+.books-author {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--gray);
+    margin-bottom: 0px;
 }
 
 .books-menu {
@@ -90,11 +103,6 @@ input:checked ~ .books-menu-content {
   .books-menu {
     margin-left: var(--content-left-margin);
   }
-}
-
-.books-title {
-  font-size: 1.4rem;
-  color: var(--gray);
 }
 
 .subtitle {
@@ -177,7 +185,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h3 {
@@ -185,15 +193,15 @@ h3 {
 }
 
 h4 {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 h5 {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 h6 {
-  font-size: 0.9em;
+  font-size: 1.1em;
 }
 
 blockquote {
@@ -214,9 +222,9 @@ hr {
 }
 
 pre, code, kbd, samp {
-  font-family: "JuliaMono-Regular", "SFMono-Regular", "DejaVu Sans Mono";
+  font-family: "JuliaMono-Regular", "Helvetica", "DejaVu Sans Mono";
   font-variant-ligatures: none;
-  font-size: var(--small-size);
+  font-size: var(--medium-size);
   color: #000;
   /* Using !important to override github.min.css settings. */
   background: var(--block-background) !important;

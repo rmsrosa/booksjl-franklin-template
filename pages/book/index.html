@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Math and Code</title>  
+   <title>Book Configuration</title>  
   <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/favicon.png"/>
   <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
   
@@ -110,32 +110,39 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/pages">1.5. Pages <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/intro">Introduction <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/franklinmd"><kbd>→</kbd> 2.1. Franklin's Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar"><kbd>→</kbd> 1.2. Menu Bar</a>
 </span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2. Math and Code</a></h1>
-<p>In this Section, we build the same content in different ways:</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.1. Book Configuration</a></h1>
+<p>Several configuration variables can be set in the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file. Concerning global book-related variables, we have the self-explanatory variables:</p>
 <ul>
-<li><p><a href="/booksjl-franklin-template/pages/franklinmd">Franklin&#39;s Markdown</a></p>
+<li><p><code>book_title::String</code>: title of the book;</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/weaved/weavejl">Julia script pre-processed by Weave.jl</a></p>
+<li><p><code>book_subtitle::String</code>: subtitle of the book;</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/weaved/weavejmd">Julia Markdown pre-processed by Weave.jl</a></p>
+<li><p><code>book_author::String</code>: name of the author or co-authors of the book;</p>
 </li>
-<li><p><a href="/booksjl-franklin-template/pages/literated/literatejl">Julia script pre-processed by Literate.jl</a></p>
+<li><p><code>show_license::Bool</code>: whether to display the license information at the bottom of each page or not;</p>
+</li>
+<li><p><code>book_license::String</code>: description of the license type;</p>
+</li>
+<li><p><code>license_link::String</code>: url link to the license;</p>
+</li>
+<li><p><code>book_licensees::String</code>: name of the copyright owner&#40;s&#41; or such.</p>
 </li>
 </ul>
+<p>Both <code>book_title</code> and <code>book_license</code> already link to urls &#40;<code>index.html</code> and <code>license_link</code>, respectively&#41;. The other String variables are free to include html code to further links, such as that used for the author of this example/template.</p>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/pages">1.5. Pages <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/intro">Introduction <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/franklinmd"><kbd>→</kbd> 2.1. Franklin's Markdown</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar"><kbd>→</kbd> 1.2. Menu Bar</a>
 </span>
     </p>
 </div>

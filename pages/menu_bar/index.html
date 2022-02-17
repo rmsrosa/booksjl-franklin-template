@@ -42,6 +42,12 @@
     Create books with Franklin
   </div>
 
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
   <div class="books-menu-content">
     <div class="menu-level-1">
     <li><a href="/booksjl-franklin-template/pages/intro">Introduction</a></li>
@@ -50,37 +56,43 @@
     <li>PART I</li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/configuration">1. Configuration</a></li>
+    <li>1. Configurations</li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/book">1.1. Book Configuration</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/toc">3. Table of Contents</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/menu_bar">1.2. Menu Bar</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/navigation">4. Navigation</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/toc">1.3. Table of Contents</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/navigation">1.4. Navigation</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/pages">1.5. Pages</a></li>
     </div>
     <div class="menu-level-1">
     <li>PART II</li>
     </div>
     <div class="menu-level-1">
-    <li>5. Math and Code</li>
+    <li><a href="/booksjl-franklin-template/pages/math_and_code">2. Math and Code</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/math_and_code">5.1. Franklin's Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/franklinmd">2.1. Franklin's Markdown</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">5.2. Literated Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">2.2. Literated Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">5.3. Weaved Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">2.3. Weaved Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">5.4. Weaved Julia Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">2.4. Weaved Julia Markdown</a></li>
     </div>
     <div class="menu-level-1">
-    <li>Appendix</li>
+    <li><a href="/booksjl-franklin-template/pages/appendix">Appendix</a></li>
     </div>
 <div>
 
@@ -98,45 +110,47 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/configuration">1. Configuration <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/book">1.1. Book Configuration <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/toc"><kbd>→</kbd> 3. Table of Contents</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/toc"><kbd>→</kbd> 1.3. Table of Contents</a>
 </span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2. Menu Bar</a></h1>
-<p>In the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file, you may define the <strong>Bool</strong> variables</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.2. Menu Bar</a></h1>
+<p>In the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file, you may define the display variables</p>
 <ul>
-<li><p><code>show_aside</code></p>
+<li><p><code>show_aside::Bool</code>: whether to show the menu bar on the left side of the screen when the screen is wide enough or to keep it collapsed until clicked.</p>
 </li>
-<li><p><code>show_github</code></p>
+<li><p><code>show_github::Bool</code>: whether to display the link to the github repository of the book at the bottom of the menu bar.</p>
 </li>
 </ul>
-<p>and the <strong>String</strong> with the link to the github repository of the book,</p>
+<p>and the link to the github repository of the book,</p>
 <ul>
-<li><p><code>github_repo</code></p>
+<li><p><code>github_repo::String</code>: full path to the repository.</p>
 </li>
 </ul>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/configuration">1. Configuration <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/book">1.1. Book Configuration <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/toc"><kbd>→</kbd> 3. Table of Contents</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/toc"><kbd>→</kbd> 1.3. Table of Contents</a>
 </span>
     </p>
 </div>
 
 
 
-<div class="license">
-  <br/>
-  <br/>
-    <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>
-    
-</div>
+
+    <div class="license">
+    <br/>
+    <br/>
+        <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication </a>
+        
+    </div>
+
 <!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

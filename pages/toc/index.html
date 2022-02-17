@@ -55,6 +55,12 @@
     Create books with Franklin
   </div>
 
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
   <div class="books-menu-content">
     <div class="menu-level-1">
     <li><a href="/booksjl-franklin-template/pages/intro">Introduction</a></li>
@@ -63,37 +69,43 @@
     <li>PART I</li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/configuration">1. Configuration</a></li>
+    <li>1. Configurations</li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/book">1.1. Book Configuration</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/toc">3. Table of Contents</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/menu_bar">1.2. Menu Bar</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/navigation">4. Navigation</a></li>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/toc">1.3. Table of Contents</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/navigation">1.4. Navigation</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/pages">1.5. Pages</a></li>
     </div>
     <div class="menu-level-1">
     <li>PART II</li>
     </div>
     <div class="menu-level-1">
-    <li>5. Math and Code</li>
+    <li><a href="/booksjl-franklin-template/pages/math_and_code">2. Math and Code</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/math_and_code">5.1. Franklin's Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/franklinmd">2.1. Franklin's Markdown</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">5.2. Literated Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">2.2. Literated Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">5.3. Weaved Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">2.3. Weaved Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">5.4. Weaved Julia Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">2.4. Weaved Julia Markdown</a></li>
     </div>
     <div class="menu-level-1">
-    <li>Appendix</li>
+    <li><a href="/booksjl-franklin-template/pages/appendix">Appendix</a></li>
     </div>
 <div>
 
@@ -111,44 +123,29 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">1.2. Menu Bar <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 4. Navigation</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 1.4. Navigation</a>
 </span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">3. Table of Contents</a></h1>
-<p>In the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file, you may choose whether to enumerate the sections/pages of the book or not, with the <strong>Bool</strong> variable</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.3. Table of Contents</a></h1>
+<p>In the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file, you should define</p>
 <ul>
-<li><p><code>page_numbering</code></p>
+<li><p><code>page_numbering::Bool</code>: whether to enumerate the sections/pages of the book or not,</p>
 </li>
 </ul>
-<p>The most important variable, though, is the <code>menu</code> variable, which is a <strong>Vector</strong> of <strong>Strings</strong> or <strong>Pairs</strong> of <strong>Strings</strong> and <strong>Vector&#123;String&#125;</strong>, providing the structure of the menu:</p>
+<p>and, the most important variable,</p>
 <ul>
-<li><p><code>menu</code></p>
+<li><p><code>menu::Vector&#123;&lt;:Union&#123;String, Pair&#123;String, Vector&#123;String&#125;&#125;&#125;&#125;</code>: structure of the menu.</p>
 </li>
 </ul>
-<p>This is best explained with the example used in this book/documentation:</p>
-<pre><code class="language-julia">menu &#61; &#91;
-    &quot;*pages/intro&quot;,
-    &quot;*PART I&quot;,
-    &quot;pages/configuration&quot;,
-    &quot;pages/menu_bar&quot;,
-    &quot;pages/toc&quot;,
-    &quot;pages/navigation&quot;,
-    &quot;*PART II&quot;,
-    &quot;Math and Code&quot; &#61;&gt; &#91;
-        &quot;pages/math_and_code&quot;,
-        &quot;_literate/pages/literatejl.jl&quot;,
-        &quot;_weave/pages/weavejl.jl&quot;,
-        &quot;_weave/pages/weavejmd.jmd&quot;,
-    &#93;,
-    &quot;*Appendix&quot;,
-&#93;</code></pre>
 <ol>
-<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, it means it points to a file. The title is grabbed from the file. And, depending on the folder, it is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>, respectively. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script with markdown-like comments.</p>
+<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, it means it points to a file. The title is grabbed from the file.</p>
+</li>
+<li><p>If an entry points to a file but has no extension, it is assumed to have the <code>.md</code> extension.</p>
 </li>
 <li><p>When a string does not start with either of the prefixes above, it does not point to any content file, and simply contains the title of the entry.</p>
 </li>
@@ -156,27 +153,51 @@
 </li>
 <li><p>Inspired by \(\LaTeX\), if a string starts with a <code>*</code>, it is not to be numbered. Contrarily to \(\LaTeX\), however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with <code>*</code> or not.</p>
 </li>
-<li><p>The title on each page is set by the line <code>@def title &#61; &quot;title of the section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering, if needed. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/toc.md">raw file for this page</a>.</p>
+<li><p>When the entry points to a file, then, depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>, respectively. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script with markdown-like comments.</p>
 </li>
 </ol>
+<p><strong>Example</strong></p>
+<p>This is illustrated with the example used in this book/documentation:</p>
+<pre><code class="language-julia">menu &#61; &#91;
+    &quot;*pages/intro&quot;,
+    &quot;*PART I&quot;,
+    &quot;Configurations&quot; &#61;&gt; &#91;
+        &quot;pages/book&quot;,
+        &quot;pages/menu_bar&quot;,
+        &quot;pages/toc&quot;,
+        &quot;pages/navigation&quot;,
+        &quot;pages/pages&quot;,
+    &#93;,
+    &quot;*PART II&quot;,
+    &quot;pages/math_and_code&quot; &#61;&gt; &#91;
+        &quot;pages/franklinmd&quot;,
+        &quot;_literate/pages/literatejl.jl&quot;,
+        &quot;_weave/pages/weavejl.jl&quot;,
+        &quot;_weave/pages/weavejmd.jmd&quot;,
+    &#93;,
+    &quot;*pages/appendix&quot;,
+&#93;</code></pre>
+<p>Notice how the entries that start with <code>*</code> do not get numbered, and how those that do not start with either <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code> just have the title and don&#39;t link to any page, regardless of being a pair pointing to a vector of subsections or not.</p>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">1.2. Menu Bar <kbd>←</kbd></a>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 4. Navigation</a>
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 1.4. Navigation</a>
 </span>
     </p>
 </div>
 
 
 
-<div class="license">
-  <br/>
-  <br/>
-    <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>
-    
-</div>
+
+    <div class="license">
+    <br/>
+    <br/>
+        <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication </a>
+        
+    </div>
+
 <!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
