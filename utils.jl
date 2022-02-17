@@ -276,9 +276,3 @@ function literate_it(filename)
 
     return literated_filename[1:end-3] # remove extension ".md"
 end
-
-#= function hfun_buildmenu()
-    menu = pagevar("config.md", :menu_items)
-    isnothing(menu) && return ""
-    return menu
-end =#
