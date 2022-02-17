@@ -142,56 +142,40 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
     isnothing(menu) && return toc
     i = 0
     for m in menu
-        if m isa Pair
-            title = lstrip(m.first, '*')
-            page_numbering *= !startswith(m.first, '*')
-            new_pre = page_numbering === false ? "" : "$pre$(i += 1)."
-            title = page_numbering === false ? lstrip(m.first, '*') : "$new_pre $(lstrip(m.first, '*'))"
-            push!(
-                toc,
-                m.first => (
-                    filename = nothing,
-                    title = title,
-                    level = level
-                ),
-            )
-            append!(toc, build_toc(m.second, page_numbering, level + 1, new_pre))
-        else
-            if startswith(m, '*') || page_numbering === false
-                filename = lstrip(m, '*')
-                if startswith(filename, "_weave")
-                    filename = weave_it(filename)
-                elseif startswith(filename, "_literate")
-                    filename = literate_it(filename)
-                elseif !startswith(filename, "pages")
-                    filename = nothing
-                end
-                filename_noext =
-                    filename !== nothing && occursin('.', filename) ?
-                    filename[1:prevind(filename, findlast('.', filename))] : filename
-                title = filename === nothing ? lstrip(m, '*') : pagevar("$(lstrip(filename, '*'))", :title)
-                push!(toc, m => (filename = filename_noext, title = title, level = level))
-            else
-                i += 1
-                filename = m
-                if startswith(m, "_weave")
-                    filename = weave_it(filename)
-                elseif startswith(m, "_literate")
-                    filename = literate_it(filename)                
-                end
-                title = pagevar("$filename", :title)
-                filename_noext =
-                    occursin('.', filename) ? m[1:prevind(m, findlast('.', filename))] :
-                    filename
-                push!(
-                    toc,
-                    m => (
-                        filename = filename_noext,
-                        title = "$pre$i. $title",
-                        level = level,
-                    ),
-                )
-            end
+        sec, subsecs = m isa Pair ? m : (m, nothing)
+        this_page_numbering = page_numbering * !startswith(sec, '*')
+        sec = lstrip(sec, '*')
+
+        new_pre = this_page_numbering === false ? "" : "$pre$(i += 1)."
+
+        filename =
+            startswith(sec, "_weave/") ?
+            weave_it(lstrip(sec, '*')) :
+            startswith(sec, "_literate/") ?
+            literate_it(lstrip(sec, '*')) :
+            startswith(sec, "pages/") ?
+            "$sec.md" :
+            nothing
+        filename_noext =
+            filename !== nothing && occursin('.', filename) ?
+            filename[1:prevind(filename, findlast('.', filename))] : filename
+        
+        title = filename === nothing ? sec :
+            pagevar("$filename", :title)
+        if this_page_numbering !== false
+            title = "$new_pre $title"
+        end
+
+        push!(
+            toc,
+            sec => (
+                filename = filename_noext,
+                title = title,
+                level = level
+            ),
+        )
+        if subsecs !== nothing
+            append!(toc, build_toc(subsecs, this_page_numbering, level + 1, new_pre))
         end
     end
     return toc
@@ -293,8 +277,8 @@ function literate_it(filename)
     return literated_filename[1:end-3] # remove extension ".md"
 end
 
-function hfun_buildmenu()
+#= function hfun_buildmenu()
     menu = pagevar("config.md", :menu_items)
     isnothing(menu) && return ""
     return menu
-end
+end =#
