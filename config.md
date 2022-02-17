@@ -37,6 +37,7 @@ menu = [
     "*PART I",
     "pages/configuration",
     "pages/menu_bar",
+    "pages/toc",
     "pages/navigation",
     "*PART II",
     "Math and Code" => [
