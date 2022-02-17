@@ -15,11 +15,6 @@ license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 +++
 
-# toc variables
-+++
-page_numbering = true
-+++
-
 # menu variables
 +++
 show_aside = true
@@ -33,8 +28,9 @@ nav_on_top = true
 nav_on_bottom = true
 +++
 
-# menu items
+# toc variables
 +++
+page_numbering = true
 
 menu = [
     "*pages/intro",
