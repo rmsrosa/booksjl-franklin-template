@@ -33,6 +33,8 @@
   
 
   
+    <link rel="stylesheet" href="/booksjl-franklin-template/libs/katex/katex.min.css">
+  
 </head>
 
 <body>
@@ -131,16 +133,23 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.4. Weaved Julia Markdown</a></h1>
 <p>This page was generated from a <strong>julia markdown script</strong>, automatically converted to markdown with <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>. The conversion happens when the menu is constructed.</p>
-<h2 id="julia_chunk"><a href="#julia_chunk" class="header-anchor">Julia chunk</a></h2>
+<h2 id="math"><a href="#math" class="header-anchor">Math</a></h2>
+\[
+\exp(i\pi) + 1 = 0
+\]
+<h2 id="code_chunks"><a href="#code_chunks" class="header-anchor">Code chunks</a></h2>
 <p>Here is a julia chunk:</p>
 <pre><code class="language-julia">x &#61; 1</code></pre>
 <pre><code class="language-julia">1</code></pre>
+<p>and another:</p>
+<pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre>
+<pre><code class="language-julia">hello world&#33;</code></pre>
 <h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
 <pre><code class="language-julia">using Plots</code></pre>
 <pre><code class="language-julia">x &#61; 0.0:0.01:2π
 y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
 plot&#40;x, y&#41;</code></pre>
-<img src="/booksjl-franklin-template/assets/pages/weaved/weavejmd/code/images/weavejmd_3_1.png" alt="">
+<img src="/booksjl-franklin-template/assets/pages/weaved/weavejmd/code/images/weavejmd_4_1.png" alt="">
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
@@ -166,6 +175,10 @@ plot&#40;x, y&#41;</code></pre>
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/booksjl-franklin-template/libs/katex/katex.min.js"></script>
+        <script src="/booksjl-franklin-template/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     
