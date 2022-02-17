@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Weaved Julia Markdown</title>  
+   <title>Table of Contents</title>  
   <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/favicon.png"/>
   <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
   
@@ -32,6 +32,8 @@
     </script>
   
 
+  
+    <link rel="stylesheet" href="/booksjl-franklin-template/libs/katex/katex.min.css">
   
 </head>
 
@@ -109,27 +111,61 @@
     
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/weaved/weavejl">5.3. Weaved Julia Script <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar <kbd>←</kbd></a>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 4. Navigation</a>
+</span>
     </p>
 </div>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.4. Weaved Julia Markdown</a></h1>
-<p>This page was generated from a <strong>julia markdown script</strong>, automatically converted to markdown with <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>. The conversion happens when the menu is constructed.</p>
-<h2 id="julia_chunk"><a href="#julia_chunk" class="header-anchor">Julia chunk</a></h2>
-<p>Here is a julia chunk:</p>
-<pre><code class="language-julia">x &#61; 1</code></pre>
-<pre><code class="language-julia">1</code></pre>
-<h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
-<pre><code class="language-julia">using Plots</code></pre>
-<pre><code class="language-julia">x &#61; 0.0:0.01:2pi
-y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
-plot&#40;x, y&#41;</code></pre>
-<img src="/booksjl-franklin-template/assets/pages/weaved/weavejmd/code/images/weavejmd_3_1.png" alt="">
+<h1 id="get_title"><a href="#get_title" class="header-anchor">3. Table of Contents</a></h1>
+<p>In the <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a> file, you may choose whether to enumerate the sections/pages of the book or not, with the <strong>Bool</strong> variable</p>
+<ul>
+<li><p><code>page_numbering</code></p>
+</li>
+</ul>
+<p>The most important variable, though, is the <code>menu</code> variable, which is a <strong>Vector</strong> of <strong>Strings</strong> or <strong>Pairs</strong> of <strong>Strings</strong> and <strong>Vector&#123;String&#125;</strong>, providing the structure of the menu:</p>
+<ul>
+<li><p><code>menu</code></p>
+</li>
+</ul>
+<p>This is best explained with the example used in this book/documentation:</p>
+<pre><code class="language-julia">menu &#61; &#91;
+    &quot;*pages/intro&quot;,
+    &quot;*PART I&quot;,
+    &quot;pages/configuration&quot;,
+    &quot;pages/menu_bar&quot;,
+    &quot;pages/toc&quot;,
+    &quot;pages/navigation&quot;,
+    &quot;*PART II&quot;,
+    &quot;Math and Code&quot; &#61;&gt; &#91;
+        &quot;pages/math_and_code&quot;,
+        &quot;_literate/pages/literatejl.jl&quot;,
+        &quot;_weave/pages/weavejl.jl&quot;,
+        &quot;_weave/pages/weavejmd.jmd&quot;,
+    &#93;,
+    &quot;*Appendix&quot;,
+&#93;</code></pre>
+<ol>
+<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, it means it points to a file. The title is grabbed from the file. And, depending on the folder, it is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>, respectively. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script with markdown-like comments.</p>
+</li>
+<li><p>When a string does not start with either of the prefixes above, it does not point to any content file, and simply contains the title of the entry.</p>
+</li>
+<li><p>When an entry is a <strong>Pair</strong>, the second value of the <strong>Pair</strong> is a <strong>Vector of Strings</strong> with the list of subsections, each of them following the pattern above.</p>
+</li>
+<li><p>Inspired by \(\LaTeX\), if a string starts with a <code>*</code>, it is not to be numbered. Contrarily to \(\LaTeX\), however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with <code>*</code> or not.</p>
+</li>
+<li><p>The title on each page is set by the line <code>@def title &#61; &quot;title of the section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering, if needed. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/toc.md">raw file for this page</a>.</p>
+</li>
+</ol>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
-<a class="menu-level-1" href="/booksjl-franklin-template/pages/weaved/weavejl">5.3. Weaved Julia Script <kbd>←</kbd></a>
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar <kbd>←</kbd></a>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation"><kbd>→</kbd> 4. Navigation</a>
+</span>
     </p>
 </div>
 
@@ -146,6 +182,10 @@ plot&#40;x, y&#41;</code></pre>
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/booksjl-franklin-template/libs/katex/katex.min.js"></script>
+        <script src="/booksjl-franklin-template/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     

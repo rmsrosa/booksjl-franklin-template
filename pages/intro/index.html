@@ -56,25 +56,28 @@
     <li><a href="/booksjl-franklin-template/pages/menu_bar">2. Menu Bar</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/booksjl-franklin-template/pages/navigation">3. Navigation</a></li>
+    <li><a href="/booksjl-franklin-template/pages/toc">3. Table of Contents</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/booksjl-franklin-template/pages/navigation">4. Navigation</a></li>
     </div>
     <div class="menu-level-1">
     <li>PART II</li>
     </div>
     <div class="menu-level-1">
-    <li>4. Math and Code</li>
+    <li>5. Math and Code</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/math_and_code">4.1. Franklin's Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/math_and_code">5.1. Franklin's Markdown</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">4.2. Literated Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">5.2. Literated Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">4.3. Weaved Julia Script</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">5.3. Weaved Julia Script</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">4.4. Weaved Julia Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">5.4. Weaved Julia Markdown</a></li>
     </div>
     <div class="menu-level-1">
     <li>Appendix</li>
@@ -83,7 +86,7 @@
 
 
   
-    <a href="https://github.com/rmsrosa/booksjl-franklin-template"><img src="/booksjl-franklin-template/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 0px" align="left"></a>
+    <a href="https://github.com/rmsrosa/booksjl-franklin-template"><img src="/booksjl-franklin-template/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
 
   
 
@@ -103,10 +106,10 @@
 
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">Introduction</a></h1>
-<p>With this template, you have a menu bar on the left and navigation links on the top and bottom of each page, if desired.</p>
-<p>The menu bar displays the Table of Contents, with links to each section/subsection of the book.</p>
-<p>The structure of the menu should be configured in the file <code>config.md</code>, at the root directory of the project. Both the menu bar and the navigation buttons are automatically built from this structure.</p>
-<p>More details in the appropriate sections, at your disposal in the menu bar.</p>
+<p>With this template, you have the table of contents in the menu bar on the left of each page and navigation links on the top and bottom of each page.</p>
+<p>The structure of the menu should be configured in the file <code>config.md</code>, at the root directory of the project. Both the menu bar and the navigation buttons are automatically built from this structure. Each page can be numbered, if so configured.</p>
+<p>Pages can be generated from markdown files or julia scripts, rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</p>
+<p>More details in the appropriate sections.</p>
 
     <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
