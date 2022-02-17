@@ -31,6 +31,7 @@
   max-height: 0;
   overflow: hidden;
   font-size: var(--small-size);
+  margin-top: 1.0rem;
 }
 
 .books-list-module {
@@ -42,14 +43,25 @@
 
 .books-title {
   display: inline-block;
+  font-size: 1.4rem;
+  color: var(--gray);
   margin-bottom: 0px;
 }
 
 .books-subtitle {
-  color: var(--gray);
   display: inline-block;
+  font-size: 1.0rem;
   font-style: italic;
-  margin-bottom: 1.4rem;
+  color: var(--gray);
+  margin-bottom: 0px;
+}
+
+.books-author {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--gray);
+    margin-bottom: 0px;
 }
 
 .books-menu {
@@ -90,11 +102,6 @@ input:checked ~ .books-menu-content {
   .books-menu {
     margin-left: var(--content-left-margin);
   }
-}
-
-.books-title {
-  font-size: 1.4rem;
-  color: var(--gray);
 }
 
 .subtitle {
@@ -216,7 +223,7 @@ hr {
 pre, code, kbd, samp {
   font-family: "JuliaMono-Regular", "SFMono-Regular", "DejaVu Sans Mono";
   font-variant-ligatures: none;
-  font-size: var(--small-size);
+  font-size: var(--normal-size);
   color: #000;
   /* Using !important to override github.min.css settings. */
   background: var(--block-background) !important;

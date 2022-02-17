@@ -9,7 +9,8 @@ content_tag = ""
 +++
 book_title = "Book Template for Franklin.jl"
 book_subtitle = "Create books with Franklin"
-book_author = "Author Name"
+book_author = "Ricardo M. S. Rosa"
+show_license = true
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
 license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
@@ -35,18 +36,21 @@ page_numbering = true
 menu = [
     "*pages/intro",
     "*PART I",
-    "pages/configuration",
-    "pages/menu_bar",
-    "pages/toc",
-    "pages/navigation",
+    "Configurations" => [
+        "pages/book",
+        "pages/menu_bar",
+        "pages/toc",
+        "pages/navigation",
+        "pages/pages",
+    ],
     "*PART II",
-    "Math and Code" => [
-        "pages/math_and_code",
+    "pages/math_and_code" => [
+        "pages/franklinmd",
         "_literate/pages/literatejl.jl",
         "_weave/pages/weavejl.jl",
         "_weave/pages/weavejmd.jmd",
     ],
-    "*Appendix",
+    "*pages/appendix",
 ]
 
 +++

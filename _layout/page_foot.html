@@ -2,9 +2,11 @@
     {{ navigation }}
 {{ end }}
 
-<div class="license">
-  <br/>
-  <br/>
-    <a href={{ license_link }}>{{ book_license }}</a>
-    {{ book_licensees }}
-</div>
+{{ if show_license }}
+    <div class="license">
+    <br/>
+    <br/>
+        <a href={{ license_link }}>{{ book_license }} </a>
+        {{ book_licensees }}
+    </div>
+{{ end }}

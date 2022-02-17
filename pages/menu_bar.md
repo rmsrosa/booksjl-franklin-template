@@ -2,11 +2,11 @@
 
 # {{ get_title }}
 
-In the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file, you may define the **Bool** variables
+In the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file, you may define the display variables
 
-* `show_aside`
-* `show_github`
+* `show_aside::Bool`: whether to show the menu bar on the left side of the screen when the screen is wide enough or to keep it collapsed until clicked.
+* `show_github::Bool`: whether to display the link to the github repository of the book at the bottom of the menu bar.
 
-and the **String** with the link to the github repository of the book,
+and the link to the github repository of the book,
 
-* `github_repo`
+* `github_repo::String`: full path to the repository.
