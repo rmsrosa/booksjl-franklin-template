@@ -45,6 +45,10 @@
 
   <div class="books-content">
 
+    {{ if show_link_bagdes }}
+      {{ linkbadges }}
+    {{ end }}
+
     {{ if nav_on_top }}
       {{ navigation }}
     {{ end }}

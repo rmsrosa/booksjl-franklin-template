@@ -52,5 +52,13 @@ menu = [
     ],
     "*pages/appendix",
 ]
++++
 
+# page variables
++++
+link_download_script = false
+link_download_notebook = true
+link_nbview_notebook = false
+link_binder_notebook = false
+show_link_bagdes = true
 +++

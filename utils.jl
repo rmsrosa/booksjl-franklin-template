@@ -244,6 +244,7 @@ function literate_it(filename)
     fig_path = "images"
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
+    link_notebook = pagevar("config.md", :link_notebook)
     if mtime(filename) > mtime("$literated_filename")
         Literate.markdown(
             filename,
@@ -274,7 +275,58 @@ function literate_it(filename)
             mkpath(destination)
             mv("$out_path/$fig_path", destination, force = true)
         end
+
+        if link_notebook == true
+            output_dir = "__site/notebooks/$(literated_filename[1:end-3])"
+            Literate.notebook(
+                filename,
+                output_dir
+            )
+        end
     end
 
     return literated_filename[1:end-3] # remove extension ".md"
+end
+
+function hfun_linkbadges()
+    filename = locvar(:fd_rpath)
+
+    link_download_script = pagevar("config.md", :link_download_script)
+    link_download_notebook = pagevar("config.md", :link_download_notebook)
+    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
+    @info "link: $link_nbview_notebook"
+    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+
+    notebook_path = "/notebooks/$(replace(filename, r".md$" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+
+    io = IOBuffer()
+    write(
+        io,
+        """
+        <div>
+        """
+    )
+    if link_nbview_notebook == true && isfile("__site$(notebook_path)")
+        write(
+            io,
+            """
+            <a href=\"$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-nbviewer-orange\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
+            """,
+        )
+    end
+    if link_download_notebook == true && isfile("__site$(notebook_path)")
+        write(
+            io,
+            """
+            <a href=\"$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-download-blue\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
+            """,
+        )
+    end
+    write(
+        io,
+        """
+        </div>
+        """
+    )
+    return String(take!(io))
 end
