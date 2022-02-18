@@ -281,7 +281,7 @@ function literate_it(filename)
         end
 
         if link_download_notebook | link_nbview_notebook | link_binder_notebook == true
-            output_dir = "_generated/notebooks/$(literated_filename[1:end-3])"
+            output_dir = "__site/generated/notebooks/$(literated_filename[1:end-3])"
             Literate.notebook(
                 filename,
                 output_dir
@@ -300,7 +300,7 @@ function hfun_linkbadges()
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    notebook_path = "_generated/notebooks/$(replace(filename, r".md$" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+    notebook_path = "generated/notebooks/$(replace(filename, r".md$" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
     io = IOBuffer()
     write(
@@ -309,7 +309,7 @@ function hfun_linkbadges()
         <div>
         """
     )
-    if link_nbview_notebook == true && isfile("$notebook_path")
+    if link_nbview_notebook == true && isfile("__site/$notebook_path")
         write(
             io,
             """
@@ -317,7 +317,7 @@ function hfun_linkbadges()
             """,
         )
     end
-    if link_download_notebook == true && isfile("$notebook_path")
+    if link_download_notebook == true && isfile("__site/$notebook_path")
         write(
             io,
             """
