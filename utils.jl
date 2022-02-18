@@ -42,6 +42,8 @@ end
 @delay function hfun_get_title()
     menu = pagevar("config.md", :menu)
     filename = locvar(:fd_rpath)
+    title = pagevar(filename, :title)
+    isnothing(title) && return filename
     isnothing(menu) && return pagevar(filename, :title)
 
     filename_noext =
@@ -204,7 +206,7 @@ end
 
 function weave_it(filename)
     isfile(filename) || return ""
-    out_path = replace(dirname(filename), "_weave/" => "", count = 1) * "/weaved"
+    out_path = "pages/" * replace(dirname(filename), r"_weave" => "") * "weaved"
     fig_path = "images"
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"(?:.jl|.jmd)$" => ".md")
@@ -238,12 +240,12 @@ function weave_it(filename)
 end
 
 function literate_it(filename)
-
     isfile(filename) || return ""
-    out_path = replace(dirname(filename), "_literate/" => "", count = 1) * "/literated"
+    out_path = "pages/" * replace(dirname(filename), "_literate" => "", count = 1) * "literated"
     fig_path = "images"
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
+
     link_download_script = pagevar("config.md", :link_download_script)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
@@ -279,14 +281,28 @@ function literate_it(filename)
             mkpath(destination)
             mv("$out_path/$fig_path", destination, force = true)
         end
+    end
 
-        if link_download_notebook | link_nbview_notebook | link_binder_notebook == true
-            output_dir = "__site/generated/notebooks/$(literated_filename[1:end-3])"
-            Literate.notebook(
-                filename,
-                output_dir
-            )
-        end
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_literate" => "literated"))"
+    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r".jl$" => ".ipynb"))"
+
+    @info "filename: $filename"
+    @info "mtime: $(mtime(filename))"
+    @info "notebook_path: $notebook_path"
+    @info "mtime: $(mtime(notebook_path))"
+    if any(
+        ==(true),
+        (
+            link_download_script,
+            link_download_notebook,
+            link_nbview_notebook,
+            link_binder_notebook
+        )
+    ) && mtime(filename) > mtime(notebook_path)
+        Literate.notebook(
+            filename,
+            notebook_output_dir
+        )
     end
 
     return literated_filename[1:end-3] # remove extension ".md"
@@ -300,7 +316,9 @@ function hfun_linkbadges()
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    notebook_path = "generated/notebooks/$(replace(filename, r".md$" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+    notebook_path = "generated/notebooks/$(replace(dirname(filename), "pages" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+    @info "notebook_link_path: $notebook_path"
+    @warn "is file?: $(isfile("__site/$notebook_path"))"
 
     io = IOBuffer()
     write(
