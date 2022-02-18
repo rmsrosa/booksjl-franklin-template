@@ -65,5 +65,5 @@ show_link_bagdes = true
 
 # Franklin stuff
 +++
-ignore = ["_weave/"]
+ignore = ["_weave/", "_literate/"]
 +++
