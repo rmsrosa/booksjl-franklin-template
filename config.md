@@ -62,8 +62,3 @@ link_nbview_notebook = false
 link_binder_notebook = false
 show_link_bagdes = true
 +++
-
-# Franklin stuff
-+++
-ignore = ["_weave/", "_literate/"]
-+++
