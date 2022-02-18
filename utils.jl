@@ -286,10 +286,6 @@ function literate_it(filename)
     notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_literate" => "literated"))"
     notebook_path = "$notebook_output_dir/$(replace(basename(filename), r".jl$" => ".ipynb"))"
 
-    @info "filename: $filename"
-    @info "mtime: $(mtime(filename))"
-    @info "notebook_path: $notebook_path"
-    @info "mtime: $(mtime(notebook_path))"
     if any(
         ==(true),
         (
@@ -317,8 +313,6 @@ function hfun_linkbadges()
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
     notebook_path = "generated/notebooks/$(replace(dirname(filename), "pages" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
-    @info "notebook_link_path: $notebook_path"
-    @warn "is file?: $(isfile("__site/$notebook_path"))"
 
     io = IOBuffer()
     write(
