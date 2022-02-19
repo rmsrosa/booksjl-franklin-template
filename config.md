@@ -21,6 +21,7 @@ book_licensees = ""
 show_aside = true
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
+website = "rmsrosa.github.io/booksjl-franklin-template"
 +++
 
 # navigation links
@@ -58,7 +59,7 @@ menu = [
 +++
 link_download_script = false
 link_download_notebook = true
-link_nbview_notebook = false
+link_nbview_notebook = true
 link_binder_notebook = false
 show_link_bagdes = true
 +++

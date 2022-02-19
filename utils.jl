@@ -350,10 +350,11 @@ function hfun_linkbadges()
         """
     )
     if link_nbview_notebook == true && isfile("__site/$notebook_path")
+        website = pagevar("config.md", :website)
         write(
             io,
             """
-            <a href=\"/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-nbviewer-orange\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
+            <a href=\"https://nbviewer.org/urls/$website/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-nbviewer-orange\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
             """,
         )
     end
@@ -368,7 +369,7 @@ function hfun_linkbadges()
     write(
         io,
         """
-        </div>
+        </div></br>
         """
     )
     return String(take!(io))
