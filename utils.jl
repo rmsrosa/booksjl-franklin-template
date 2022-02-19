@@ -365,7 +365,7 @@ function hfun_linkbadges()
             write(
                 io,
                 """
-                <a href=\"https://nbviewer.org/urls/$website/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/view%20in-nbviewer-orange\" alt=\"Open in NBViewer\" title=\"Open Jupyter notebook in NBViewer\"></a>
+                <a href=\"https://nbviewer.org/urls/$website/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/view%20in-nbviewer-orange\" alt=\"View in NBViewer\" title=\"View Jupyter notebook in NBViewer\"></a>
                 """,
             )
         end
