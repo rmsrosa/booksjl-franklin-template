@@ -81,7 +81,7 @@ end
             io,
             """
             <div class="navbar">
-                <p id="nav-prev" style="text-align: left;">
+                <p id="nav">
             """,
         )
     end
@@ -92,7 +92,9 @@ end
         write(
             io,
             """
+            <span id="nav-prev" style="float: left;">
             <a class="menu-level-1" href="$prev_link">$prev_title <kbd>←</kbd></a>
+            </span>
             """,
         )
     end
@@ -357,6 +359,7 @@ function hfun_linkbadges()
         write(
             io,
             """
+            </br>
             <div class="badges">
             """
         )
@@ -389,7 +392,8 @@ function hfun_linkbadges()
         write(
             io,
             """
-            </div></br>
+            </div>
+            </br>
             """
         )
     end
