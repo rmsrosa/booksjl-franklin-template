@@ -373,12 +373,10 @@ function hfun_linkbadges()
             write(
                 io,
                 """
-                <a href=\"https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2021p1?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26branch%3Dgh-pages%26urlpath%3Dtree%252F$notebook_path\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
+                <a href=\"https://mybinder.org/v2/gh/rmsrosa/launchmybinder/mybinderenv?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26urlpath%3Dlab%252Ftree%252Fbooksjl-franklin-template/$notebook_path%26branch%3Dgh-pages"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
                 """,
             )
         end
-
-        #= <a href=\"https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2021p1?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26branch%3Dgh-pages%26urlpath%3Dtree%252F$notebook_path\" target=\"_blank\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a> =#
 
         if link_download_notebook == true && isfile("__site/$notebook_path")
             write(
