@@ -108,12 +108,6 @@
   <div class="books-content">
 
     
-      <div>
-</div></br>
-
-    
-
-    
       <div class="navbar">
     <p id="nav-prev" style="text-align: left;">
 <a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation">1.4. Navigation <kbd>←</kbd></a>
@@ -123,6 +117,10 @@
     </p>
 </div>
 
+    
+
+    
+      
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">1.5. Pages</a></h1>
 <ol>
@@ -135,6 +133,22 @@
 <li><p>The title on each Franklin&#39;s markdown page, under <code>pages/</code>, is set by the line <code>@def title &#61; &quot;Title of the Section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering, if needed. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md">raw file for this page</a>.</p>
 </li>
 <li><p>The title on the pages within <code>_weave/</code> or <code>_literate/</code> should be defined as usual for markdown files, with <code># Title of the Section</code>. These will be processed to the format above, to be properly rendered by Franklin.</p>
+</li>
+<li><p>Each page in either <code>_weave/</code> or <code>_literated/</code> may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in <code>config.md</code>:</p>
+<ul>
+<li><p><code>show_link_bagdes::Bool</code>: whether to add any of the link badges to the top of each weaved or literated page;</p>
+</li>
+<li><p><code>link_download_script::Bool</code>: whether to include a badge to download the associated script;</p>
+</li>
+<li><p><code>link_download_notebook::Bool</code>: whether to include a badge to download the associated Jupyter notebook;</p>
+</li>
+<li><p><code>link_nbview_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in NBViewer;</p>
+</li>
+<li><p><code>link_binder_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in Binder;</p>
+</li>
+<li><p><code>website::String</code>: url of the website, used to properly launch the associated notebook in NBViewer.</p>
+</li>
+</ul>
 </li>
 </ol>
 
