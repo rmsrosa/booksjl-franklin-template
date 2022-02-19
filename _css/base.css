@@ -19,12 +19,18 @@
 
 .navbar {
   color: var(--gray);
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: var(--small-size);
 }
 
 .navbar a {
   color: var(--gray) !important;
+}
+
+.badges {
+    color: var(--gray);
+    margin-top: 1em;
+    font-size: var(--small-size);
 }
 
 .books-menu-content {

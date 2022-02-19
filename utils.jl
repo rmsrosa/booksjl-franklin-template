@@ -343,34 +343,57 @@ function hfun_linkbadges()
     notebook_path = "generated/notebooks/$(replace(dirname(filename), "pages" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
     io = IOBuffer()
-    write(
-        io,
-        """
-        <div>
-        """
+    if any(
+        ==(true),
+        (
+            link_download_script,
+            link_download_notebook,
+            link_nbview_notebook,
+            link_binder_notebook
+        )
+    ) && (
+        isfile("__site/$notebook_path")
     )
-    if link_nbview_notebook == true && isfile("__site/$notebook_path")
-        website = pagevar("config.md", :website)
         write(
             io,
             """
-            <a href=\"https://nbviewer.org/urls/$website/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-nbviewer-orange\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
-            """,
+            <div class="badges">
+            """
         )
-    end
-    if link_download_notebook == true && isfile("__site/$notebook_path")
+        if link_nbview_notebook == true && isfile("__site/$notebook_path")
+            website = pagevar("config.md", :website)
+            write(
+                io,
+                """
+                <a href=\"https://nbviewer.org/urls/$website/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/view%20in-nbviewer-orange\" alt=\"Open in NBViewer\" title=\"Open Jupyter notebook in NBViewer\"></a>
+                """,
+            )
+        end
+        if link_binder_notebook == true && isfile("__site/$notebook_path")
+            write(
+                io,
+                """
+                <a href=\"https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2021p1?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26branch%3Dgh-pages%26urlpath%3Dtree%252F$notebook_path\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
+                """,
+            )
+        end
+
+        #= <a href=\"https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2021p1?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26branch%3Dgh-pages%26urlpath%3Dtree%252F$notebook_path\" target=\"_blank\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a> =#
+
+        if link_download_notebook == true && isfile("__site/$notebook_path")
+            write(
+                io,
+                """
+                <a href=\"/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-download-blue\" alt=\"Download notebook\" title=\"Download Jupyter notebook\"></a>
+                """,
+            )
+        end
         write(
             io,
             """
-            <a href=\"/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-download-blue\" alt=\"Download notebook\" title=\"Download Jupyter notebook\">
-            """,
+            </div></br>
+            """
         )
     end
-    write(
-        io,
-        """
-        </div></br>
-        """
-    )
     return String(take!(io))
 end
