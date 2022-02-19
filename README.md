@@ -19,4 +19,4 @@ It currently has the following features:
 This is an off-spring of the draft template in [tlienart/booksjl-franklin](https://github.com/tlienart/booksjl-franklin), with many extra goodies.
 
 > **:warning: WARNING:**
-> This template is already functional, but it is still under active development, with the code being optimized and more tools being implemented. Planned tools involve the ability to automatic generate Jupyter notebooks, if desired, along with links, in each page, to open the associated notebooks in Binder and links to automatically download the files from the github repo.
+> This template is under active development, with the code being optimized and more tools/configurations being implemented. Working now on automatic generating Jupyter notebooks, along with links, in each page, to download or open the associated notebooks in NBViwer and Binder.

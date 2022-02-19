@@ -209,9 +209,15 @@ function weave_it(filename)
     out_path = "pages/" * replace(dirname(filename), r"_weave" => "") * "weaved"
     fig_path = "images"
     doctype = "github"
-    weaved_filename = replace("$out_path/$(basename(filename))", r"(?:.jl|.jmd)$" => ".md")
+    weaved_filename = replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
+
+    link_download_script = pagevar("config.md", :link_download_script)
+    link_download_notebook = pagevar("config.md", :link_download_notebook)
+    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
+    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+
     if mtime(filename) > mtime("$weaved_filename")
-        weave(filename; out_path, fig_path, doctype)
+        Weave.weave(filename; out_path, fig_path, doctype)
         tmppath, tmpio = mktemp()
         no_match_so_far = true
         open("$weaved_filename", "r") do io
@@ -234,6 +240,28 @@ function weave_it(filename)
             mkpath(destination)
             mv("$out_path/$fig_path", destination, force = true)
         end
+    end
+
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_weave" => "weaved"))"
+    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r"(?:\.jl|\.jmd)$" => ".ipynb"))"
+
+    if any(
+        ==(true),
+        (
+            link_download_script,
+            link_download_notebook,
+            link_nbview_notebook,
+            link_binder_notebook
+        )
+    ) && mtime(filename) > mtime(notebook_path)
+        @info "filename: $filename"
+        @info "out_path: $notebook_output_dir"
+        mkpath(notebook_output_dir)
+        Weave.notebook(
+            filename,
+            out_path = notebook_output_dir,
+            nbconvert_options = "--allow-errors"
+        )
     end
 
     return weaved_filename[1:end-3] # remove extension ".md"
