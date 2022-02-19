@@ -11,3 +11,11 @@
 1. The title on each Franklin's markdown page, under `pages/`, is set by the line `@def title = "Title of the Section"`, followed by the line `# {{ get_title }}`, which builds the title with the proper numbering, if needed. Check the [raw file for this page](https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md).
 
 1. The title on the pages within `_weave/` or `_literate/` should be defined as usual for markdown files, with `# Title of the Section`. These will be processed to the format above, to be properly rendered by Franklin.
+
+1. Each page in either `_weave/` or `_literated/` may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in `config.md`:
+    * `show_link_bagdes::Bool`: whether to add any of the link badges to the top of each weaved or literated page;
+    * `link_download_script::Bool`: whether to include a badge to download the associated script;
+    * `link_download_notebook::Bool`: whether to include a badge to download the associated Jupyter notebook;
+    * `link_nbview_notebook::Bool`: whether to include a badge to open the associated Jupyter notebook in NBViewer;
+    * `link_binder_notebook::Bool`: whether to include a badge to open the associated Jupyter notebook in Binder;
+    * `website::String`: url of the website, used to properly launch the associated notebook in NBViewer.
