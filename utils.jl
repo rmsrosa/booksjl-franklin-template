@@ -256,8 +256,6 @@ function weave_it(filename)
             link_binder_notebook
         )
     ) && mtime(filename) > mtime(notebook_path)
-        @info "filename: $filename"
-        @info "out_path: $notebook_output_dir"
         mkpath(notebook_output_dir)
         Weave.notebook(
             filename,
@@ -334,7 +332,7 @@ function literate_it(filename)
     return literated_filename[1:end-3] # remove extension ".md"
 end
 
-function hfun_linkbadges()
+@delay function hfun_linkbadges()
     filename = locvar(:fd_rpath)
 
     link_download_script = pagevar("config.md", :link_download_script)
@@ -342,7 +340,7 @@ function hfun_linkbadges()
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    notebook_path = "generated/notebooks/$(replace(dirname(filename), "pages" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+    notebook_path = "generated/notebooks/$(replace(dirname(filename), r"pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
     io = IOBuffer()
     if any(
@@ -373,12 +371,44 @@ function hfun_linkbadges()
             )
         end
         if link_binder_notebook == true && isfile("__site/$notebook_path")
-            write(
-                io,
-                """
-                <a href=\"https://mybinder.org/v2/gh/rmsrosa/launchmybinder/mybinderenv?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26urlpath%3Dlab%252Ftree%252Fbooksjl-franklin-template/$notebook_path%26branch%3Dgh-pages"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
-                """,
+            nbgitpuller_repo = pagevar("config.md", :nbgitpuller_repo)
+            nbgitpuller_branch = pagevar("config.md", :nbgitpuller_branch)
+            binder_application = pagevar("config.md", :binder_application)
+            github_repo = pagevar("config.md", :github_repo)
+            prepath = pagevar("config.md", :prepath)
+            if all(
+                !isnothing,
+                (
+                    nbgitpuller_repo,
+                    nbgitpuller_branch,
+                    binder_application,
+                    prepath
+                )
             )
+                nbgitpuller_repo = replace(nbgitpuller_repo, "https://github.com/" => "")
+
+                binder_application = binder_application == "" ?
+                    "tree" :
+                    binder_application in ("lab", "retro") ?
+                    "$binder_application/tree" :
+                    binder_application
+
+                prepath == "" || (prepath = "$prepath/")
+                write(
+                    io,
+                    """
+                    <a href=\"https://mybinder.org/v2/gh/$nbgitpuller_repo?urlpath=git-pull%3Frepo%3D$github_repo%26urlpath%3D$binder_application%252F$prepath$notebook_path%26branch%3Dgh-pages\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
+                    """,
+                )
+                #= 
+                write(
+                    io,
+                    """
+                    <a href=\"https://mybinder.org/v2/gh/rmsrosa/launchmybinder/mybinderenv?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26urlpath%3Dlab%252Ftree%252Fbooksjl-franklin-template/$notebook_path%26branch%3Dgh-pages"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
+                    """,
+                )
+                =#
+            end
         end
 
         if link_download_notebook == true && isfile("__site/$notebook_path")

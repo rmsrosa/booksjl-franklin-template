@@ -1,11 +1,13 @@
-# start of config vars
+# Configuration
+
+## config vars
 +++
 prepath = "booksjl-franklin-template"
-
 content_tag = ""
+ignore = ["_weave/"]
 +++
 
-# book variables
+## book variables
 +++
 book_title = "Book Template for Franklin.jl"
 book_subtitle = "Create books with Franklin"
@@ -16,23 +18,22 @@ license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
 book_licensees = ""
 +++
 
-# menu variables
+## menu variables
 +++
 show_aside = true
 show_github = true
 github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
 +++
 
-# navigation links
+## navigation links
 +++
 nav_on_top = true
 nav_on_bottom = true
 +++
 
-# toc variables
+## toc variables
 +++
 page_numbering = true
-
 menu = [
     "*pages/intro",
     "*PART I",
@@ -42,6 +43,7 @@ menu = [
         "pages/toc",
         "pages/navigation",
         "pages/pages",
+        "pages/binder",
     ],
     "*PART II",
     "pages/math_and_code" => [
@@ -54,7 +56,7 @@ menu = [
 ]
 +++
 
-# page variables
+## page variables
 +++
 show_link_bagdes = true
 link_download_script = false
@@ -64,7 +66,9 @@ link_binder_notebook = true
 website = "rmsrosa.github.io/booksjl-franklin-template"
 +++
 
-# Franklin config
+## binder variables
 +++
-ignore = ["_weave/"]
+nbgitpuller_repo = "rmsrosa/launchmybinder/mybinderenv"
+nbgitpuller_branch = "mybinderenv"
+binder_application = "lab" 
 +++

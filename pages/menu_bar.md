@@ -9,4 +9,4 @@ In the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-te
 
 and the link to the github repository of the book,
 
-* `github_repo::String`: full path to the repository.
+* `github_repo::String`: path to the repository.
