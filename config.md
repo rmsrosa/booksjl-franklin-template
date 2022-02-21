@@ -68,7 +68,7 @@ website = "rmsrosa.github.io/booksjl-franklin-template"
 
 ## binder variables
 +++
-nbgitpuller_repo = "rmsrosa/launchmybinder/mybinderenv"
-nbgitpuller_branch = "mybinderenv"
+nbgitpuller_repo = "rmsrosa/booksjl-franklin-template"
+nbgitpuller_branch = "binderenv"
 binder_application = "lab" 
 +++

@@ -397,7 +397,7 @@ end
                 write(
                     io,
                     """
-                    <a href=\"https://mybinder.org/v2/gh/$nbgitpuller_repo?urlpath=git-pull%3Frepo%3D$github_repo%26urlpath%3D$binder_application%252F$prepath$notebook_path%26branch%3Dgh-pages\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
+                    <a href=\"https://mybinder.org/v2/gh/$nbgitpuller_repo/$nbgitpuller_branch?urlpath=git-pull%3Frepo%3D$github_repo%26urlpath%3D$binder_application%252F$prepath$notebook_path%26branch%3Dgh-pages\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
                     """,
                 )
                 #= 
