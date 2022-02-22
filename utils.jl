@@ -394,7 +394,6 @@ end
     filename = locvar(:fd_rpath)
 
     link_view_source = pagevar("config.md", :link_view_source)
-    link_view_markdown = pagevar("config.md", :link_view_markdown)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
@@ -408,7 +407,6 @@ end
         ==(true),
         (
             link_view_source,
-            link_view_markdown,
             link_download_notebook,
             link_nbview_notebook,
             link_binder_notebook
@@ -486,9 +484,6 @@ end
                 <a href=\"$source_path"><img align=\"left\" src=\"https://img.shields.io/badge/view-source-lightblue\" alt=\"View source\" title=\"View source\"></a>
                 """,
             )
-        end
-        
-        if link_view_markdown == true
         end
 
         write(
