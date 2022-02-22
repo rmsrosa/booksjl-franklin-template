@@ -215,7 +215,6 @@ function weave_it(filename)
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
 
-    link_download_script = pagevar("config.md", :link_download_script)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
@@ -252,7 +251,6 @@ function weave_it(filename)
     if any(
         ==(true),
         (
-            link_download_script,
             link_download_notebook,
             link_nbview_notebook,
             link_binder_notebook
@@ -276,7 +274,6 @@ function literate_it(filename)
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
 
-    link_download_script = pagevar("config.md", :link_download_script)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
@@ -319,7 +316,6 @@ function literate_it(filename)
     if any(
         ==(true),
         (
-            link_download_script,
             link_download_notebook,
             link_nbview_notebook,
             link_binder_notebook
@@ -341,7 +337,6 @@ function jupyter_it(filename)
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"\.ipynb$" => ".md")
 
-    link_download_script = pagevar("config.md", :link_download_script)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
@@ -378,7 +373,6 @@ function jupyter_it(filename)
     if any(
         ==(true),
         (
-            link_download_script,
             link_download_notebook,
             link_nbview_notebook,
             link_binder_notebook
@@ -399,10 +393,13 @@ end
 @delay function hfun_linkbadges()
     filename = locvar(:fd_rpath)
 
-    link_download_script = pagevar("config.md", :link_download_script)
+    link_view_source = pagevar("config.md", :link_view_source)
+    link_view_markdown = pagevar("config.md", :link_view_markdown)
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+
+    github_repo = pagevar("config.md", :github_repo)
 
     notebook_path = "generated/notebooks/$(replace(dirname(filename), r"pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
@@ -410,7 +407,8 @@ end
     if any(
         ==(true),
         (
-            link_download_script,
+            link_view_source,
+            link_view_markdown,
             link_download_notebook,
             link_nbview_notebook,
             link_binder_notebook
@@ -438,7 +436,6 @@ end
             nbgitpuller_repo = pagevar("config.md", :nbgitpuller_repo)
             nbgitpuller_branch = pagevar("config.md", :nbgitpuller_branch)
             binder_application = pagevar("config.md", :binder_application)
-            github_repo = pagevar("config.md", :github_repo)
             prepath = pagevar("config.md", :prepath)
             if all(
                 !isnothing,
@@ -455,7 +452,7 @@ end
                     "tree" :
                     binder_application in ("lab", "retro") ?
                     "$binder_application/tree" :
-                    binder_application
+                    binder_application # not sure how the others work
 
                 prepath == "" || (prepath = "$prepath/")
                 write(
@@ -464,14 +461,6 @@ end
                     <a href=\"https://mybinder.org/v2/gh/$nbgitpuller_repo/$nbgitpuller_branch?urlpath=git-pull%3Frepo%3D$github_repo%26urlpath%3D$binder_application%252F$prepath$notebook_path%26branch%3Dgh-pages\"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
                     """,
                 )
-                #= 
-                write(
-                    io,
-                    """
-                    <a href=\"https://mybinder.org/v2/gh/rmsrosa/launchmybinder/mybinderenv?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fbooksjl-franklin-template%26urlpath%3Dlab%252Ftree%252Fbooksjl-franklin-template/$notebook_path%26branch%3Dgh-pages"><img align=\"left\" src=\"https://mybinder.org/badge.svg\" alt=\"Open in binder\" title=\"Open in binder\"></a>
-                    """,
-                )
-                =#
             end
         end
 
@@ -479,10 +468,29 @@ end
             write(
                 io,
                 """
-                <a href=\"/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/notebook-download-blue\" alt=\"Download notebook\" title=\"Download Jupyter notebook\"></a>
+                <a href=\"/$notebook_path"><img align=\"left\" src=\"https://img.shields.io/badge/download-notebook-blue\" alt=\"Download notebook\" title=\"Download Jupyter notebook\"></a>
                 """,
             )
         end
+
+        if link_view_source == true
+            menu = pagevar("config.md", :menu)
+            page_numbering = pagevar("config.md", :page_numbering) === true
+            toc = build_toc(menu, page_numbering)
+            ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
+            source_path = length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
+            @info source_path
+            write(
+                io,
+                """
+                <a href=\"$source_path"><img align=\"left\" src=\"https://img.shields.io/badge/view-source-lightblue\" alt=\"View source\" title=\"View source\"></a>
+                """,
+            )
+        end
+        
+        if link_view_markdown == true
+        end
+
         write(
             io,
             """

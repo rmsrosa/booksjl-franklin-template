@@ -60,7 +60,8 @@ menu = [
 ## page variables
 +++
 show_link_bagdes = true
-link_download_script = false
+link_view_source = true
+link_view_markdown = true
 link_download_notebook = true
 link_nbview_notebook = true
 link_binder_notebook = true
