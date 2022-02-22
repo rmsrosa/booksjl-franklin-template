@@ -14,7 +14,7 @@
 
 1. Each page in either `_weave/` or `_literated/` may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in `config.md`:
     * `show_link_bagdes::Bool`: whether to add any of the link badges to the top of each weaved or literated page;
-    * `link_download_script::Bool`: whether to include a badge to download the associated script;
+    * `link_view_source::Bool`: whether to include a badge to view the source used for the current page, if processed by [Weave.jl](https://github.com/JunoLab/Weave.jl) or [Literate.jl](https://github.com/fredrikekre/Literate.jl);
     * `link_download_notebook::Bool`: whether to include a badge to download the associated Jupyter notebook;
     * `link_nbview_notebook::Bool`: whether to include a badge to open the associated Jupyter notebook in NBViewer;
     * `link_binder_notebook::Bool`: whether to include a badge to open the associated Jupyter notebook in Binder;
