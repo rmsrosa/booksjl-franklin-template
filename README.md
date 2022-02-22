@@ -11,12 +11,15 @@ It currently has the following features:
     * [Franklin.jl](https://github.com/tlienart/Franklin.jl)'s native markdown flavor;
     * Julia Markdown (`.jmd` files) executed by [Weave.jl](https://github.com/JunoLab/Weave.jl) itself.
     * [Literate.jl](https://github.com/fredrikekre/Literate.jl)'s Markdown  executed by [Literate.jl](https://github.com/fredrikekre/Literate.jl) itself.
-    * Pure julia scripts (with Markdown comments) executed/rendered by either [Literate.jl](https://github.com/fredrikekre/Literate.jl) or [Weave.jl](https://github.com/JunoLab/Weave.jl).
-* All execution/rendering generated automatically, based on the folder they belong to (whether `pages/`, `_weave/`, or `_literate/`, with the files in the latter two folders being rendered to markdown files in `pages/weaved/` and `pages/literated/`, respectively).
+    * Pure julia scripts (with Markdown comments) executed by either [Literate.jl](https://github.com/fredrikekre/Literate.jl) or [Weave.jl](https://github.com/JunoLab/Weave.jl).
+    * [Jupyter](https://jupyter.org) notebooks converted to Franklin's markdown with [Weave.jl](https://github.com/JunoLab/Weave.jl).
+* All execution/rendering generated automatically, based on the folder they belong to (whether `pages/`, `_weave/`, `_literate/` or `_jupyter`, with the files in the latter three folders being rendered to markdown files in `pages/weaved/`, `pages/literated/`, and `pages/jupytered`, respectively).
+* Whatever the source file, a [Jupyter](https://jupyter.org) is generated via [Literate.jl](https://github.com/fredrikekre/Literate.jl).
+* Badges on each page to either download the associated jupyter notebook, or view it in [NBViewer](https://nbviewer.org), or launch it in [Binder]([Literate.jl](https://github.com/fredrikekre/Literate.jl)).
 * Appealing visual display based on [Rik Huijzer](https://github.com/rikhuijzer)'s CSS used in [Books.jl](https://github.com/JuliaBooks/Books.jl).
 
 
 This is an off-spring of the draft template in [tlienart/booksjl-franklin](https://github.com/tlienart/booksjl-franklin), with many extra goodies.
 
 > **:warning: WARNING:**
-> This template is under active development, with the code being optimized and more tools/configurations being implemented. Working now on automatic generating Jupyter notebooks, along with links, in each page, to download or open the associated notebooks in NBViwer and Binder.
+> This template is under active development and in alpha stage, with the code being optimized, bugs being addressed, and more tools/configurations being implemented. If you are interested, feel free to use it and report eventual problems. Contributions are also welcome.

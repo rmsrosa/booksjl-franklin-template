@@ -157,6 +157,8 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             weave_it(lstrip(sec, '*')) :
             startswith(sec, "_literate/") ?
             literate_it(lstrip(sec, '*')) :
+            startswith(sec, "_jupyter/") ?
+            jupyter_it(lstrip(sec, '*')) :
             startswith(sec, "pages/") ?
             "$sec.md" :
             nothing
@@ -330,6 +332,68 @@ function literate_it(filename)
     end
 
     return literated_filename[1:end-3] # remove extension ".md"
+end
+
+function jupyter_it(filename)
+    isfile(filename) || return ""
+    out_path = "pages/" * replace(dirname(filename), r"_jupyter" => "") * "jupytered"
+    fig_path = "images"
+    doctype = "github"
+    weaved_filename = replace("$out_path/$(basename(filename))", r"\.ipynb$" => ".md")
+
+    link_download_script = pagevar("config.md", :link_download_script)
+    link_download_notebook = pagevar("config.md", :link_download_notebook)
+    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
+    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+
+    if mtime(filename) > mtime("$weaved_filename")
+        Weave.weave(filename; out_path, fig_path, doctype)
+        tmppath, tmpio = mktemp()
+        no_match_so_far = true
+        open("$weaved_filename", "r") do io
+            for line in eachline(io, keep = true)
+                if (m = match(r"^#\s+(.*)$", line)) !== nothing && no_match_so_far == true
+                    line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n\n"
+                    no_match_so_far = false
+                elseif (m = match(r"^!\[\]\((.*)\)$", line)) !== nothing
+                    line = "\\fig{$(m.captures[1])}\n"
+                elseif (m = match(r"^!\[(.*)\]\((.*)\)$", line)) !== nothing
+                    line = "\\figalt{$(m.captures[1])}{$(m.captures[2])}\n"
+                end
+                write(tmpio, line)
+            end
+        end
+        close(tmpio)
+        mv(tmppath, "$weaved_filename", force=true)
+        if isdir("$out_path/$fig_path/")
+            destination = "_assets/$(weaved_filename[1:end-3])/code/$fig_path"
+            mkpath(destination)
+            mv("$out_path/$fig_path", destination, force = true)
+        end
+    end
+
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_jupyter" => "jupytered"))"
+    notebook_path = "$notebook_output_dir/$(basename(filename))"
+
+    if any(
+        ==(true),
+        (
+            link_download_script,
+            link_download_notebook,
+            link_nbview_notebook,
+            link_binder_notebook
+        )
+    ) && mtime(filename) > mtime(notebook_path)
+        mkpath(notebook_output_dir)
+        cp(filename, "$notebook_output_dir/$(basename(filename))", force=true)
+        #= Weave.notebook(
+            filename,
+            out_path = notebook_output_dir,
+            nbconvert_options = "--allow-errors"
+        ) =#
+    end
+
+    return weaved_filename[1:end-3] # remove extension ".md"
 end
 
 @delay function hfun_linkbadges()
