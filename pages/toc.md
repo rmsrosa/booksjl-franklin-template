@@ -50,4 +50,4 @@ menu = [
 ]
 ```
 
-Notice how the entries that start with `*` do not get numbered, and how those that do not start with either `pages/`, `_weave/`, or `_literate/` just have the title and don't link to any page, regardless of being a pair pointing to a vector of subsections or not.
+Notice how the entries that start with `*` do not get numbered, and how those that do not start with either `pages/`, `_weave/`, `_literate/`, or `_jupyter` just have the title and don't link to any page, regardless of being a pair pointing to a vector of subsections or not.
