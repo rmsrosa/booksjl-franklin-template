@@ -105,6 +105,9 @@
     <div class="menu-level-2">
     <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">2.4. Weaved Julia Markdown</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/jupytered/notebook">2.5. Jupyter notebook</a></li>
+    </div>
     <div class="menu-level-1">
     <li><a href="/booksjl-franklin-template/pages/appendix">Appendix</a></li>
     </div>
@@ -150,7 +153,7 @@
 </li>
 </ul>
 <ol>
-<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, it means it points to a file. The title is grabbed from the file.</p>
+<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code>, it means it points to a file. The title is grabbed from the file.</p>
 </li>
 <li><p>If an entry points to a file but has no extension, it is assumed to have the <code>.md</code> extension.</p>
 </li>
@@ -160,7 +163,7 @@
 </li>
 <li><p>Inspired by LaTeX, if a string starts with a <code>*</code>, it is not to be numbered. Contrarily to LaTeX, however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with <code>*</code> or not.</p>
 </li>
-<li><p>When the entry points to a file, then, depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script with markdown-like comments.</p>
+<li><p>When the entry points to a file, then, depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, a plain julia script with markdown-like comments, or a jupyter notebook.</p>
 </li>
 </ol>
 <p><strong>Example Menu</strong></p>
@@ -182,6 +185,7 @@
         &quot;_literate/literatejl.jl&quot;,
         &quot;_weave/weavejl.jl&quot;,
         &quot;_weave/weavejmd.jmd&quot;,
+        &quot;_jupyter/notebook.ipynb&quot;
     &#93;,
     &quot;*pages/appendix&quot;,
 &#93;</code></pre>
