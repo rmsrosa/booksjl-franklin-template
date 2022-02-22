@@ -1,12 +1,13 @@
 :root {
-  --black: hsl(0, 0%, 15%);
-  --gray: hsl(0, 0%, 40%);
+  --black: hsl(42, 0%, 15%);
+  --gray: hsl(42, 0%, 40%);
   --accent: #3D93F6;
   --normal-size: 18px;
   --medium-size: 16px;
   --small-size: 14px;
   --tiny-size: 11px;
-  --block-background: hsl(0, 0%, 96%);
+  --background: hsl(42, 80%, 99%);
+  --block-background: hsl(42, 0%, 94%);
   --output-background: hsl(120, 100%, 94%);
   --menu-width: 224px;
   --max-body-width: 1024px;
@@ -129,10 +130,21 @@ table {
 
 html {
   color: var(--black);
+  background-color: var(--background);;
   font-size: var(--normal-size);
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+}
+
+html { 
+    background-image: url("/assets/images/background.jpeg");
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    margin:0;
 }
 
 body {
