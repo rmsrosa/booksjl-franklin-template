@@ -403,16 +403,19 @@ end
     notebook_path = "generated/notebooks/$(replace(dirname(filename), r"pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
     io = IOBuffer()
-    if any(
-        ==(true),
-        (
-            link_view_source,
-            link_download_notebook,
-            link_nbview_notebook,
-            link_binder_notebook
+    if (
+        link_view_source == true && startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
+    ) || (
+        any(
+            ==(true),
+            (
+                link_download_notebook,
+                link_nbview_notebook,
+                link_binder_notebook
+            )
+        ) && (
+            isfile("__site/$notebook_path")
         )
-    ) && (
-        isfile("__site/$notebook_path")
     )
         write(
             io,
@@ -471,13 +474,12 @@ end
             )
         end
 
-        if link_view_source == true
+        if link_view_source == true && startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
             menu = pagevar("config.md", :menu)
             page_numbering = pagevar("config.md", :page_numbering) === true
             toc = build_toc(menu, page_numbering)
             ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
             source_path = length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
-            @info source_path
             write(
                 io,
                 """
