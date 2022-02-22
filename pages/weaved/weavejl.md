@@ -9,6 +9,14 @@ This page was generated from a **julia script**, automatically converted to mark
 
 
 
+## Julia Logo
+
+
+
+\figalt{Julia dots}{/assets/images/julia-logo-dots-small.png}
+
+
+
 ## Math
 
 

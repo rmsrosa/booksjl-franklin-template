@@ -2,6 +2,10 @@
 
 # This page was generated from a **julia script**, automatically converted to markdown with [Literate.jl](https://github.com/fredrikekre/Literate.jl). The conversion happens automatically when the menu is constructed.
 
+# ## Julia Logo
+
+# ![Julia dots](/assets/images/julia-logo-dots-small.png)
+
 # ## Math
 
 # $$

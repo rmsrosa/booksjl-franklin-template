@@ -5,6 +5,10 @@
 
 This page was generated from a **julia markdown script**, automatically converted to markdown with [Weave.jl](https://github.com/JunoLab/Weave.jl). The conversion happens when the menu is constructed.
 
+## Julia Logo
+
+\figalt{Julia dots}{/assets/images/julia-logo-dots-small.png}
+
 ## Math
 
 $$
