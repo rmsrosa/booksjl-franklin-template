@@ -14,11 +14,6 @@
   --content-left-margin: 62px;
 }
 
-@font-face {
-  font-family: "JuliaMono-Regular";
-  src: url("../libs/fonts/JuliaMono-Regular.ttf");
-}
-
 .menu-level-2 {
   margin-left: 0.8rem;
 }
@@ -245,7 +240,7 @@ hr {
 }
 
 pre, code, kbd, samp {
-  font-family: "JuliaMono-Regular", "Helvetica", "DejaVu Sans Mono";
+  font-family: "JuliaMono-Regular", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "monospace", "DejaVu Sans Mono", "Helvetica";
   font-variant-ligatures: none;
   font-size: var(--medium-size);
   color: #000;
