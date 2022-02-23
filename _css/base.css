@@ -14,6 +14,11 @@
   --content-left-margin: 62px;
 }
 
+@font-face {
+  font-family: "JuliaMono-Regular";
+  src: url("../libs/fonts/JuliaMono-Regular.ttf");
+}
+
 .menu-level-2 {
   margin-left: 0.8rem;
 }
@@ -137,7 +142,7 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-html { 
+html {
     background-image: url("../assets/images/background.jpg");
     background-attachment: fixed;
     background-size: cover;
