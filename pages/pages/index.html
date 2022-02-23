@@ -129,17 +129,17 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. Pages</a></h1>
 <ol>
-<li><p>The pages for the book must be in either of the folders <code>pages/</code>, <code>_weave/</code>, or <code>_literate/</code>, to be properly processed. They don&#39;t need to be in the root of each of these subfolders; they can be further nested as desired.</p>
+<li><p>The pages for the book must be in either of the folders <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter/</code> in order to be properly processed. They don&#39;t need to be in the root of each of these subfolders; they can be further nested as desired.</p>
 </li>
-<li><p>Depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>, respectively.</p>
+<li><p>Depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</p>
 </li>
-<li><p>The file can be in either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, or a plain julia script format with markdown-like comments.</p>
+<li><p>The files can be in either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, Jupyter notebook, or plain julia script format with markdown-like comments.</p>
 </li>
-<li><p>The title on each Franklin&#39;s markdown page, under <code>pages/</code>, is set by the line <code>@def title &#61; &quot;Title of the Section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering, if needed. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md">raw file for this page</a>.</p>
+<li><p>The title on each Franklin&#39;s markdown page, under <code>pages/</code>, is set by the line <code>@def title &#61; &quot;Title of the Section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md">raw file for this page</a>.</p>
 </li>
-<li><p>The title on the pages within <code>_weave/</code> or <code>_literate/</code> should be defined as usual for markdown files, with <code># Title of the Section</code>. These will be processed to the format above, to be properly rendered by Franklin.</p>
+<li><p>The title on the pages within <code>_weave/</code>, <code>_literate/</code> or <code>_jupyter</code> should be defined as usual for markdown files, with <code># Title of the Section</code>. These will be processed to the format above, to be properly rendered by Franklin.</p>
 </li>
-<li><p>Each page in either <code>_weave/</code> or <code>_literated/</code> may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in <code>config.md</code>:</p>
+<li><p>Each page generated from source files in either <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code> may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in <code>config.md</code>:</p>
 <ul>
 <li><p><code>show_link_bagdes::Bool</code>: whether to add any of the link badges to the top of each weaved or literated page;</p>
 </li>
