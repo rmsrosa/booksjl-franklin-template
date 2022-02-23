@@ -8,6 +8,4 @@ Some small changes have been made, such as adding a link to the Github repo and 
 
 Those can also be tweaked as you like it, in [`_css/basic.css`](/css/basic.css).
 
-Important elements to notice are the colors, font sizes and background image set in `:root` and `html`.
-
-Another significant change is the font used in code blocks. It is currently set to [JuliaMono-Regular](https://cormullion.github.io/pages/2020-07-26-JuliaMono/). This is included in the repo. It you find that too heavy on RAM (it is about 2.4Mb; think of your readers), you are free to remove the `@font-face { ... }` block and remove `"JuliaMono-Regular"` from the `font-family` list of fonts defined for the `pre`, `code`, `kbd`, and `samp` elements.
+Important elements to notice are the colors, font sizes and background image set in `:root` and `html`, and the fontface for code blocks, set in `pre code kbd samp`.
