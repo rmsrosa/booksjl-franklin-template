@@ -138,7 +138,7 @@ html {
 }
 
 html { 
-    background-image: url("/assets/images/background.jpg");
+    background-image: url("../assets/images/background.jpg");
     background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
