@@ -39,6 +39,7 @@ menu = [
     "*PART I",
     "Configurations" => [
         "pages/book",
+        "pages/style",
         "pages/menu_bar",
         "pages/toc",
         "pages/navigation",
