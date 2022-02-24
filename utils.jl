@@ -22,9 +22,8 @@ Return the html code to display the menu bar, with the table of contents and oth
     )
     for entry in last.(toc)
         item =
-            entry.filename === nothing ?
-                entry.title :
-                "<a href=\"/$(entry.filename)\">$(entry.title)</a>"
+            entry.filename === nothing ? entry.title :
+            "<a href=\"/$(entry.filename)\">$(entry.title)</a>"
         write(
             io,
             """
@@ -57,8 +56,8 @@ Return the title of the page, prepended with the section number.
     isnothing(menu) && return pagevar(filename, :title)
 
     filename_noext =
-        occursin('.', basename(filename)) ? filename[1:prevind(filename, findlast('.', filename))] :
-        filename
+        occursin('.', basename(filename)) ?
+        filename[1:prevind(filename, findlast('.', filename))] : filename
 
     page_numbering = pagevar("config.md", :page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -178,33 +177,20 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
         new_pre = this_page_numbering === false ? "" : "$pre$(i += 1)."
 
         filename =
-            startswith(sec, "_weave/") ?
-            weave_it(lstrip(sec, '*')) :
-            startswith(sec, "_literate/") ?
-            literate_it(lstrip(sec, '*')) :
-            startswith(sec, "_jupyter/") ?
-            jupyter_it(lstrip(sec, '*')) :
-            startswith(sec, "pages/") ?
-            "$sec.md" :
-            nothing
+            startswith(sec, "_weave/") ? weave_it(lstrip(sec, '*')) :
+            startswith(sec, "_literate/") ? literate_it(lstrip(sec, '*')) :
+            startswith(sec, "_jupyter/") ? jupyter_it(lstrip(sec, '*')) :
+            startswith(sec, "pages/") ? "$sec.md" : nothing
         filename_noext =
             filename !== nothing && occursin('.', filename) ?
             filename[1:prevind(filename, findlast('.', filename))] : filename
-        
-        title = filename === nothing ? sec :
-            pagevar("$filename", :title)
+
+        title = filename === nothing ? sec : pagevar("$filename", :title)
         if this_page_numbering !== false
             title = "$new_pre $title"
         end
 
-        push!(
-            toc,
-            sec => (
-                filename = filename_noext,
-                title = title,
-                level = level
-            ),
-        )
+        push!(toc, sec => (filename = filename_noext, title = title, level = level))
         if subsecs !== nothing
             append!(toc, build_toc(subsecs, this_page_numbering, level + 1, new_pre))
         end
@@ -254,7 +240,8 @@ function weave_it(filename)
     out_path = "pages/" * replace(dirname(filename), r"_weave" => "") * "weaved"
     fig_path = "images"
     doctype = "github"
-    weaved_filename = replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
+    weaved_filename =
+        replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
 
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
@@ -270,17 +257,13 @@ function weave_it(filename)
 
     if any(
         ==(true),
-        (
-            link_download_notebook,
-            link_nbview_notebook,
-            link_binder_notebook
-        )
+        (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
         mkpath(notebook_output_dir)
         Weave.notebook(
             filename,
             out_path = notebook_output_dir,
-            nbconvert_options = "--allow-errors"
+            nbconvert_options = "--allow-errors",
         )
     end
 
@@ -295,7 +278,8 @@ a Jupyter notebook.
 """
 function literate_it(filename)
     isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), "_literate" => "", count = 1) * "literated"
+    out_path =
+        "pages/" * replace(dirname(filename), "_literate" => "", count = 1) * "literated"
     fig_path = "images"
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
@@ -308,9 +292,9 @@ function literate_it(filename)
         Literate.markdown(
             filename,
             out_path,
-            execute=true,
-            credit=false,
-            flavor = flavor
+            execute = true,
+            credit = false,
+            flavor = flavor,
         )
 
         postprocess_it(literated_filename, out_path, fig_path)
@@ -321,16 +305,9 @@ function literate_it(filename)
 
     if any(
         ==(true),
-        (
-            link_download_notebook,
-            link_nbview_notebook,
-            link_binder_notebook
-        )
+        (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
-        Literate.notebook(
-            filename,
-            notebook_output_dir
-        )
+        Literate.notebook(filename, notebook_output_dir)
     end
 
     return literated_filename[1:end-3] # remove extension ".md"
@@ -363,14 +340,10 @@ function jupyter_it(filename)
 
     if any(
         ==(true),
-        (
-            link_download_notebook,
-            link_nbview_notebook,
-            link_binder_notebook
-        )
+        (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
         mkpath(notebook_output_dir)
-        cp(filename, "$notebook_output_dir/$(basename(filename))", force=true)
+        cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
         #= 
         # The following would have the advantage of forcing a clean
         # execution of the notebook, but Weave currently has some issues
@@ -405,25 +378,20 @@ code associated with each page that has been processed via Weave or Literate.
 
     io = IOBuffer()
     if (
-        link_view_source == true && startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
+        link_view_source == true &&
+        startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
     ) || (
         any(
             ==(true),
-            (
-                link_download_notebook,
-                link_nbview_notebook,
-                link_binder_notebook
-            )
-        ) && (
-            isfile("__site/$notebook_path")
-        )
+            (link_download_notebook, link_nbview_notebook, link_binder_notebook),
+        ) && (isfile("__site/$notebook_path"))
     )
         write(
             io,
             """
             </br>
             <div class="badges">
-            """
+            """,
         )
         if link_nbview_notebook == true && isfile("__site/$notebook_path")
             website = pagevar("config.md", :website)
@@ -441,19 +409,13 @@ code associated with each page that has been processed via Weave or Literate.
             prepath = pagevar("config.md", :prepath)
             if all(
                 !isnothing,
-                (
-                    nbgitpuller_repo,
-                    nbgitpuller_branch,
-                    binder_application,
-                    prepath
-                )
+                (nbgitpuller_repo, nbgitpuller_branch, binder_application, prepath),
             )
                 nbgitpuller_repo = replace(nbgitpuller_repo, "https://github.com/" => "")
 
-                binder_application = binder_application == "" ?
-                    "tree" :
-                    binder_application in ("lab", "retro") ?
-                    "$binder_application/tree" :
+                binder_application =
+                    binder_application == "" ? "tree" :
+                    binder_application in ("lab", "retro") ? "$binder_application/tree" :
                     binder_application # not sure how the others work
 
                 prepath == "" || (prepath = "$prepath/")
@@ -475,12 +437,14 @@ code associated with each page that has been processed via Weave or Literate.
             )
         end
 
-        if link_view_source == true && startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
+        if link_view_source == true &&
+           startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
             menu = pagevar("config.md", :menu)
             page_numbering = pagevar("config.md", :page_numbering) === true
             toc = build_toc(menu, page_numbering)
             ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
-            source_path = length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
+            source_path =
+                length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
             write(
                 io,
                 """
@@ -494,7 +458,7 @@ code associated with each page that has been processed via Weave or Literate.
             """
             </div>
             </br>
-            """
+            """,
         )
     end
     return String(take!(io))
@@ -519,16 +483,17 @@ function postprocess_it(filename, out_path, fig_path)
             else
                 line = replace(
                     line,
-                    r"!\[([^\]]*)\]\(\.\.[\.|/]*/_assets/([^\)]*)\)" => s"![\1](/assets/\2)",
+                    r"!\[([^\]]*)\]\(\.\.[\.|/]*/_assets/([^\)]*)\)" =>
+                        s"![\1](/assets/\2)",
                     r"^!\[\]\(([^/)][^\)]*)\)" => s"\\fig{\1}",
-                    r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}"
+                    r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}",
                 )
             end
             write(tmpio, line)
         end
     end
     close(tmpio)
-    mv(tmppath, "$filename", force=true)
+    mv(tmppath, "$filename", force = true)
     if isdir("$out_path/$fig_path/")
         destination = "_assets/$(filename[1:end-3])/code/$fig_path"
         mkpath(destination)
