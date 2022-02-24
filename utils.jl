@@ -132,6 +132,7 @@ Return the html code to display the navigation buttons on the top and/or bottom 
             """
                 </p>
             </div>
+            </br></br>
             """,
         )
     end
@@ -389,8 +390,8 @@ code associated with each page that has been processed via Weave or Literate.
         write(
             io,
             """
-            </br>
             <div class="badges">
+            <p>
             """,
         )
         if link_nbview_notebook == true && isfile("__site/$notebook_path")
@@ -456,8 +457,8 @@ code associated with each page that has been processed via Weave or Literate.
         write(
             io,
             """
-            </div>
-            </br>
+            </p>
+            </div></br>
             """,
         )
     end
