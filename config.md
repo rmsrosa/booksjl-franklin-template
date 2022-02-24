@@ -4,13 +4,13 @@
 +++
 prepath = "booksjl-franklin-template"
 content_tag = ""
-ignore = ["_weave/", "_jupyter/"]
+ignore = ["_weave/", "_jupyter/", "_literate"]
 +++
 
 ## book variables
 +++
-book_title = "Book Template for Franklin.jl"
-book_subtitle = "Create books with Franklin"
+book_title = "Book Template for Franklin"
+book_subtitle = "Create books with Franklin.jl"
 book_author = "<a href=\"https://rmsrosa.github.io\">Ricardo M. S. Rosa</a>"
 show_license = true
 book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
