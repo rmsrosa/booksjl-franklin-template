@@ -4,13 +4,23 @@
 # {{ get_title }}
 
 
-
 This page was generated from a [Jupyter](https://jupyter.org) notebook, automatically converted to markdown with [Literate.jl](https://github.com/fredrikekre/Literate.jl). The conversion happens automatically when the menu is constructed.
 
 
-## Julia Logo
+## Julia Dots
 
-\figalt{Julia dots}{/assets/images/julia-logo-dots-small.png}
+PNG with path relative to site, i.e. `/assets/images/julia-logo-dots-small.png`:
+
+![Julia dots](/assets/images/julia-logo-dots-small.png)
+
+
+
+
+## Julia Speeder
+
+GIF with path relative to file but within `_assets/`, i.e. `../_assets/images/juliaspeeder32x32.gif` and postprocessed accordingly, so it works both in Franklin and in Jupyter:
+
+![Julia speeder](/assets/images/juliaspeeder32x32.gif)
 
 
 ## Math

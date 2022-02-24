@@ -4,9 +4,17 @@
 
 As usual with sites built with [Franklin.jl](https://franklinjl.org), you may easily insert math and execute code when desired.
 
-## Julia Logo
+## Julia Dots
+
+PNG with path relative to site, i.e. `/assets/images/julia-logo-dots-small.png`:
 
 ![Julia dots](/assets/images/julia-logo-dots-small.png)
+
+## Julia Speeder
+
+GIF with path relative to site, i.e. `/assets/images/juliaspeeder32x32.gif`:
+
+![Julia speeder](/assets/images/juliaspeeder32x32.gif)
 
 ## Math
 
