@@ -149,27 +149,14 @@
 <li><p><code>menu::Vector&#123;&lt;:Union&#123;String, Pair&#123;String, Vector&#123;String&#125;&#125;&#125;&#125;</code>: structure of the menu.</p>
 </li>
 </ul>
-<ol>
-<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code>, it means it points to a file. The title is grabbed from the file.</p>
-</li>
-<li><p>If an entry points to a file but has no extension, it is assumed to have the <code>.md</code> extension.</p>
-</li>
-<li><p>When a string does not start with either of the prefixes above, it does not point to any content file, and simply contains the title of the entry.</p>
-</li>
-<li><p>When an entry is a <code>Pair</code>, the second value of the <code>Pair</code> is a <code>Vector of Strings</code> with the list of subsections, each of them following the pattern above.</p>
-</li>
-<li><p>Inspired by LaTeX, if a string starts with a <code>*</code>, it is not to be numbered. Contrarily to LaTeX, however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with <code>*</code> or not.</p>
-</li>
-<li><p>When the entry points to a file, then, depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, a plain julia script with markdown-like comments, or a jupyter notebook.</p>
-</li>
-</ol>
-<p><strong>Example Menu</strong></p>
-<p>This is illustrated with the example used in this book/documentation, which yields the table of contents on the menu bar on the left:</p>
+<h2 id="example_menu"><a href="#example_menu" class="header-anchor">Example Menu</a></h2>
+<p>The behavior of the <code>menu</code> variable is best understood with an example. Consider the one used in this book/documentation, which yields the table of contents on the menu bar on the left:</p>
 <pre><code class="language-julia">menu &#61; &#91;
     &quot;*pages/intro&quot;,
     &quot;*PART I&quot;,
     &quot;Configurations&quot; &#61;&gt; &#91;
         &quot;pages/book&quot;,
+        &quot;pages/style&quot;,
         &quot;pages/menu_bar&quot;,
         &quot;pages/toc&quot;,
         &quot;pages/navigation&quot;,
@@ -187,6 +174,21 @@
     &quot;*pages/appendix&quot;,
 &#93;</code></pre>
 <p>Notice how the entries that start with <code>*</code> do not get numbered, and how those that do not start with either <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code> just have the title and don&#39;t link to any page, regardless of being a pair pointing to a vector of subsections or not.</p>
+<h2 id="rules"><a href="#rules" class="header-anchor">Rules</a></h2>
+<ol>
+<li><p>When a string starts with either <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code>, it means it points to a file. The title is grabbed from the file.</p>
+</li>
+<li><p>If an entry points to a file but has no extension, it is assumed to have the <code>.md</code> extension.</p>
+</li>
+<li><p>When a string does not start with either of the prefixes above, it does not point to any content file, and simply contains the title of the entry.</p>
+</li>
+<li><p>When an entry is a <code>Pair</code>, the second value of the <code>Pair</code> is a <code>Vector of Strings</code> with the list of subsections, each of them following the pattern above.</p>
+</li>
+<li><p>Inspired by LaTeX, if a string starts with a <code>*</code>, it is not to be numbered. Contrarily to LaTeX, however, if that string points to a lists of subsections, none of them gets numbered either, regardless of starting with <code>*</code> or not.</p>
+</li>
+<li><p>When the entry points to a file, then, depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>. Depending on the case, the file can be either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, a plain julia script with markdown-like comments, or a jupyter notebook.</p>
+</li>
+</ol>
 
     <div class="navbar">
     <p id="nav">
