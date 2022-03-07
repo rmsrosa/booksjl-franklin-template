@@ -35,27 +35,26 @@ nav_on_bottom = true
 +++
 page_numbering = true
 menu = [
-    "*pages/intro",
-    "*PART I",
+    "*pages/intro"
+    "*PART I"
     "Configurations" => [
-        "pages/book",
-        "pages/style",
-        "pages/menu_bar",
-        "pages/toc",
-        "pages/navigation",
-        "pages/pages",
-        "pages/binder",
-    ],
-    "*PART II",
+        "pages/book"
+        "pages/style"
+        "pages/menu_bar"
+        "pages/toc"
+        "pages/navigation"
+        "pages/pages"
+        "pages/binder"
+    ]
+    "*PART II"
     "pages/math_and_code" => [
-        "pages/1.franklinmd",
-        "_literate/literatejl.jl",
-        "_weave/weavejl.jl",
-        "_weave/weavejmd.jmd",
-        "_jupyter/notebook.ipynb",
-        "_jupyter/sub1/1.1-notebook_sub.ipynb"
-    ],
-    "*pages/appendix",
+        "pages/franklinmd"
+        "_literate/literatejl.jl"
+        "_weave/weavejl.jl"
+        "_weave/weavejmd.jmd"
+        "_jupyter/notebook.ipynb"
+    ]
+    "*pages/appendix"
 ]
 +++
 
