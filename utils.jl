@@ -184,7 +184,7 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             startswith(sec, "pages/") ? "$sec.md" : nothing
         filename_noext = filename !== nothing && occursin('.', filename) ? replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
 
-        title = filename === nothing ? sec : pagevar("$filename", :title)
+        title = filename === nothing ? sec : pagevar(filename, :title)
         if this_page_numbering !== false
             title = "$new_pre $title"
         end
@@ -233,7 +233,7 @@ function weave_it(filename)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    if mtime(filename) > mtime("$weaved_filename")
+    if mtime(filename) > mtime(weaved_filename)
         Weave.weave(filename; out_path, fig_path, doctype)
         postprocess_it(weaved_filename, out_path, fig_path)
     end
@@ -273,7 +273,7 @@ function literate_it(filename)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    if mtime(filename) > mtime("$literated_filename")
+    if mtime(filename) > mtime(literated_filename)
         Literate.markdown(
             filename,
             out_path,
@@ -315,7 +315,7 @@ function jupyter_it(filename)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
     link_binder_notebook = pagevar("config.md", :link_binder_notebook)
 
-    if mtime(filename) > mtime("$weaved_filename")
+    if mtime(filename) > mtime(weaved_filename)
         Weave.weave(filename; out_path, fig_path, doctype)
         postprocess_it(weaved_filename, out_path, fig_path)
     end
@@ -460,7 +460,7 @@ the title.
 function postprocess_it(filename, out_path, fig_path)
     tmppath, tmpio = mktemp()
     no_match_so_far = true
-    open("$filename", "r") do io
+    open(filename, "r") do io
         for line in eachline(io, keep = true)
             if (m = match(r"^#\s+(.*)$", line)) !== nothing && no_match_so_far == true
                 line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n"
@@ -478,7 +478,7 @@ function postprocess_it(filename, out_path, fig_path)
         end
     end
     close(tmpio)
-    mv(tmppath, "$filename", force = true)
+    mv(tmppath, filename, force = true)
     if isdir("$out_path/$fig_path/")
         destination = "_assets/$(filename[1:end-3])/code/$fig_path"
         mkpath(destination)
