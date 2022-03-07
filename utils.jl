@@ -182,7 +182,9 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             startswith(sec, "_literate/") ? literate_it(sec) :
             startswith(sec, "_jupyter/") ? jupyter_it(sec) :
             startswith(sec, "pages/") ? "$sec.md" : nothing
-        filename_noext = filename !== nothing && occursin('.', filename) ? replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
+        filename_noext =
+            filename !== nothing && occursin('.', filename) ?
+            replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
 
         title = filename === nothing ? sec : pagevar(filename, :title)
         if this_page_numbering !== false
