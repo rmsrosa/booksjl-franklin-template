@@ -91,7 +91,7 @@
     <li><a href="/booksjl-franklin-template/pages/math_and_code">2. Math and Code</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/booksjl-franklin-template/pages/1.franklinmd">2.1. Franklin's Markdown</a></li>
+    <li><a href="/booksjl-franklin-template/pages/franklinmd">2.1. Franklin's Markdown</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/booksjl-franklin-template/pages/literated/literatejl">2.2. Literated Julia Script</a></li>
@@ -153,26 +153,26 @@
 <h2 id="example_menu"><a href="#example_menu" class="header-anchor">Example Menu</a></h2>
 <p>The behavior of the <code>menu</code> variable is best understood with an example. Consider the one used in this book/documentation, which yields the table of contents on the menu bar on the left:</p>
 <pre><code class="language-julia">menu &#61; &#91;
-    &quot;*pages/intro&quot;,
-    &quot;*PART I&quot;,
+    &quot;*pages/intro&quot;
+    &quot;*PART I&quot;
     &quot;Configurations&quot; &#61;&gt; &#91;
-        &quot;pages/book&quot;,
-        &quot;pages/style&quot;,
-        &quot;pages/menu_bar&quot;,
-        &quot;pages/toc&quot;,
-        &quot;pages/navigation&quot;,
-        &quot;pages/pages&quot;,
-        &quot;pages/binder&quot;,
-    &#93;,
-    &quot;*PART II&quot;,
+        &quot;pages/book&quot;
+        &quot;pages/style&quot;
+        &quot;pages/menu_bar&quot;
+        &quot;pages/toc&quot;
+        &quot;pages/navigation&quot;
+        &quot;pages/pages&quot;
+        &quot;pages/binder&quot;
+    &#93;
+    &quot;*PART II&quot;
     &quot;pages/math_and_code&quot; &#61;&gt; &#91;
-        &quot;pages/franklinmd&quot;,
-        &quot;_literate/literatejl.jl&quot;,
-        &quot;_weave/weavejl.jl&quot;,
-        &quot;_weave/weavejmd.jmd&quot;,
+        &quot;pages/franklinmd&quot;
+        &quot;_literate/literatejl.jl&quot;
+        &quot;_weave/weavejl.jl&quot;
+        &quot;_weave/weavejmd.jmd&quot;
         &quot;_jupyter/notebook.ipynb&quot;
-    &#93;,
-    &quot;*pages/appendix&quot;,
+    &#93;
+    &quot;*pages/appendix&quot;
 &#93;</code></pre>
 <p>Notice how the entries that start with <code>*</code> do not get numbered, and how those that do not start with either <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code> just have the title and don&#39;t link to any page, regardless of being a pair pointing to a vector of subsections or not.</p>
 <h2 id="rules"><a href="#rules" class="header-anchor">Rules</a></h2>
