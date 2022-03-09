@@ -7,9 +7,9 @@ using Literate
 Return the html code to display the menu bar, with the table of contents and other book info.
 """
 @delay function hfun_menubar()
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     isnothing(menu) && return ""
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
     getfield.(last.(toc), :title)
     io = IOBuffer()
@@ -49,7 +49,7 @@ end
 Return the title of the page, prepended with the section number.
 """
 @delay function hfun_get_title()
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     filename = locvar(:fd_rpath)
     title = pagevar(filename, :title)
     isnothing(title) && return filename
@@ -59,7 +59,7 @@ Return the title of the page, prepended with the section number.
         occursin('.', basename(filename)) ?
         filename[1:prevind(filename, findlast('.', filename))] : filename
 
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
     entries = toc[map(x -> x.filename, last.(toc)).==filename_noext]
     return length(entries) == 1 ? only(last.(entries)).title : "Title not found"
@@ -73,7 +73,7 @@ Return the html code to display the navigation buttons on the top and/or bottom 
 @delay function hfun_navigation()
     io = IOBuffer()
 
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     isnothing(menu) && return String(take!(io))
 
     filename = locvar(:fd_rpath)
@@ -82,7 +82,7 @@ Return the html code to display the navigation buttons on the top and/or bottom 
         occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
         filename
 
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
 
     prevnext = build_prevnext(toc)
@@ -146,7 +146,7 @@ end
 Return the html code to display the link to the github repo.
 """
 function hfun_github_repo_link()
-    github_repo = pagevar("config.md", :github_repo)
+    github_repo = globvar(:github_repo)
     (github_repo === nothing || github_repo == "") && return ""
 
     io = IOBuffer()
@@ -231,9 +231,9 @@ function weave_it(filename)
     weaved_filename =
         replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
 
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
     if mtime(filename) > mtime(weaved_filename)
         Weave.weave(filename; out_path, fig_path, doctype)
@@ -271,9 +271,9 @@ function literate_it(filename)
     flavor = Literate.FranklinFlavor()
     literated_filename = replace("$out_path/$(basename(filename))", r"\.jl$" => ".md")
 
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
     if mtime(filename) > mtime(literated_filename)
         Literate.markdown(
@@ -313,9 +313,9 @@ function jupyter_it(filename)
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"\.ipynb$" => ".md")
 
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
     if mtime(filename) > mtime(weaved_filename)
         Weave.weave(filename; out_path, fig_path, doctype)
@@ -354,12 +354,12 @@ code associated with each page that has been processed via Weave or Literate.
 @delay function hfun_linkbadges()
     filename = locvar(:fd_rpath)
 
-    link_view_source = pagevar("config.md", :link_view_source)
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_view_source = globvar(:link_view_source)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
-    github_repo = pagevar("config.md", :github_repo)
+    github_repo = globvar(:github_repo)
 
     notebook_path = "generated/notebooks/$(replace(dirname(filename), r"^pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
@@ -381,7 +381,7 @@ code associated with each page that has been processed via Weave or Literate.
             """,
         )
         if link_nbview_notebook == true && isfile("__site/$notebook_path")
-            website = pagevar("config.md", :website)
+            website = globvar(:website)
             write(
                 io,
                 """
@@ -390,10 +390,10 @@ code associated with each page that has been processed via Weave or Literate.
             )
         end
         if link_binder_notebook == true && isfile("__site/$notebook_path")
-            nbgitpuller_repo = pagevar("config.md", :nbgitpuller_repo)
-            nbgitpuller_branch = pagevar("config.md", :nbgitpuller_branch)
-            binder_application = pagevar("config.md", :binder_application)
-            prepath = pagevar("config.md", :prepath)
+            nbgitpuller_repo = globvar(:nbgitpuller_repo)
+            nbgitpuller_branch = globvar(:nbgitpuller_branch)
+            binder_application = globvar(:binder_application)
+            prepath = globvar(:prepath)
             if all(
                 !isnothing,
                 (nbgitpuller_repo, nbgitpuller_branch, binder_application, prepath),
@@ -426,8 +426,8 @@ code associated with each page that has been processed via Weave or Literate.
 
         if link_view_source == true &&
            startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
-            menu = pagevar("config.md", :menu)
-            page_numbering = pagevar("config.md", :page_numbering) === true
+            menu = globvar(:menu)
+            page_numbering = globvar(:page_numbering) === true
             toc = build_toc(menu, page_numbering)
             ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
             source_path =
