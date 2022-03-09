@@ -48,7 +48,7 @@ menu = [
     ]
     "*PART II"
     "pages/math_and_code" => [
-        "pages/1.franklinmd"
+        "pages/franklinmd"
         "_literate/literatejl.jl"
         "_weave/weavejl.jl"
         "_weave/weavejmd.jmd"

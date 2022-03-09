@@ -16,26 +16,26 @@ The behavior of the `menu` variable is best understood with an example. Consider
 
 ```julia
 menu = [
-    "*pages/intro",
-    "*PART I",
+    "*pages/intro"
+    "*PART I"
     "Configurations" => [
-        "pages/book",
-        "pages/style",
-        "pages/menu_bar",
-        "pages/toc",
-        "pages/navigation",
-        "pages/pages",
-        "pages/binder",
-    ],
-    "*PART II",
+        "pages/book"
+        "pages/style"
+        "pages/menu_bar"
+        "pages/toc"
+        "pages/navigation"
+        "pages/pages"
+        "pages/binder"
+    ]
+    "*PART II"
     "pages/math_and_code" => [
-        "pages/franklinmd",
-        "_literate/literatejl.jl",
-        "_weave/weavejl.jl",
-        "_weave/weavejmd.jmd",
+        "pages/franklinmd"
+        "_literate/literatejl.jl"
+        "_weave/weavejl.jl"
+        "_weave/weavejmd.jmd"
         "_jupyter/notebook.ipynb"
-    ],
-    "*pages/appendix",
+    ]
+    "*pages/appendix"
 ]
 ```
 
