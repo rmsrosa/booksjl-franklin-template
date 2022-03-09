@@ -55,9 +55,7 @@ Return the title of the page, prepended with the section number.
     isnothing(title) && return filename
     isnothing(menu) && return pagevar(filename, :title)
 
-    filename_noext =
-        occursin('.', basename(filename)) ?
-        filename[1:prevind(filename, findlast('.', filename))] : filename
+    filename_noext = first(splitext(filename))
 
     page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -78,9 +76,7 @@ Return the html code to display the navigation buttons on the top and/or bottom 
 
     filename = locvar(:fd_rpath)
 
-    filename_noext =
-        occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
-        filename
+    filename_noext = first(splitext(filename))
 
     page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
@@ -182,9 +178,7 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             startswith(sec, "_literate/") ? literate_it(sec) :
             startswith(sec, "_jupyter/") ? jupyter_it(sec) :
             startswith(sec, "pages/") ? "$sec.md" : nothing
-        filename_noext =
-            filename !== nothing && occursin('.', filename) ?
-            replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
+        filename_noext = filename !== nothing ? first(splitext(filename)) : nothing
 
         title = filename === nothing ? sec : pagevar(filename, :title)
         if this_page_numbering !== false
@@ -255,7 +249,7 @@ function weave_it(filename)
         )
     end
 
-    return weaved_filename[1:end-3] # remove extension ".md"
+    return first(splitext(weaved_filename)) # remove extension ".md"
 end
 
 """
@@ -297,7 +291,7 @@ function literate_it(filename)
         Literate.notebook(filename, notebook_output_dir)
     end
 
-    return literated_filename[1:end-3] # remove extension ".md"
+    return first(splitext(literated_filename)) # remove extension ".md"
 end
 
 """
@@ -342,7 +336,7 @@ function jupyter_it(filename)
         ) =#
     end
 
-    return weaved_filename[1:end-3] # remove extension ".md"
+    return first(splitext(weaved_filename)) # remove extension ".md"
 end
 
 """
@@ -429,7 +423,7 @@ code associated with each page that has been processed via Weave or Literate.
             menu = globvar(:menu)
             page_numbering = globvar(:page_numbering) === true
             toc = build_toc(menu, page_numbering)
-            ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
+            ftoc = filter(x -> last(x).filename == first(splitext(filename)), toc)
             source_path =
                 length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
             write(
@@ -482,7 +476,7 @@ function postprocess_it(filename, out_path, fig_path)
     close(tmpio)
     mv(tmppath, filename, force = true)
     if isdir("$out_path/$fig_path/")
-        destination = "_assets/$(filename[1:end-3])/code/$fig_path"
+        destination = "_assets/$(first(splitext(filename)))/code/$fig_path"
         mkpath(destination)
         mv("$out_path/$fig_path", destination, force = true)
     end
