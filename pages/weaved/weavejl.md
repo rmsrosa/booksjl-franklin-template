@@ -24,7 +24,7 @@ PNG with path relative to site, i.e. `/assets/images/julia-logo-dots-small.png`,
 
 
 
-GIF with path relative to file but within `_assets/`, i.e. `../../_assets/images/juliaspeeder32x32.gif`, and postprocessed accordingly, so it works both in Franklin and in Weave, but keep in mind that this is processed by Weave from the file directory:
+GIF with path relative to file but within `_assets/`, i.e. `../../_assets/images/juliaspeeder32x32.gif`, and postprocessed accordingly, so it works both in Franklin and in Weave:
 
 
 
@@ -77,7 +77,21 @@ hello world!
 
 
 
-Keep in mind that Weave renders this from the file dir
+Keep in mind that Weave renders this from the directory where the file will be weaved to, which is different from the way Literate handles it:
+
+```julia
+pwd()
+```
+
+```
+"/Users/rrosa/Documents/git_repositories/julia/booksjl-franklin-template/pa
+ges/weaved"
+```
+
+
+
+
+With that settled, we can use the proper path:
 
 ```julia
 open("../../_assets/data/wow.txt") do io
@@ -103,4 +117,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/weavejl_3_1.png}
+\fig{images/weavejl_4_1.png}

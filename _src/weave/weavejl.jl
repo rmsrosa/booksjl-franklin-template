@@ -33,11 +33,11 @@ println("hello world!")
 
 #' ## Load file
 
-# Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it:
+#' Keep in mind that Weave renders this from the directory where the file will be weaved to, which is different from the way Literate handles it:
 
 pwd()
 
-# With that settled, we can use the proper path:
+#' With that settled, we can use the proper path:
 
 open("../../_assets/data/wow.txt") do io
     read(io, String)

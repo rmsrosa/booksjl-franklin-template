@@ -18,7 +18,7 @@ PNG with path relative to site, i.e. `/assets/images/julia-logo-dots-small.png`,
 
 ## Julia Speeder
 
-GIF with path relative to (processed) file but within `_assets/`, i.e. `../../_assets/images/juliaspeeder32x32.gif` and postprocessed accordingly, so it works both in Franklin and in Jupyter, but keep in mind that this is processed by Weave from the directory of the processed file, which is setup to be at the same level of the notebook file:
+GIF with path relative to (processed) file but within `_assets/`, i.e. `../../_assets/images/juliaspeeder32x32.gif` and postprocessed accordingly, so it works both in Franklin and in Jupyter, but keep in mind that the notebook is processed by Weave from the directory of the processed file, which is setup to be at the same level of the notebook file to avoid further and special processing:
 
 ![Julia speeder](/assets/images/juliaspeeder32x32.gif)
 
@@ -61,6 +61,24 @@ hello world!
 
 ## Load file
 
+Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it:
+
+
+```julia
+pwd()
+```
+
+```
+"/Users/rrosa/Documents/git_repositories/julia/booksjl-franklin-template/pa
+ges/jupytered"
+```
+
+
+
+
+
+With that settled, we can use the proper path:
+
 ```julia
 
 open("../../_assets/data/wow.txt") do io
@@ -88,4 +106,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/notebookipynb_5_1.png}
+\fig{images/notebookipynb_6_1.png}
