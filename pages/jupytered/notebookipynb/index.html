@@ -155,7 +155,7 @@
 <p>PNG with path relative to site, i.e. <code>/assets/images/julia-logo-dots-small.png</code>, but this only works in the Franklin-rendered site:</p>
 <p><img src="/booksjl-franklin-template/assets/images/julia-logo-dots-small.png" alt="Julia dots" /></p>
 <h2 id="julia_speeder"><a href="#julia_speeder" class="header-anchor">Julia Speeder</a></h2>
-<p>GIF with path relative to &#40;processed&#41; file but within <code>_assets/</code>, i.e. <code>../../_assets/images/juliaspeeder32x32.gif</code> and postprocessed accordingly, so it works both in Franklin and in Jupyter, but keep in mind that this is processed by Weave from the directory of the processed file, which is setup to be at the same level of the notebook file:</p>
+<p>GIF with path relative to &#40;processed&#41; file but within <code>_assets/</code>, i.e. <code>../../_assets/images/juliaspeeder32x32.gif</code> and postprocessed accordingly, so it works both in Franklin and in Jupyter, but keep in mind that the notebook is processed by Weave from the directory of the processed file, which is setup to be at the same level of the notebook file to avoid further and special processing:</p>
 <p><img src="/booksjl-franklin-template/assets/images/juliaspeeder32x32.gif" alt="Julia speeder" /></p>
 <h2 id="math"><a href="#math" class="header-anchor">Math</a></h2>
 <p>Inline, as in \(e^{i\pi} = -1\), or in a block:</p>
@@ -170,6 +170,11 @@
 <pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre>
 <pre><code class="language-julia">hello world&#33;</code></pre>
 <h2 id="load_file"><a href="#load_file" class="header-anchor">Load file</a></h2>
+<p>Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it:</p>
+<pre><code class="language-julia">pwd&#40;&#41;</code></pre>
+<pre><code class="language-julia">&quot;/Users/rrosa/Documents/git_repositories/julia/booksjl-franklin-template/pa
+ges/jupytered&quot;</code></pre>
+<p>With that settled, we can use the proper path:</p>
 <pre><code class="language-julia">open&#40;&quot;../../_assets/data/wow.txt&quot;&#41; do io
     read&#40;io, String&#41;
 end</code></pre>
@@ -179,7 +184,7 @@ end</code></pre>
 <pre><code class="language-julia">x &#61; 0.0:0.01:2π
 y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
 plot&#40;x, y&#41;</code></pre>
-<img src="/booksjl-franklin-template/assets/pages/jupytered/notebookipynb/code/images/notebookipynb_5_1.png" alt="">
+<img src="/booksjl-franklin-template/assets/pages/jupytered/notebookipynb/code/images/notebookipynb_6_1.png" alt="">
 
     <div class="navbar">
     <p id="nav">
@@ -203,7 +208,7 @@ plot&#40;x, y&#41;</code></pre>
         </div>
     
 
-    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> from a <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
