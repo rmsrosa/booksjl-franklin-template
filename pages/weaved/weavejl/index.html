@@ -152,12 +152,13 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.3. Weaved Julia Script</a></h1>
 <p>This page was generated from a <strong>julia script</strong>, automatically converted to markdown with <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>. The conversion happens automatically when the menu is constructed.</p>
 <h2 id="julia_dots"><a href="#julia_dots" class="header-anchor">Julia Dots</a></h2>
-<p>PNG with path relative to site, i.e. <code>/assets/images/julia-logo-dots-small.png</code>:</p>
+<p>PNG with path relative to site, i.e. <code>/assets/images/julia-logo-dots-small.png</code>, but this only works in the Franklin-rendered site:</p>
 <p><img src="/booksjl-franklin-template/assets/images/julia-logo-dots-small.png" alt="Julia dots" /></p>
 <h2 id="julia_speeder"><a href="#julia_speeder" class="header-anchor">Julia Speeder</a></h2>
-<p>GIF with path relative to file but within <code>_assets/</code>, i.e. <code>../_assets/images/juliaspeeder32x32.gif</code>, and postprocessed accordingly, so it works both in Franklin and in Weave:</p>
+<p>GIF with path relative to file but within <code>_assets/</code>, i.e. <code>../../_assets/images/juliaspeeder32x32.gif</code>, and postprocessed accordingly, so it works both in Franklin and in Weave, but keep in mind that this is processed by Weave from the file directory:</p>
 <p><img src="/booksjl-franklin-template/assets/images/juliaspeeder32x32.gif" alt="Julia speeder" /></p>
 <h2 id="math"><a href="#math" class="header-anchor">Math</a></h2>
+<p>Inline, as in \(e^{i\pi} = -1\), or in a block:</p>
 \[
 \exp(i\pi) + 1 = 0
 \]
@@ -168,6 +169,12 @@
 <p>and another:</p>
 <pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre>
 <pre><code class="language-julia">hello world&#33;</code></pre>
+<h2 id="load_file"><a href="#load_file" class="header-anchor">Load file</a></h2>
+<p>Keep in mind that Weave renders this from the file dir</p>
+<pre><code class="language-julia">open&#40;&quot;../../_assets/data/wow.txt&quot;&#41; do io
+    read&#40;io, String&#41;
+end</code></pre>
+<pre><code class="language-julia">&quot;Wow, this seems like a cool template&#33;&quot;</code></pre>
 <h2 id="plot"><a href="#plot" class="header-anchor">Plot</a></h2>
 <pre><code class="language-julia">using Plots
 
@@ -175,7 +182,7 @@ x &#61; 0.0:0.01:2π
 y &#61; sin.&#40;2x&#41; &#43; sin.&#40;5x&#41;
 
 plot&#40;x, y&#41;</code></pre>
-<img src="/booksjl-franklin-template/assets/pages/weaved/weavejl/code/images/weavejl_2_1.png" alt="">
+<img src="/booksjl-franklin-template/assets/pages/weaved/weavejl/code/images/weavejl_3_1.png" alt="">
 
     <div class="navbar">
     <p id="nav">
@@ -191,15 +198,16 @@ plot&#40;x, y&#41;</code></pre>
 
 
 
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication </a>
+            
+        </div>
+    
 
-    <div class="license">
-    <br/>
-    <br/>
-        <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication </a>
-        
-    </div>
-
-<!-- CONTENT ENDS HERE -->
+    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> from a <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
