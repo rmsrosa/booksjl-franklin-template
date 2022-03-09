@@ -71,4 +71,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/notebook_4_1.png}
+\fig{images/notebookipynb_4_1.png}

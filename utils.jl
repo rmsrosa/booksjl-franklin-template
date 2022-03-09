@@ -173,7 +173,6 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
 
         new_pre = this_page_numbering === false ? "" : "$pre$(i += 1)."
 
-        #filename = startswith(sec, "pages/") ? "$sec.md" : startswith(sec, r"_weave/|_literate/|_jupyter/") ? process_it(sec) : nothing
         filename = process_it(sec)
         filename_noext = filename !== nothing ? first(splitext(filename)) : nothing
 
@@ -220,24 +219,27 @@ Processing generates a Markdown file for Franklin and a Jupyter notebook for the
 """
 function process_it(filename)
     startswith(filename, "pages/") && return "$filename.md"
-    startswith(filename, r"_weave/|_literate/|_jupyter/") || return nothing
+    startswith(filename, "_src/") || return nothing
 
     out_path =
-        "pages/" * replace(
+        replace(
             dirname(filename),
-            r"^_weave" => "weaved",
-            r"^_literate" => "literated",
-            r"^_jupyter" => "jupytered",
+            r"^_src/weave" => "pages/weaved",
+            r"^_src/literate" => "pages/literated",
+            r"^_src/jupyter" => "pages/jupytered",
         )
     fig_path = "images"
     processed_filename = first(splitext("$out_path/$(basename(filename))")) * ".md"
+    @info "filename: $filename"
+    @info "out_path: $out_path"
+    @info "processed_filename: $processed_filename"
 
     link_download_notebook = globvar(:link_download_notebook)
     link_nbview_notebook = globvar(:link_nbview_notebook)
     link_binder_notebook = globvar(:link_binder_notebook)
 
     if mtime(filename) > mtime(processed_filename)
-        if startswith(filename, "_literate/")
+        if startswith(filename, "_src/literate/")
             Literate.markdown(
                 filename,
                 out_path,
@@ -251,7 +253,7 @@ function process_it(filename)
         postprocess_it(processed_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_weave" => "weaved", r"^_literate" => "literated", r"^_jupyter" => "jupytered"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_src/weave" => "weaved", r"^_src/literate" => "literated", r"^_src/jupyter" => "jupytered"))"
     notebook_path =
         first(splitext("$notebook_output_dir/$(basename(filename))")) * ".ipynb"
 
@@ -260,16 +262,16 @@ function process_it(filename)
         (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
 
-        if startswith(filename, "_weave/")
+        if startswith(filename, "_src/weave/")
             mkpath(notebook_output_dir)
             Weave.notebook(
                 filename,
                 out_path = notebook_output_dir,
                 nbconvert_options = "--allow-errors",
             )
-        elseif startswith(filename, "_literate/")
+        elseif startswith(filename, "_src/literate/")
             Literate.notebook(filename, notebook_output_dir)
-        elseif startswith(filename, "_jupyter/")
+        elseif startswith(filename, "_src/jupyter/")
             mkpath(notebook_output_dir)
             cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
             #= 

@@ -4,7 +4,7 @@
 +++
 prepath = "booksjl-franklin-template"
 content_tag = ""
-ignore = ["_weave/", "_jupyter/", "_literate"]
+ignore = ["_src/"]
 +++
 
 ## book variables
@@ -49,10 +49,10 @@ menu = [
     "*PART II"
     "pages/math_and_code" => [
         "pages/franklinmd"
-        "_literate/literatejl.jl"
-        "_weave/weavejl.jl"
-        "_weave/weavejmd.jmd"
-        "_jupyter/notebook.ipynb"
+        "_src/literate/literatejl.jl"
+        "_src/weave/weavejl.jl"
+        "_src/weave/weavejmd.jmd"
+        "_src/jupyter/notebookipynb.ipynb"
     ]
     "*pages/appendix"
 ]
