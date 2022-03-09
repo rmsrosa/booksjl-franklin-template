@@ -10,4 +10,4 @@ Those can also be tweaked as you like it, in [`_css/basic.css`](/css/basic.css).
 
 Important elements to notice are the colors, font sizes and background image set in `:root` and `html`, and the fontface for code blocks, set in `pre code kbd samp`.
 
-One should also pay attention to the `_assets/images/favicon.png`. It is currently set to a red question mark, as in Franklin.jl, to draw attention to it. Just replace the file with your favorite icon meaningful to your book or remove the line that loads the icon in `_layout/head.html`.
+One should also pay attention to the `_assets/images/favicon.png`. It is currently set to a red question mark, as in Franklin.jl, to draw attention to it. Just replace the file with your favorite icon meaningful to your book or remove the line that loads the icon in `_layout/head.html` if you don't want any.

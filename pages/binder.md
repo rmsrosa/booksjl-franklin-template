@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-As explained in Section [Pages](/pages/pages), the `link_binder_notebook` can be set to true in order to display a badge link to launch the associated Jupyter notebook of each page (in `_weave` or `_literate`) on [Binder](https://mybinder.org). For that to happen properly, the following configuration variables must be set in `config.md`:
+As explained in Section [Pages](/pages/pages), the `link_binder_notebook` can be set to true in order to display a badge link to launch the associated Jupyter notebook of each page on [Binder](https://mybinder.org) (only for pages processed by Weave or Literate). For that to happen properly, the following configuration variables must be set in `config.md`:
 
 * `nbgitpuller_repo::String`: the repository from where [Binder](https://mybinder.org) will build the sysimage to open the notebook with the properly configured environment;
 * `nbgitpuller_branch::String`: the branch of `nbgitpuller_repo` from where [Binder](https://mybinder.org) will build the sysimage;
