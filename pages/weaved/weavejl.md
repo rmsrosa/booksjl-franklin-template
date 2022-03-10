@@ -117,8 +117,4 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-```
-Error: InterruptException:
-```
-
-
+\fig{images/weavejl_4_1.png}
