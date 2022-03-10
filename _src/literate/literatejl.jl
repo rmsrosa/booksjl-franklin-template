@@ -33,11 +33,11 @@ println("hello world!")
 
 # ## Load file
 
-# Keep in mind that Literate renders this from the root dir, which is different from the way Weave handles it:
+# Keep in mind that Literate renders this from the root dir, which is different from the way Weave handles it (*c.f.* Section [weavejl.jl](/pages/weaved/weavejl)):
 
 pwd()
 
-# With that settled, we can use the proper path (but for some weird reason, I first need to check whether the file exists before attempting to open it, otherwise Literate complains the file does not exist :man_shrugging:):
+# With that settled, we can use the proper path (but for some weird reason, I first need to check whether the file exists before attempting to open it, otherwise Literate complains the file does not exist &#129335;):
 
 filename = "_assets/data/wow.txt"
 

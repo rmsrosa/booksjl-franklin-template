@@ -77,7 +77,7 @@ hello world!
 
 
 
-Keep in mind that Weave renders this from the directory where the file will be weaved to, which is different from the way Literate handles it:
+Keep in mind that Weave renders this from the directory where the file will be weaved to, which is different from the way Literate handles it (*c.f.* Section [{{get_title pages/literated/literatejl}}](/pages/literated/literatejl)):
 
 ```julia
 pwd()
@@ -117,4 +117,8 @@ y = sin.(2x) + sin.(5x)
 plot(x, y)
 ```
 
-\fig{images/weavejl_4_1.png}
+```
+Error: InterruptException:
+```
+
+

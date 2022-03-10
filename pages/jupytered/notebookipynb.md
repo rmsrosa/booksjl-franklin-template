@@ -61,7 +61,7 @@ hello world!
 
 ## Load file
 
-Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it:
+Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it (*c.f.* Section [{{get_title pages/literated/literatejl}}](/pages/literated/literatejl)):
 
 
 ```julia
