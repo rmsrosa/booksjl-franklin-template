@@ -251,7 +251,7 @@ function process_it(filename)
         postprocess_it(processed_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^src/weave" => "weaved", r"^src/literate" => "literated", r"^src/jupyter" => "jupytered"))"
+    notebook_output_dir = "generated/notebooks/$(replace(dirname(filename), r"^src/weave" => "weaved", r"^src/literate" => "literated", r"^src/jupyter" => "jupytered"))"
     notebook_path =
         first(splitext("$notebook_output_dir/$(basename(filename))")) * ".ipynb"
 
@@ -318,7 +318,7 @@ code associated with each page that has been processed via Weave or Literate.
         any(
             ==(true),
             (link_download_notebook, link_nbview_notebook, link_binder_notebook),
-        ) && (isfile("__site/$notebook_path"))
+        ) && (isfile("$notebook_path"))
     )
         write(
             io,
@@ -327,7 +327,7 @@ code associated with each page that has been processed via Weave or Literate.
             <p>
             """,
         )
-        if link_nbview_notebook == true && isfile("__site/$notebook_path")
+        if link_nbview_notebook == true && isfile("$notebook_path")
             website = globvar(:website)
             write(
                 io,
@@ -336,7 +336,7 @@ code associated with each page that has been processed via Weave or Literate.
                 """,
             )
         end
-        if link_binder_notebook == true && isfile("__site/$notebook_path")
+        if link_binder_notebook == true && isfile("$notebook_path")
             nbgitpuller_repo = globvar(:nbgitpuller_repo)
             nbgitpuller_branch = globvar(:nbgitpuller_branch)
             binder_application = globvar(:binder_application)
@@ -362,7 +362,7 @@ code associated with each page that has been processed via Weave or Literate.
             end
         end
 
-        if link_download_notebook == true && isfile("__site/$notebook_path")
+        if link_download_notebook == true && isfile("$notebook_path")
             write(
                 io,
                 """
