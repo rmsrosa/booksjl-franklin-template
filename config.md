@@ -4,7 +4,6 @@
 +++
 prepath = "booksjl-franklin-template"
 content_tag = ""
-ignore = ["_src/"]
 +++
 
 ## book variables
