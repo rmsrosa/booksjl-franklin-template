@@ -378,7 +378,7 @@ code associated with each page that has been processed via Weave or Literate.
             toc = build_toc(menu, page_numbering)
             ftoc = filter(x -> last(x).filename == first(splitext(filename)), toc)
             source_path =
-                length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
+                length(ftoc) > 0 ? "/$(first(first.(ftoc)))" : nothing
             write(
                 io,
                 """
