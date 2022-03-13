@@ -64,6 +64,7 @@ link_view_source = true
 link_download_notebook = true
 link_nbview_notebook = true
 link_binder_notebook = true
+exec_notebook = false
 website = "rmsrosa.github.io/booksjl-franklin-template"
 +++
 

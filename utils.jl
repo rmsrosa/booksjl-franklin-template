@@ -234,6 +234,7 @@ function process_it(filename)
     link_download_notebook = globvar(:link_download_notebook)
     link_nbview_notebook = globvar(:link_nbview_notebook)
     link_binder_notebook = globvar(:link_binder_notebook)
+    exec_notebook = globvar(:exec_notebook)
 
     if mtime(filename) > mtime(processed_filename)
         if startswith(filename, "_src/literate/")
@@ -267,7 +268,12 @@ function process_it(filename)
                 nbconvert_options = "--allow-errors",
             )
         elseif startswith(filename, "_src/literate/")
-            Literate.notebook(filename, notebook_output_dir)
+            Literate.notebook(
+                filename,
+                notebook_output_dir,
+                execute=exec_notebook,
+                credit=false
+            )
         elseif startswith(filename, "_src/jupyter/")
             mkpath(notebook_output_dir)
             cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
