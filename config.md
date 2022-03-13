@@ -48,10 +48,10 @@ menu = [
     "*PART II"
     "pages/math_and_code" => [
         "pages/franklinmd"
-        "_src/literate/literatejl.jl"
-        "_src/weave/weavejl.jl"
-        "_src/weave/weavejmd.jmd"
-        "_src/jupyter/notebookipynb.ipynb"
+        "src/literate/literatejl.jl"
+        "src/weave/weavejl.jl"
+        "src/weave/weavejmd.jmd"
+        "src/jupyter/notebookipynb.ipynb"
     ]
     "*pages/appendix"
 ]

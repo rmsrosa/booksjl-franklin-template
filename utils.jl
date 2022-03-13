@@ -219,14 +219,14 @@ Processing generates a Markdown file for Franklin and a Jupyter notebook for the
 """
 function process_it(filename)
     startswith(filename, "pages/") && return "$filename.md"
-    startswith(filename, "_src/") || return nothing
+    startswith(filename, "src/") || return nothing
 
     out_path =
         replace(
             dirname(filename),
-            r"^_src/weave" => "pages/weaved",
-            r"^_src/literate" => "pages/literated",
-            r"^_src/jupyter" => "pages/jupytered",
+            r"^src/weave" => "pages/weaved",
+            r"^src/literate" => "pages/literated",
+            r"^src/jupyter" => "pages/jupytered",
         )
     fig_path = "images"
     processed_filename = first(splitext("$out_path/$(basename(filename))")) * ".md"
@@ -237,7 +237,7 @@ function process_it(filename)
     exec_notebook = globvar(:exec_notebook)
 
     if mtime(filename) > mtime(processed_filename)
-        if startswith(filename, "_src/literate/")
+        if startswith(filename, "src/literate/")
             Literate.markdown(
                 filename,
                 out_path,
@@ -251,7 +251,7 @@ function process_it(filename)
         postprocess_it(processed_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_src/weave" => "weaved", r"^_src/literate" => "literated", r"^_src/jupyter" => "jupytered"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^src/weave" => "weaved", r"^src/literate" => "literated", r"^src/jupyter" => "jupytered"))"
     notebook_path =
         first(splitext("$notebook_output_dir/$(basename(filename))")) * ".ipynb"
 
@@ -260,21 +260,21 @@ function process_it(filename)
         (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
 
-        if startswith(filename, "_src/weave/")
+        if startswith(filename, "src/weave/")
             mkpath(notebook_output_dir)
             Weave.notebook(
                 filename,
                 out_path = notebook_output_dir,
                 nbconvert_options = "--allow-errors",
             )
-        elseif startswith(filename, "_src/literate/")
+        elseif startswith(filename, "src/literate/")
             Literate.notebook(
                 filename,
                 notebook_output_dir,
                 execute=exec_notebook,
                 credit=false
             )
-        elseif startswith(filename, "_src/jupyter/")
+        elseif startswith(filename, "src/jupyter/")
             mkpath(notebook_output_dir)
             cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
             #= 
