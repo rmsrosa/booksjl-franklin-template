@@ -167,17 +167,17 @@
     &quot;*PART II&quot;
     &quot;pages/math_and_code&quot; &#61;&gt; &#91;
         &quot;pages/franklinmd&quot;
-        &quot;_src/literate/literatejl.jl&quot;
-        &quot;_src/weave/weavejl.jl&quot;
-        &quot;_src/weave/weavejmd.jmd&quot;
-        &quot;_src/jupyter/notebookipynb.ipynb&quot;
+        &quot;src/literate/literatejl.jl&quot;
+        &quot;src/weave/weavejl.jl&quot;
+        &quot;src/weave/weavejmd.jmd&quot;
+        &quot;src/jupyter/notebookipynb.ipynb&quot;
     &#93;
     &quot;*pages/appendix&quot;
 &#93;</code></pre>
-<p>Notice how the entries that start with <code>*</code> do not get numbered, and how those that do not start with either <code>pages/</code>, <code>_src/weave/</code>, <code>_src/literate/</code>, or <code>_src/jupyter</code> just have the title, without linking to any page, regardless of being a pair pointing to a vector of subsections or not.</p>
+<p>Notice how the entries that start with <code>*</code> do not get numbered, and how those that do not start with either <code>pages/</code>, <code>src/weave/</code>, <code>src/literate/</code>, or <code>src/jupyter</code> just have the title, without linking to any page, regardless of being a pair pointing to a vector of subsections or not.</p>
 <h2 id="rules"><a href="#rules" class="header-anchor">Rules</a></h2>
 <ol>
-<li><p>When a string starts with either <code>pages/</code>, <code>_src/weave/</code>, <code>_src/literate/</code>, or <code>_src/jupyter</code>, it means it points to a file. The title is grabbed from the file.</p>
+<li><p>When a string starts with either <code>pages/</code>, <code>src/weave/</code>, <code>src/literate/</code>, or <code>src/jupyter</code>, it means it points to a file. The title is grabbed from the file.</p>
 </li>
 <li><p>If an entry points to a file but has no extension, it is assumed to have the <code>.md</code> extension.</p>
 </li>
@@ -213,7 +213,7 @@
         </div>
     
 
-    Last modified: March 13, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: March 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
