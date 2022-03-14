@@ -48,10 +48,6 @@ menu = [
     "*PART II"
     "pages/math_and_code" => [
         "pages/franklinmd"
-        "src/literate/literatejl.jl"
-        "src/weave/weavejl.jl"
-        "src/weave/weavejmd.jmd"
-        "src/jupyter/notebookipynb.ipynb"
     ]
     "*pages/appendix"
 ]
@@ -59,11 +55,11 @@ menu = [
 
 ## page variables
 +++
-show_link_bagdes = true
-link_view_source = true
-link_download_notebook = true
-link_nbview_notebook = true
-link_binder_notebook = true
+show_link_bagdes = false
+link_view_source = false
+link_download_notebook = false
+link_nbview_notebook = false
+link_binder_notebook = false
 exec_notebook = false
 website = "rmsrosa.github.io/booksjl-franklin-template"
 +++
