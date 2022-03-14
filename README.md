@@ -4,7 +4,7 @@
 [docs-dev-url]: https://rmsrosa.github.io/booksjl-franklin-template/
 
 
-[![][docs-dev-img]][docs-dev-url] [![License: GPL v3](https://img.shields.io/badge/License-CC0&#160;1.0-orange.svg)](https://creativecommons.org/publicdomain/zero/1.0/) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/booksjl-franklin-template)
+[![][docs-dev-img]][docs-dev-url] [![License: GPL v3](https://img.shields.io/badge/License-CC0&#160;1.0-orange.svg)](https://creativecommons.org/publicdomain/zero/1.0/) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/booksjl-franklin-template) ![Workflow Status](https://github.com/rmsrosa/booksjl-franklin-template/actions/workflows/Deploy.yml/badge.svg)
 
 Book-like template for [Thibaut Lienart](https://github.com/tlienart)'s static web-site generator [Franklin.jl](https://github.com/tlienart/Franklin.jl).
 
