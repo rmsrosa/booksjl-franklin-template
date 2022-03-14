@@ -30,20 +30,20 @@ menu = [
     "*PART II"
     "pages/math_and_code" => [
         "pages/franklinmd"
-        "_src/literate/literatejl.jl"
-        "_src/weave/weavejl.jl"
-        "_src/weave/weavejmd.jmd"
-        "_src/jupyter/notebookipynb.ipynb"
+        "src/literate/literatejl.jl"
+        "src/weave/weavejl.jl"
+        "src/weave/weavejmd.jmd"
+        "src/jupyter/notebookipynb.ipynb"
     ]
     "*pages/appendix"
 ]
 ```
 
-Notice how the entries that start with `*` do not get numbered, and how those that do not start with either `pages/`, `_src/weave/`, `_src/literate/`, or `_src/jupyter` just have the title, without linking to any page, regardless of being a pair pointing to a vector of subsections or not.
+Notice how the entries that start with `*` do not get numbered, and how those that do not start with either `pages/`, `src/weave/`, `src/literate/`, or `src/jupyter` just have the title, without linking to any page, regardless of being a pair pointing to a vector of subsections or not.
 
 ## Rules
 
-1. When a string starts with either `pages/`, `_src/weave/`, `_src/literate/`, or `_src/jupyter`, it means it points to a file. The title is grabbed from the file.
+1. When a string starts with either `pages/`, `src/weave/`, `src/literate/`, or `src/jupyter`, it means it points to a file. The title is grabbed from the file.
 
 1. If an entry points to a file but has no extension, it is assumed to have the `.md` extension.
 
