@@ -276,7 +276,7 @@
     overflow: auto;
     white-space: pre;
     /* Fine tuned based on max-width. */
-    max-width: var(--max-pre-width);
+    /* max-width: var(--max-pre-width); */
     word-wrap: normal;
   }
   
