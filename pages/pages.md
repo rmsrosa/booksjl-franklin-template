@@ -12,6 +12,10 @@
 
 1. The title on the pages within `src/weave/`, `src/literate/` or `src/jupyter` should be defined as usual for markdown files, with `# Title of the Section`. These will be processed to the format above, to be properly rendered by Franklin.
 
+1. In a Franklin markdown page (under the `pages/` directory), if you want to refer to a different page and would like the section number to show up in the title, you may use the `hfun_link_section` function defined in [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md). You should use that in Franklin's style. For instance, if you want to refer to Section {{link_section pages/pages}} you should write `{{link_section pages/pages}}`. Of course, if you have set `page_numbering` to false (*c.f.* {{link_section pages/toc}}), then the section number won't be added.
+
+1. On the other hand, in any source page under `src/`, if you want to refer to a different page and would like the section number to show up in the title, you should write `[whatever](pages/pages)`. This will be post-processed (after [Weave.jl](https://github.com/JunoLab/Weave.jl) or [Literate.jl](https://github.com/fredrikekre/Literate.jl)) to the format above, before [Franklin.jl](https://github.com/tlienart/Franklin.jl) handles it.
+
 1. Each page generated from source files in either `src/weave/`, `src/literate/`, or `src/jupyter/` may contain badge links to associated Jupyter notebooks, for either downloading them or opening them in either NBViewer or Binder. This can be achieved by the following configuration variables in `config.md`:
     * `show_link_bagdes::Bool`: whether to add any of the link badges to the top of each weaved or literated page;
     * `link_view_source::Bool`: whether to include a badge to view the source used for the current page, if processed by [Weave.jl](https://github.com/JunoLab/Weave.jl) or [Literate.jl](https://github.com/fredrikekre/Literate.jl);

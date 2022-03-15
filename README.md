@@ -20,7 +20,7 @@ It currently has the following features:
     * Pure julia scripts (with Markdown comments) executed by either [Literate.jl](https://github.com/fredrikekre/Literate.jl) or [Weave.jl](https://github.com/JunoLab/Weave.jl).
     * [Jupyter](https://jupyter.org) notebooks converted to Franklin's markdown with [Weave.jl](https://github.com/JunoLab/Weave.jl).
 * All execution/rendering generated automatically, based on the folder they belong to (whether `pages/`, `src/weave/`, `src/literate/` or `src/jupyter`, with the files in the latter three folders being rendered to markdown files in `pages/weaved/`, `pages/literated/`, and `pages/jupytered`, respectively).
-* Whatever the source file, a [Jupyter](https://jupyter.org) notebook is generated for each page and stored in the folder `generated/`.
+* Whatever the source file, a [Jupyter](https://jupyter.org) notebook is generated for each page and stored in the folder `generated/notebooks/`.
 * Badge links included on each page to either download the associated jupyter notebook, or view it in [NBViewer](https://nbviewer.org), or launch it in [Binder]([Literate.jl](https://github.com/fredrikekre/Literate.jl)), or download its source.
 * Appealing visual display based on [Rik Huijzer](https://github.com/rikhuijzer)'s CSS used in [Books.jl](https://github.com/JuliaBooks/Books.jl).
 

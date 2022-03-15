@@ -61,7 +61,7 @@ hello world!
 
 ## Load file
 
-Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it (*c.f.* Section [{{get_title pages/literated/literatejl}}](/pages/literated/literatejl)):
+Keep in mind that Weave renders this from the file dir, which is different from the way Literate handles it (*c.f.* Section {{link_section pages/literated/literatejl}}):
 
 
 ```julia
@@ -103,7 +103,7 @@ using Plots
 ```julia
 x = 0.0:0.01:2π
 y = sin.(2x) + sin.(5x)
-plot(x, y)
+plot(x, y, title = "A nice wave", titlefont=12, label = false)
 ```
 
 \fig{images/notebookipynb_6_1.png}

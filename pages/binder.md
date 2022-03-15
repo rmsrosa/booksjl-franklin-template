@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-As explained in Section [{{get_title pages/pages}}](/pages/pages), the `link_binder_notebook` can be set to true in order to display a badge link to launch the associated Jupyter notebook of each page on [Binder](https://mybinder.org) (only for pages processed by Weave or Literate). For that to happen properly, the following configuration variables must be set in `config.md`:
+As explained in Section {{link_section pages/pages}}, the `link_binder_notebook` can be set to true in order to display a badge link to launch the associated Jupyter notebook of each page on [Binder](https://mybinder.org) (only for pages processed by Weave or Literate). For that to happen properly, the following configuration variables must be set in `config.md`:
 
 * `nbgitpuller_repo::String`: the repository from where [Binder](https://mybinder.org) will build the sysimage to open the notebook with the properly configured environment;
 * `nbgitpuller_branch::String`: the branch of `nbgitpuller_repo` from where [Binder](https://mybinder.org) will build the sysimage;
@@ -19,7 +19,7 @@ The following variables are also used for Binder:
 * `github_repo::String`: path to the repository.
 * `prepath::String`: pre-path to the website, relative to the root url.
 
-One could use the same repository for the contents of the book and for building the Binder environment. However, every time you make a change to the contents of the book and push it to the repo, Binder will have to rebuild the sysimage and that may takes several minutes.
+One could use the same repository for the contents of the book and for building the Binder environment. However, every time you make a change to the contents of the book and push it to the repo, Binder will have to rebuild the sysimage and that may take several minutes.
 
 The best approach is to have a separate branch or repository for the Binder setup, which is called the `puller` repo. The repo/branch with the notebooks is called the `pulled` repo. This is the magic that [nbgitpuller](https://jupyterhub.github.io/nbgitpuller) does. The `puller` repo only needs to contain some minimal configuration for Binder, along with the `Project.toml` file with all the packages to be used by the notebooks.
 

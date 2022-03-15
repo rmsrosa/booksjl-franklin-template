@@ -66,6 +66,15 @@ The section referred to is that in the path given by the argument `section` or t
 end
 
 """
+    function hfun_link_section(section)
+
+Return a link to the given section, with the proper numbered title for the section.
+"""
+@delay function hfun_link_section(section)
+    return """<a href="/$(section[1])">$(hfun_get_title(section))</a>"""
+end
+
+"""
     function hfun_navigation()
 
 Return the html code to display the navigation buttons on the top and/or bottom of each page.
@@ -421,7 +430,7 @@ function postprocess_it(filename, out_path, fig_path)
                     r"^!\[\]\(([^/)][^\)]*)\)" => s"\\fig{\1}",
                     r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}",
                     r"(?<!\!)\[[^\]]*\]\(/pages/([^\)]*)\)" =>
-                        s"[{{get_title pages/\1}}](/pages/\1)",
+                        s"{{link_section pages/\1}}",
                 )
             end
             write(tmpio, line)

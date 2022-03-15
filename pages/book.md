@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Several configuration variables can be set in the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file. Concerning book-related variables, we have the following ones:
+Several configuration variables can be set in the [config.md](https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md) file. Concerning general book-related variables, we have the following ones:
 
 * `book_title::String`: title of the book;
 * `book_subtitle::String`: subtitle of the book;
