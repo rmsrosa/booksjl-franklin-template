@@ -11,133 +11,133 @@
     --output-background: hsl(120, 100%, 94%);
     --menu-width: 256px;
     --max-body-width: 1280px;
-    --max-pre-width: 768px;
+    --max-pre-width: 832px;
     --content-left-margin: 32px;
-  }
+}
   
-  .menu-level-2 {
+.menu-level-2 {
     margin-left: 0.8rem;
-  }
+}
   
-  .navbar {
+.navbar {
     color: var(--gray);
     margin-top: 1em;
     font-size: var(--small-size);
-  }
+}
   
-  .navbar a {
+.navbar a {
     color: var(--gray) !important;
-  }
+}
   
-  .badges {
-      color: var(--gray);
-      font-size: var(--small-size);
-  }
+.badges {
+    color: var(--gray);
+    font-size: var(--small-size);
+}
   
-  .books-menu-content {
+.books-menu-content {
     list-style: none;
     max-height: 0;
     overflow: hidden;
     font-size: var(--small-size);
     margin-top: 1.0rem;
-  }
+}
   
-  .books-list-module {
+.books-list-module {
     display: block;
     font-size: var(--tiny-size);
     margin: 0 0;
     text-align: right;
-  }
+}
   
-  .books-title {
+.books-title {
     display: inline-block;
     font-size: 1.4rem;
     color: var(--gray);
     margin-bottom: 0px;
-  }
+}
   
-  .books-subtitle {
+.books-subtitle {
     display: inline-block;
     font-size: 1.0rem;
     font-style: italic;
     color: var(--gray);
     margin-bottom: 0px;
-  }
+}
   
-  .books-author {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-style: italic;
-      color: var(--gray);
-      margin-bottom: 0px;
-  }
+.books-author {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--gray);
+    margin-bottom: 0px;
+}
   
-  .books-menu {
+.books-menu {
     margin-top: 0rem;
-  }
+}
   
-  .books-menu label {
+.books-menu label {
     cursor: pointer;
     display:inline-block;
     font-size: 32px;
     margin-right: 16px;
-  }
+}
   
-  input#menu {
+input#menu {
     display: none;
-  }
+}
   
-  .books-menu li {
+.books-menu li {
     margin: 1px 0;
-  }
+}
   
-  input:checked ~ .books-menu-content {
-      max-height: 100%;
-  }
+input:checked ~ .books-menu-content {
+    max-height: 100%;
+}
   
-  .books-menu a {
+.books-menu a {
     color: var(--gray) !important;
-  }
+}
   
-  @media only screen and (min-width: 900px) {
+@media only screen and (min-width: 900px) {
     .books-content {
-      margin-left: var(--content-left-margin);
-      display: flex;
-      flex-direction: column;
-      /* If the text is placed too low, users get a scroll bar even for a near empty page. */
-      min-height: 92vh;
+        margin-left: var(--content-left-margin);
+        display: flex;
+        flex-direction: column;
+        /* If the text is placed too low, users get a scroll bar even for a near empty page. */
+        min-height: 92vh;
     }
     .books-menu {
-      margin-left: var(--content-left-margin);
+        margin-left: var(--content-left-margin);
     }
-  }
+}
   
-  .subtitle {
+.subtitle {
     color: var(--gray);
     font-style: italic;
     margin-bottom: 50px;
-  }
+}
   
-  table {
+table {
     font-size: var(--small-size);
     margin-left: auto;
     margin-right: auto;
-  }
+}
   
-  .subfigures {
+.subfigures {
     font-size: var(--small-size);
-  }
+}
   
-  html {
+html {
     color: var(--black);
     background-color: var(--background);;
     font-size: var(--normal-size);
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-  }
+}
   
-  html {
+html {
       background-image: url("../assets/images/background.jpg");
       background-attachment: fixed;
       background-size: cover;
@@ -145,9 +145,9 @@
       -moz-background-size: cover;
       -o-background-size: cover;
       margin:0;
-  }
+}
   
-  body {
+body {
     color: var(--black);
     font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
     font-size: var(--normal-size);
@@ -156,80 +156,79 @@
     margin-left: auto;
     margin-right: auto;
     max-width: var(--max-body-width);
-  }
+}
   
-  a {
+a {
     color: var(--accent);
     text-decoration: none;
-  }
+}
   
-  /* Source: https://stackoverflow.com/questions/1899772. */
-  a[target="_blank"]::after {
+/* Source: https://stackoverflow.com/questions/1899772. */
+a[target="_blank"]::after {
     content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
     margin: 0 4px 0 5px;
-  }
+}
   
-  p {
+p {
     margin: 0.6em 0;
-  }
+}
   
-  img {
+img {
     max-width: 100%;
     /* Center images without a caption or label. */
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
   
-  h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     color: var(--black);
     line-height: 125%;
     margin-top: 1.2em;
     margin-bottom: 0.4em;
     font-weight: normal;
-  }
+}
   
-  h1 {
+h1 {
       margin-top: 0.0em;
-  }
+}
   
-  h4, h5, h6 {
+h4, h5, h6 {
     font-weight: bold;
-  }
+}
   
-  h1 {
+h1 {
     font-size: 2.5em;
+}
   
-  }
-  
-  h2 {
+h2 {
     font-size: 1.8em;
-  }
+}
   
-  h3 {
+h3 {
     font-size: 1.5em;
-  }
+}
   
-  h4 {
+h4 {
     font-size: 1.3em;
-  }
+}
   
-  h5 {
+h5 {
     font-size: 1.2em;
-  }
+}
   
-  h6 {
+h6 {
     font-size: 1.1em;
-  }
+}
   
-  blockquote {
+blockquote {
     color: #666666;
     margin: 0;
     padding-left: 2em;
     border-left: 0.3em #EEE solid;
-  }
+}
   
-  hr {
+hr {
     display: block;
     height: 2px;
     border: 0;
@@ -237,9 +236,9 @@
     border-bottom: 1px solid #eee;
     margin: 1em 0;
     padding: 0;
-  }
+}
   
-  pre, code, kbd, samp {
+pre, code, kbd, samp {
     font-family: "JuliaMono-Regular", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "monospace", "DejaVu Sans Mono", "Helvetica";
     font-variant-ligatures: none;
     font-size: var(--medium-size);
@@ -253,18 +252,18 @@
     padding-right: 0.3em;
     padding-bottom: 0.3em;
     border-radius: 4px;
-  }
+}
   
-  pre code {
+pre code {
     /* Without this, padding is only applied to the first line. */
     display: block;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
-  }
+}
   
-  pre {
+pre {
     white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -278,236 +277,236 @@
     /* Fine tuned based on max-width. */
     max-width: var(--max-pre-width);
     word-wrap: normal;
-  }
+}
   
-  pre.output {
+pre.output {
     background: hsl(0, 0%, 98%) !important;
     border: 1px dashed #dbdbdb;
-  }
+}
   
-  .output code {
+.output code {
     background: hsl(0, 0%, 98%);
-  }
+}
   
-  b, strong {
+b, strong {
     font-weight: bold;
-  }
+}
   
-  dfn {
+dfn {
     font-style: italic;
-  }
+}
   
-  ins {
+ins {
     background: #ff9;
     color: #000;
     text-decoration: none;
-  }
+}
   
-  mark {
+mark {
     background: #ff0;
     color: #000;
     font-style: italic;
     font-weight: bold;
-  }
+}
   
-  sub, sup {
+sub, sup {
     font-size: 75%;
     line-height: 0;
     position: relative;
     vertical-align: baseline;
-  }
+}
   
-  sup {
+sup {
     top: -0.5em;
-  }
+}
   
-  sub {
+sub {
     bottom: -0.25em;
-  }
+}
   
-  ul, ol {
+ul, ol {
     margin: 1em 0;
     padding: 0 0 0 2em;
-  }
+}
   
-  li p:last-child {
+li p:last-child {
     margin-bottom: 0;
-  }
+}
   
-  ul ul, ol ol {
+ul ul, ol ol {
     margin: .3em 0;
-  }
+}
   
-  dl {
+dl {
     margin-bottom: 1em;
-  }
+}
   
-  dt {
+dt {
     font-weight: bold;
     margin-bottom: .8em;
-  }
+}
   
-  dd {
+dd {
     margin: 0 0 .8em 2em;
-  }
+}
   
-  dd:last-child {
+dd:last-child {
     margin-bottom: 0;
-  }
+}
   
-  figure {
+figure {
     display: block;
     text-align: center;
     margin: 1em 0;
-  }
+}
   
-  figure img {
+figure img {
     border: none;
     /* For detailed images, we need the full width. */
     max-width: 100%;
-  }
+}
   
   
-  figcaption {
+figcaption {
     font-size: 0.8em;
     font-style: italic;
     margin: 0 0 .8em;
-  }
+}
   
-  table {
+table {
     margin-top: 0.4em;
     margin-bottom: 2em;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-spacing: 0;
     border-collapse: collapse;
-  }
+}
   
-  table th {
+table th {
     padding: .2em 1em;
     background-color: #eee;
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
-  }
+}
   
-  table td {
+table td {
     padding: .2em 1em;
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
     vertical-align: top;
-  }
+}
   
-  .author {
+.author {
     font-size: 1.2em;
     text-align: center;
-  }
+}
   
-  html {
+html {
     text-rendering: optimizeLegibility;
-  }
+}
   
-  @media print {
+@media print {
     * {
-      background: transparent !important;
-      color: black !important;
-      filter: none !important;
-      -ms-filter: none !important;
+        background: transparent !important;
+        color: black !important;
+        filter: none !important;
+        -ms-filter: none !important;
     }
   
     body {
-      font-size: 12pt;
-      max-width: 100%;
+        font-size: 12pt;
+        max-width: 100%;
     }
   
     a, a:visited {
-      text-decoration: underline;
+        text-decoration: underline;
     }
   
     hr {
-      height: 1px;
-      border: 0;
-      border-bottom: 1px solid black;
+        height: 1px;
+        border: 0;
+        border-bottom: 1px solid black;
     }
   
     a[href]:after {
-      content: " (" attr(href) ")";
+        content: " (" attr(href) ")";
     }
   
     abbr[title]:after {
-      content: " (" attr(title) ")";
+        content: " (" attr(title) ")";
     }
   
     .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
-      content: "";
+        content: "";
     }
   
     pre, blockquote {
-      border: 1px solid #999;
-      padding-right: 1em;
-      page-break-inside: avoid;
+        border: 1px solid #999;
+        padding-right: 1em;
+        page-break-inside: avoid;
     }
   
     tr, img {
-      page-break-inside: avoid;
+        page-break-inside: avoid;
     }
   
     img {
-      max-width: 100% !important;
+        max-width: 100% !important;
     }
   
     @page :left {
-      margin: 15mm 20mm 15mm 10mm;
-  }
+        margin: 15mm 20mm 15mm 10mm;
+    }
   
     @page :right {
-      margin: 15mm 10mm 15mm 20mm;
-  }
+        margin: 15mm 10mm 15mm 20mm;
+    }
   
     p, h2, h3 {
-      orphans: 3;
-      widows: 3;
+        orphans: 3;
+        widows: 3;
     }
   
     h2, h3 {
-      page-break-after: avoid;
+        page-break-after: avoid;
     }
-  }
+}
   
-  .license {
+.license {
     margin-top: auto;
     text-align: center;
     color: var(--gray);
     font-size: var(--small-size);
-  }
+}
   
-  .csl-entry {
+.csl-entry {
     margin-bottom: var(--small-size);
-  }
+}
   
-  kbd {
+kbd {
     border: 1px solid;
     border-radius: 6px;
     display: inline-block;
     line-height: 10px;
     padding: 4px 4px;
     vertical-align: middle;
-  }
+}
   
-  .footnotes {
+.footnotes {
     font-size: var(--small-size);
-  }
+}
   
-  .footnotes ol {
+.footnotes ol {
     list-style-type: none;
-  }
+}
   
-  .page-foot {
-      font-size: 80%;
-      font-family: Arial, serif;
-      color: #a6a2a0;
-      text-align: center;
-      margin-top: 6em;
-      border-top: 1px solid lightgrey;
-      padding-top: 2em;
-      margin-bottom: 4em;
-  }
+.page-foot {
+    font-size: 80%;
+    font-family: Arial, serif;
+    color: #a6a2a0;
+    text-align: center;
+    margin-top: 6em;
+    border-top: 1px solid lightgrey;
+    padding-top: 2em;
+    margin-bottom: 4em;
+}
