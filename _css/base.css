@@ -11,7 +11,7 @@
     --output-background: hsl(120, 100%, 94%);
     --menu-width: 256px;
     --max-body-width: 1280px;
-    --max-pre-width: 768px;
+    --max-pre-width: 832px;
     --content-left-margin: 32px;
 }
   
@@ -275,7 +275,7 @@ pre {
     overflow: auto;
     white-space: pre;
     /* Fine tuned based on max-width. */
-    /* max-width: var(--max-pre-width); */
+    max-width: var(--max-pre-width);
     word-wrap: normal;
 }
   
