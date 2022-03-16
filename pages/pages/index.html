@@ -142,9 +142,9 @@
 </li>
 <li><p>In a Franklin markdown page &#40;under the <code>pages/</code> directory&#41;, if you want to refer to a different page and would like the section number to show up in the title, you may use the <code>hfun_link_section</code> function defined in <a href="https://raw.githubusercontent.com/rmsrosa/booksjl-franklin-template/main/config.md">config.md</a>. You should use that in Franklin&#39;s style. For instance, if you want to refer to Section <a href="/booksjl-franklin-template/pages/pages">1.6. Pages</a> you should write <code>&#123;&#123;link_section pages/pages&#125;&#125;</code>. Of course, if you have set <code>page_numbering</code> to false &#40;<em>c.f.</em> <a href="/booksjl-franklin-template/pages/toc">1.4. Table of Contents</a>&#41;, then the section number won&#39;t be added.</p>
 </li>
-<li><p>On the other hand, in any source page under <code>src/</code>, if you want to refer to a different page and would like the section number to show up in the title, you should write <code>&#91;whatever&#93;&#40;pages/pages&#41;</code>. This will be post-processed &#40;after <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a> or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>&#41; to the format above, before <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> handles it.</p>
+<li><p>In any source page &#40;under the <code>src/</code> directory&#41;, if you want to refer to a different page and would like the section number to show up in the title, you should write <code>&#91;title or whatever&#93;&#40;pages/pages&#41;</code>. This will be post-processed &#40;after <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a> or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>&#41; to the format above &#40;ignoring whatever is in the given <code>title or whatever</code>&#41;, before <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> handles it.</p>
 </li>
-<li><p>Each page generated from source files in either <code>src/weave/</code>, <code>src/literate/</code>, or <code>src/jupyter/</code> may contain badge links to associated Jupyter notebooks, for either downloading them or opening them in either NBViewer or Binder. This can be achieved by the following configuration variables in <code>config.md</code>:</p>
+<li><p>Each page generated from source files in either <code>src/weave/</code>, <code>src/literate/</code>, or <code>src/jupyter/</code> may contain badge links to associated Jupyter notebooks, for either downloading them or opening them in either <a href="https://nbviewer.org">NBViewer</a> or <a href="https://mybinder.org">Binder</a>. This can be achieved by the following configuration variables in <code>config.md</code>:</p>
 <ul>
 <li><p><code>show_link_bagdes::Bool</code>: whether to add any of the link badges to the top of each weaved or literated page;</p>
 </li>
@@ -152,17 +152,21 @@
 </li>
 <li><p><code>link_download_notebook::Bool</code>: whether to include a badge to download the associated Jupyter notebook;</p>
 </li>
-<li><p><code>link_nbview_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in NBViewer;</p>
+<li><p><code>link_nbview_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in <a href="https://nbviewer.org">NBViewer</a>;</p>
 </li>
-<li><p><code>link_binder_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in Binder;</p>
+<li><p><code>link_binder_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in <a href="https://mybinder.org">Binder</a>;</p>
 </li>
 <li><p><code>exec_notebook::Bool</code>: whether to execute the code or not when generating the notebooks;</p>
 </li>
-<li><p><code>website::String</code>: url of the website, used to properly launch the associated notebook in NBViewer.</p>
+<li><p><code>website::String</code>: url of the website, used to properly launch the associated notebook in <a href="https://nbviewer.org">NBViewer</a>.</p>
 </li>
 </ul>
 </li>
 </ol>
+<ul>
+<li><p>In order to have the generated jupyter notebooks work straight out of the box in <a href="https://mybinder.org">Binder</a>, the generated notebooks are post-processed to have their links to <code>_assets/</code> and <code>/pages/</code> changed to paths relative to the website repo/branch. </p>
+</li>
+</ul>
 
     <div class="navbar">
     <p id="nav">
@@ -186,7 +190,7 @@
         </div>
     
 
-    Last modified: March 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: March 16, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
